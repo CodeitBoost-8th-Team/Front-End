@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 
-function CommentForm() {
-  const [nickname, setNickname] = useState('');
-  const [comment, setComment] = useState('');
+function CommentForm({ editingComment, onSubmit, onCancel }) {
+  const [nickname, setNickname] = useState(editingComment?.nickname || '');
+  const [comment, setComment] = useState(editingComment?.comment || '');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // 여기에 서버로 데이터를 전송하는 로직을 추가할 수 있습니다.
-    console.log({ nickname, comment, password });
+    const commentData = { nickname, comment, password };
 
-    // 입력 필드 초기화
+    onSubmit(commentData);
     setNickname('');
     setComment('');
     setPassword('');
@@ -18,7 +17,7 @@ function CommentForm() {
 
   return (
     <div className="comment-form">
-      <h2>댓글 등록</h2>
+      <h2>{editingComment ? '댓글 수정' : '댓글 등록'}</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label>닉네임</label>
@@ -49,11 +48,13 @@ function CommentForm() {
             required
           />
         </div>
-        <button type="submit">등록하기</button>
+        <button type="submit">
+          {editingComment ? '수정하기' : '등록하기'}
+        </button>
+        {editingComment && <button onClick={onCancel}>취소</button>}
       </form>
     </div>
   );
 }
 
 export default CommentForm;
-
