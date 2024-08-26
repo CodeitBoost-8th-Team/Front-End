@@ -1,0 +1,91 @@
+* {
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  box-sizing: border-box;
+}
+
+.formC {
+  display: flex;
+  margin-bottom: 127px;
+}
+
+.leftFormC {
+  margin-left: 480px;
+  width: 400px;
+}
+
+.rightFormC {
+  margin-right: 480px;
+}
+
+/* 닉네임, 태그 레이벨 */
+.labelFirstC {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19.09px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  margin-top: 61px;
+  margin-bottom: 11px;
+}
+
+/*제목, 이미지, 본문, 장소, 추억의 순간, 비밀번호 레이벨*/
+.labelC {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19.09px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  margin-top: 40px;
+  margin-bottom: 11px;
+}
+
+/*닉네임, 제목, 이미지, 본문, 태그, 장소, 추억의 순간, 비밀번호 입력창*/
+.inputC {
+  border: 1px solid #dddddd;
+  width: 400px;
+  height: 45px;
+  border-radius: 6px;
+  text-indent: 20px;
+}
+.inputC::placeholder {
+  width: 200px;
+  height: 17px;
+  top: 312px;
+  left: 500px;
+  opacity: 0.5;
+}
+
+/*******************************************************************/
+
+/*로고*/
+.headerC {
+  width: 1920px;
+  height: 100px;
+
+  text-align: center;
+  align-items: center;
+
+  padding-top: 26px;
+}
+
+/*추억 올리기*/
+.contentHeaderC {
+  width: 1920px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#contentHeaderC {
+  margin-top: 78px;
+
+  width: 137px;
+  height: 29px;
+  top: 178px;
+  left: 907px;
+
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28.64px;
+  letter-spacing: -0.03%;
+}

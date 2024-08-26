@@ -1,0 +1,15 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "nickname": "이용자",
+      "title": "게시글1",
+      "content": "이것은 예제 그룹입니다.",
+      "groupPassword": " 0000",
+      "imageUrl": "1.png",
+      "tags": ["낚시", "바다"],
+      "location": "인천",
+      "moment": "2024-02-21 14:30:00"
+    }
+  ]
+}
