@@ -17,7 +17,7 @@ const GroupDetailPage = () => {
   useEffect(() => {
     const fetchGroupDetails = async () => {
       try {
-        const response = await axios.get(`/api/groups/${groupId}`);
+        const response = await axios.get(`http://3.39.56.63/api/groups/${groupId}`); // 서버의 IP 주소를 포함한 경로 사용
         setGroup(response.data);
       } catch (error) {
         setError("그룹 정보를 가져오는 데 실패했습니다.");
@@ -42,7 +42,7 @@ const GroupDetailPage = () => {
 
   const handleDeleteConfirm = async (password) => { // 비밀번호 인자로 받음
     try {
-      await axios.delete(`/api/groups/${groupId}`, {
+      await axios.delete(`http://3.39.56.63/api/groups/${groupId}`, {
         data: { groupPassword: password }, // 비밀번호를 요청 본문에 포함시켜 전송
       });
       navigate('/'); // 그룹 삭제 후 메인 페이지로 이동

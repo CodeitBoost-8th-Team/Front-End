@@ -17,7 +17,7 @@ const GroupForm = ({ onSuccess, onFailure }) => {
       const imageData = new FormData();
       imageData.append('image', groupImage);
       
-      const imageUploadResponse = await axios.post('/api/image', imageData);  // 명세서에 따른 올바른 경로 사용
+      const imageUploadResponse = await axios.post('http://3.39.56.63/api/image', imageData);  // 서버의 IP 주소를 포함한 경로 사용
       const imageUrl = imageUploadResponse.data.imageUrl;
 
       // 2. 업로드된 이미지의 URL을 그룹 생성 요청에 포함
@@ -29,7 +29,7 @@ const GroupForm = ({ onSuccess, onFailure }) => {
         isPublic: isPublic,
       };
 
-      const response = await axios.post('/api/groups', formData);
+      const response = await axios.post('http://3.39.56.63/api/groups', formData);  // 서버의 IP 주소를 포함한 경로 사용
       if (response.status === 201) {
         onSuccess(response.data.id); // 생성된 그룹 ID 전달
       } else {
