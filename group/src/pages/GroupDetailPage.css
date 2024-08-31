@@ -1,86 +1,434 @@
-/* src/pages/GroupDetailPage.css */
+.groupDetailGD {
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  border-radius: 6px;
+  box-sizing: border-box;
 
-/* 페이지 전체 스타일 */
-.group-detail-page {
-  max-width: 1000px;
-  margin: 60px auto 0; /* 상단에 네비게이션 바를 위한 여백 추가 (60px) */
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  font-family: 'Pretendard', sans-serif; /* 전체 폰트를 'Pretendard'로 설정 */
+  position: absolute;
+
+  width: 1920px;
+  height: 2158px;
 }
 
-/* 그룹 헤더 스타일 */
-.group-header {
+/*헤더 로고*/
+
+.headerGD {
+  width: 1920px;
+  height: 100px;
+
   display: flex;
+  text-align: center;
   align-items: center;
-  justify-content: space-between; /* 그룹 정보와 버튼을 양 끝으로 배치 */
-  margin-bottom: 20px;
 }
 
-/* 그룹 이미지 스타일 */
-.group-image {
-  width: 150px;
-  height: 150px;
-  border-radius: 8px;
-  object-fit: cover;
-  margin-right: 20px;
+.headerLogoGD img {
+  width: 137px;
+  height: 48px;
+  top: 26px;
+  margin-left: 910px;
 }
 
-/* 그룹 정보 텍스트 스타일 */
-.group-info {
-  display: flex;
+/*그룹 상세 정보*/
+
+.groupGD {
+  width: 1558px;
+  height: 273px;
+  margin: 80px 180px 120px 180px;
 }
 
-.group-text {
-  flex: 1;
+.groupImgGD,
+.groupImgGD img {
+  width: 262px;
+  height: 273px;
 }
 
-.group-since {
-  font-size: 12px;
-  color: #777;
-  margin-bottom: 5px;
+.groupCreatedAtGD {
+  height: 17px;
+  position: absolute;
+  top: 195px;
+  left: 500px;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.71px;
+  letter-spacing: -0.03em;
+  text-align: left;
+
+  margin-right: 30px;
 }
 
-.group-text h2 {
-  font-size: 28px;
-  margin-bottom: 10px;
+.sinceNIsGroupPublicGD {
+  height: 17px;
+  position: absolute;
+  top: 195px;
+  left: 620px;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.71px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  color: #8d8d8d;
 }
 
-.group-text p {
-  font-size: 16px;
-  margin-bottom: 20px;
+.isGroupPublicGD {
+  height: 17px;
+  position: absolute;
+  top: 195px;
+  left: 635px;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.71px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  color: #8d8d8d;
 }
 
-/* 그룹 액션 버튼 스타일 */
-.group-actions {
-  display: flex;
-  gap: 10px; /* 두 버튼 사이의 간격을 조정 */
-  justify-content: flex-end; /* 버튼을 오른쪽으로 정렬 */
+.groupNameGD {
+  height: 36px;
+  position: absolute;
+  top: 233px;
+  left: 496px;
+
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 35.8px;
+  letter-spacing: -0.03em;
+  text-align: left;
 }
 
-.group-actions button {
-  padding: 5px 10px; /* 버튼 패딩 조정 */
-  background-color: transparent;
-  color: #333;
-  border: 1px solid #ccc; /* 약간의 테두리 추가 */
-  border-radius: 5px;
-  font-size: 12px; /* 텍스트 크기 줄임 */
-  font-family: 'Pretendard', sans-serif; /* 폰트를 'Pretendard'로 설정 */
-  text-decoration: none;
+.postGD {
+  height: 21px;
+  position: absolute;
+  top: 239.5px;
+  left: 745px;
+
+  margin-right: 15px;
+
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 21.48px;
+  letter-spacing: -0.03em;
+  text-align: left;
+}
+
+.postCountNLikeCountGD {
+  height: 21px;
+  position: absolute;
+  top: 239.5px;
+  left: 830px;
+
+  color: #b8b8b8;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 21.48px;
+  letter-spacing: -0.03em;
+  text-align: left;
+}
+
+.LikeGD {
+  height: 21px;
+  position: absolute;
+  top: 239.5px;
+  left: 860px;
+
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 21.48px;
+  letter-spacing: -0.03em;
+  text-align: left;
+}
+
+.groupIntroductionGD {
+  height: 100px;
+  width: 800px;
+  position: absolute;
+  top: 298px;
+  left: 500px;
+
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.48px;
+  letter-spacing: -0.03em;
+  text-align: left;
+}
+
+/*그룹 정보 수정/삭제하기 */
+.modifyGroupButtonGD {
+  position: absolute;
+  top: 195px;
+  left: 1500px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.71px;
+  letter-spacing: -0.03em;
+  text-align: center;
+
   cursor: pointer;
 }
 
-.group-actions button:hover {
-  color: #000;
-  border-color: #999; /* 호버 시 테두리 색상 변경 */
+.deleteGroupButtonGD {
+  position: absolute;
+  top: 195px;
+  left: 1650px;
+
+  color: #8d8d8d;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.71px;
+  letter-spacing: -0.03em;
+  text-align: center;
+
+  cursor: pointer;
 }
 
-.group-actions button:disabled {
-  color: #aaa; /* 비활성화된 버튼 색상 */
-  border-color: #ccc; /* 비활성화된 버튼 테두리 색상 */
+.GroupDeleteModal {
+  width: 480px;
+  height: 335px;
+
+  position: fixed; /* fixed로 변경하여 화면 기준으로 중앙에 위치하도록 함 */
+  top: 50%; /* 화면의 세로 중앙 */
+  left: 50%; /* 화면의 가로 중앙 */
+  transform: translate(-50%, -50%); /* 가운데 정렬 */
+
+  z-index: 1000; /* 다른 요소 위에 오도록 설정 */
 }
 
-.group-actions button:not(:disabled) {
-  text-decoration: none; /* 텍스트 밑줄 제거 */
+/*공감 보내기 버튼*/
+
+.sendLikeGD {
+  width: 175px;
+  height: 52px;
+  position: absolute;
+  top: 397px;
+  left: 1550px;
+
+  display: flex;
+  text-align: center;
+  align-items: center;
+
+  border: 1px solid #282828;
+  border-radius: 6px;
+  background: #fafafa;
+
+  cursor: pointer;
+}
+
+.sendLikeGD img {
+  margin-left: 30px;
+  margin-right: 10px;
+}
+
+/*구분선*/
+hr {
+  width: 1558px;
+
+  color: #fafafa;
+  opacity: 0.5;
+
+  margin-bottom: 126px;
+}
+
+/*추억 목록*/
+.groupPostsListGD .titleGD {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28.64px;
+  letter-spacing: -0.03em;
+  text-align: center;
+}
+
+/*추억 올리기 버튼*/
+
+.makeGroupGD {
+  width: 200px;
+  height: 45px;
+
+  /* top: 27px; */
+  left: 1540px;
+
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #282828;
+  border-radius: 6px;
+
+  cursor: pointer;
+}
+
+.makeGroupButtonGD {
+  all: unset; /* 기본 button 스타일 제거 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border: none;
+  cursor: pointer;
+  outline: none; /* 포커스 외곽선 제거 */
+
+  border-radius: 6px;
+}
+
+/* :hover 상태 제거 */
+.makeGroupButtonGD:hover {
+  background: transparent; /* 배경색 유지 */
+  box-shadow: none; /* 그림자 제거 */
+}
+
+.makeGroupLabelGD {
+  font-size: 14px;
+  color: #fafafa;
+  font-weight: 400;
+  line-height: 16.71px;
+  letter-spacing: -0.03em;
+  text-align: center;
+  cursor: pointer;
+}
+
+/*공개비공개*/
+.publicGD {
+  width: 78px;
+  height: 45px;
+  position: absolute;
+  top: 820px;
+
+  border-radius: 22.5px;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-left: 180px;
+}
+
+.privateGD {
+  width: 78px;
+  height: 45px;
+  position: absolute;
+  top: 820px;
+  left: 258px;
+
+  border-radius: 22.5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+.publicGD.active {
+  background-color: #282828;
+  color: #fff;
+}
+
+.privateGD.active {
+  background-color: #282828;
+  color: #fff;
+}
+
+.publicGD:not(.active) {
+  background-color: #fff;
+  color: #282828;
+}
+
+.privateGD:not(.active) {
+  background-color: #fff;
+  color: #282828;
+}
+
+/*검색*/
+#searchImgGD {
+  width: 24.31px;
+  height: 24px;
+  position: absolute;
+  top: 827px;
+  left: 370px;
+  padding: 3px 3.04px 3px 3.04px;
+
+  z-index: 1;
+}
+
+.searchBoxGD {
+  width: 1140px;
+  height: 45px;
+  position: absolute;
+  top: 820px;
+  left: 354px;
+  border: 0px;
+  border-radius: 6px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-left: 54px;
+  background: #f4f4f4;
+}
+
+.searchBoxGD::placeholder {
+  position: absolute;
+
+  opacity: 0.5;
+}
+
+/*정렬 버튼*/
+.selectButtonGD {
+  width: 160px;
+  height: 45px;
+
+  position: absolute;
+  top: 820px;
+  left: 1580px;
+
+  border: 1px solid #282828;
+  border-radius: 6px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  padding-left: 20px;
+}
+
+.GroupPostsGD {
+  position: absolute;
+  top: 905px;
+  left: 180px;
+
+  border-radius: 6px;
+  gap: 10px;
+}
+
+/*더보기 버튼*/
+
+.addButtonGD {
+  width: 1560px;
+  height: 60px;
+  border: 1px solid #282828;
+  border-radius: 6px;
+
+  display: flex;
+  text-align: center;
+  align-items: center;
+
+  position: absolute;
+  left: 180px;
+  top: 2020px;
+
+  cursor: pointer;
+
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 16.71px;
+  letter-spacing: -0.03em;
+  justify-content: center;
+
+  margin-bottom: 120px;
 }
