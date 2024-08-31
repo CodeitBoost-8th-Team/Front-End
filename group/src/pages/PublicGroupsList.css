@@ -1,0 +1,177 @@
+/* * {
+  font-family: ;
+  배치 안 바뀜
+} */
+
+.publicGroupPGL {
+  width: 375px;
+  height: 100%;
+
+  border: 1px solid #dddddd;
+  border-radius: 12px;
+  padding: 20px;
+  /* gap: 11px; */
+
+  box-sizing: border-box;
+}
+
+/*그룹 사진*/
+
+.groupImagePGL {
+  text-align: center;
+  align-items: center;
+
+  object-fit: cover;
+}
+
+.groupImagePGL img {
+  width: 335px;
+  height: 100%;
+  border-radius: 6px;
+
+  margin-bottom: 19px;
+}
+
+.groupInfoFirstPGL {
+  width: 180px;
+  height: 17px;
+
+  align-items: center;
+}
+
+/*그룹 생성 날짜*/
+.createdAtPGL {
+  width: 101px;
+  height: 17px;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.71px;
+  letter-spacing: -0.03em;
+  text-align: left;
+
+  color: #282828;
+}
+
+/*|*/
+.sinceNpublicPGL {
+  width: 5px;
+  height: 17px;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.71px;
+  letter-spacing: -0.03em;
+  text-align: left;
+
+  margin-left: 5px;
+  margin-right: 5px;
+
+  color: #b8b8b8;
+}
+
+/*공개비공개*/
+.isPublicPGL {
+  width: 24px;
+  height: 17px;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.71px;
+  letter-spacing: -0.03em;
+  text-align: left;
+
+  color: #8d8d8d;
+}
+
+/*그룹이름*/
+.namePGL {
+  width: 150px;
+  height: 19px;
+
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19.09px;
+  letter-spacing: -0.03em;
+  text-align: left;
+
+  margin-top: 13px;
+  margin-bottom: 11px;
+}
+
+/*그룹 설명*/
+.introductionPGL {
+  width: 335px;
+  height: 19px;
+
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.09px;
+  letter-spacing: -0.03em;
+  text-align: left;
+
+  /*335px 넘어가면 ... 으로 처리*/
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  margin-bottom: 30px;
+}
+
+/*추억 공감*/
+.containerPGL {
+  display: flex;
+  align-items: center;
+}
+
+.postPGL {
+  width: 24px;
+  height: 37px;
+
+  margin-right: 42px;
+
+  display: inline;
+}
+
+.imgNcountPGL {
+  display: flex;
+}
+
+.likePGL {
+  width: 100px;
+  height: 37.31px;
+}
+
+.likePGL img {
+  width: 17.19px;
+  height: 16.48px;
+
+  margin-right: 5px;
+  margin-top: 6px;
+}
+
+.postCountLetterPGL,
+.likeCountLetterPGL {
+  width: 51px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.32px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  color: #b8b8b8;
+}
+
+.postCountPGL,
+.likeCountPGL {
+  width: 40px;
+  height: 17px;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.71px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  color: #282828;
+
+  margin-top: 6px;
+}
