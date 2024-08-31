@@ -20,7 +20,7 @@ const GroupEditModal = ({ groupId, initialData, onClose, onSuccess, onFailure })
     formData.append('groupPassword', password); // 백엔드에 맞춰 groupPassword로 변경
 
     try {
-      const response = await axios.put(`http://3.39.56.63/api/groups/${groupId}`, formData); // 서버의 IP 주소를 포함한 경로 사용
+      const response = await axios.put(`/api/groups/${groupId}`, formData);
       if (response.status === 200) {
         onSuccess(response.data);
       } else {

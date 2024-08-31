@@ -11,27 +11,31 @@ const GroupForm = ({ onSuccess, onFailure }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
       // 1. 이미지 파일을 서버로 업로드
       const imageData = new FormData();
       imageData.append('image', groupImage);
-      
-      const imageUploadResponse = await axios.post('http://3.39.56.63/api/image', imageData);  // 서버의 IP 주소를 포함한 경로 사용
+  
+      const imageUploadResponse = await axios.post('http://3.39.56.63/api/image', imageData);
+      console.log('Image Upload Response:', imageUploadResponse.data);
       const imageUrl = imageUploadResponse.data.imageUrl;
-
+  
       // 2. 업로드된 이미지의 URL을 그룹 생성 요청에 포함
       const formData = {
         name: groupName,
         groupPassword: groupPassword,
-        imageUrl: imageUrl, // 이미지 URL 필드에 업로드된 이미지 URL 추가
+        imageUrl: imageUrl,
         introduction: groupDescription,
         isPublic: isPublic,
       };
-
-      const response = await axios.post('http://3.39.56.63/api/groups', formData);  // 서버의 IP 주소를 포함한 경로 사용
+  
+      const response = await axios.post('http://3.39.56.63/api/groups', formData);
+      console.log('Group Creation Response:', response.data);
+  
+      // 백엔드에서 반환된 groupId가 response.data.groupId로 접근 가능한지 확인
       if (response.status === 201) {
-        onSuccess(response.data.id); // 생성된 그룹 ID 전달
+        onSuccess(response.data.groupId);  // groupId에 접근해서 전달
       } else {
         onFailure("그룹 생성에 실패했습니다. 다시 시도해주세요.");
       }
@@ -40,6 +44,7 @@ const GroupForm = ({ onSuccess, onFailure }) => {
       console.error('그룹 생성 중 오류 발생:', error);
     }
   };
+  
 
   return (
     <form onSubmit={handleSubmit}>

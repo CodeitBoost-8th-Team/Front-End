@@ -33,11 +33,13 @@ const GroupDetailPage = () => {
   if (error) return <p>{error}</p>;
 
   const handleEditClick = () => {
-    setIsEditModalOpen(true);
+    setIsDeleteModalOpen(false);  // 삭제 모달을 닫음
+    setIsEditModalOpen(true);     // 수정 모달을 엶
   };
 
   const handleDeleteClick = () => {
-    setIsDeleteModalOpen(true);
+    setIsEditModalOpen(false);    // 수정 모달을 닫음
+    setIsDeleteModalOpen(true);   // 삭제 모달을 엶
   };
 
   const handleDeleteConfirm = async (password) => { // 비밀번호 인자로 받음
@@ -90,20 +92,26 @@ const GroupDetailPage = () => {
           </div>
 
           {isEditModalOpen && (
-            <GroupEditModal
-              groupId={groupId}
-              initialData={group}
-              onClose={() => setIsEditModalOpen(false)}
-              onSuccess={handleEditSuccess}
-              onFailure={handleEditFailure}
-            />
+            <>
+              <div className="modal-background" onClick={() => setIsEditModalOpen(false)} />
+              <GroupEditModal
+                groupId={groupId}
+                initialData={group}
+                onClose={() => setIsEditModalOpen(false)}
+                onSuccess={handleEditSuccess}
+                onFailure={handleEditFailure}
+              />
+            </>
           )}
 
           {isDeleteModalOpen && (
-            <GroupDeleteModal
-              onDeleteConfirm={handleDeleteConfirm} // 비밀번호를 받아 삭제를 진행
-              onClose={handleDeleteClose}
-            />
+            <>
+              <div className="modal-background" onClick={() => setIsDeleteModalOpen(false)} />
+              <GroupDeleteModal
+                onDeleteConfirm={handleDeleteConfirm} // 비밀번호를 받아 삭제를 진행
+                onClose={handleDeleteClose}
+              />
+            </>
           )}
         </>
       )}
