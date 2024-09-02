@@ -8,6 +8,7 @@ const GroupForm = ({ onSuccess, onFailure }) => {
   const [groupImage, setGroupImage] = useState(null);
   const [groupDescription, setGroupDescription] = useState('');
   const [isPublic, setIsPublic] = useState(true);
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
   
@@ -47,12 +48,11 @@ const GroupForm = ({ onSuccess, onFailure }) => {
       console.error('그룹 생성 중 오류 발생:', error);  // 오류 발생 시 로그 확인
     }
   };
-  
 
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label>그룹명:</label>
+        <label>그룹명</label>
         <input
           type="text"
           value={groupName}
@@ -60,17 +60,8 @@ const GroupForm = ({ onSuccess, onFailure }) => {
           required
         />
       </div>
-      <div>
-        <label>비밀번호:</label>
-        <input
-          type="password"
-          value={groupPassword}
-          onChange={(e) => setGroupPassword(e.target.value)}
-          required
-        />
-      </div>
       <div className="file-input-container">
-        <label>대표 이미지:</label>
+        <label>대표 이미지</label>
         <input
           type="file"
           onChange={(e) => setGroupImage(e.target.files[0])}
@@ -78,19 +69,17 @@ const GroupForm = ({ onSuccess, onFailure }) => {
         />
       </div>
       <div>
-        <label>그룹 소개:</label>
+        <label>그룹 소개</label>
         <textarea
           value={groupDescription}
           onChange={(e) => setGroupDescription(e.target.value)}
           required
         ></textarea>
       </div>
-
       <div>
-        <label className="group-visibility-label">그룹 공개 여부:</label>
+        <label className="group-visibility-label">그룹 공개 선택</label>
       </div>
-
-      <div className="switch-container">
+      <div className="group-form-switch-container">
         <label>
           <input
             type="checkbox"
@@ -107,6 +96,16 @@ const GroupForm = ({ onSuccess, onFailure }) => {
           />
           비공개
         </label>
+      </div>
+      <div>
+        <label>비밀번호</label>
+        <input
+          type="password"
+          value={groupPassword}
+          onChange={(e) => setGroupPassword(e.target.value)}
+          placeholder="비밀번호를 입력해 주세요"
+          required
+        />
       </div>
       <button type="submit">만들기</button>
     </form>
