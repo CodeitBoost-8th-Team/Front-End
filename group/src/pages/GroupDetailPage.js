@@ -17,10 +17,12 @@ const GroupDetailPage = () => {
   useEffect(() => {
     const fetchGroupDetails = async () => {
       try {
-        const response = await axios.get(`http://3.39.56.63/api/groups/${groupId}`); // 서버의 IP 주소를 포함한 경로 사용
+        const response = await axios.get(`http://3.39.56.63/api/groups/${groupId}`);
+        console.log('Group Details Response:', response.data);
         setGroup(response.data);
       } catch (error) {
         setError("그룹 정보를 가져오는 데 실패했습니다.");
+        console.error('그룹 상세 정보 불러오기 실패:', error);
       } finally {
         setLoading(false);
       }
@@ -33,21 +35,19 @@ const GroupDetailPage = () => {
   if (error) return <p>{error}</p>;
 
   const handleEditClick = () => {
-    setIsDeleteModalOpen(false);  // 삭제 모달을 닫음
-    setIsEditModalOpen(true);     // 수정 모달을 엶
+    setIsEditModalOpen(true);
   };
 
   const handleDeleteClick = () => {
-    setIsEditModalOpen(false);    // 수정 모달을 닫음
-    setIsDeleteModalOpen(true);   // 삭제 모달을 엶
+    setIsDeleteModalOpen(true);
   };
 
-  const handleDeleteConfirm = async (password) => { // 비밀번호 인자로 받음
+  const handleDeleteConfirm = async (password) => { 
     try {
       await axios.delete(`http://3.39.56.63/api/groups/${groupId}`, {
-        data: { groupPassword: password }, // 비밀번호를 요청 본문에 포함시켜 전송
+        data: { groupPassword: password },
       });
-      navigate('/'); // 그룹 삭제 후 메인 페이지로 이동
+      navigate('/'); 
     } catch (error) {
       console.error("그룹 삭제 중 오류 발생:", error);
     } finally {
@@ -75,12 +75,15 @@ const GroupDetailPage = () => {
         <>
           <div className="group-header">
             <div className="group-info">
-              <img src={group.imageUrl} alt={group.name} className="group-image" />
+              {/* 이미지 경로가 백엔드의 API 경로와 일치하는지 확인 */}
+              <img src={`http://3.39.56.63${group.imageUrl}`} alt={group.name} className="group-image" />
+              
               <div className="group-text">
-                <p className="group-since">
-                  since {new Date(group.createdAt).toLocaleDateString()} | 
-                  {group.isPublic ? '공개' : '비공개'}
-                </p>
+              <p className="group-since">
+                  <span className="group-date">since {new Date(group.createdAt).toLocaleDateString()}</span>
+                  <span className="group-separator"> | </span>
+                  <span className="group-visibility">{group.isPublic ? '공개' : '비공개'}</span>
+              </p>
                 <h2>{group.name}</h2>
                 <p>{group.introduction}</p>
               </div>
@@ -92,26 +95,20 @@ const GroupDetailPage = () => {
           </div>
 
           {isEditModalOpen && (
-            <>
-              <div className="modal-background" onClick={() => setIsEditModalOpen(false)} />
-              <GroupEditModal
-                groupId={groupId}
-                initialData={group}
-                onClose={() => setIsEditModalOpen(false)}
-                onSuccess={handleEditSuccess}
-                onFailure={handleEditFailure}
-              />
-            </>
+            <GroupEditModal
+              groupId={groupId}
+              initialData={group}
+              onClose={() => setIsEditModalOpen(false)}
+              onSuccess={handleEditSuccess}
+              onFailure={handleEditFailure}
+            />
           )}
 
           {isDeleteModalOpen && (
-            <>
-              <div className="modal-background" onClick={() => setIsDeleteModalOpen(false)} />
-              <GroupDeleteModal
-                onDeleteConfirm={handleDeleteConfirm} // 비밀번호를 받아 삭제를 진행
-                onClose={handleDeleteClose}
-              />
-            </>
+            <GroupDeleteModal
+              onDeleteConfirm={handleDeleteConfirm}
+              onClose={handleDeleteClose}
+            />
           )}
         </>
       )}

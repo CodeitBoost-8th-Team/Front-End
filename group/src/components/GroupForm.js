@@ -8,7 +8,6 @@ const GroupForm = ({ onSuccess, onFailure }) => {
   const [groupImage, setGroupImage] = useState(null);
   const [groupDescription, setGroupDescription] = useState('');
   const [isPublic, setIsPublic] = useState(true);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
   
@@ -16,32 +15,36 @@ const GroupForm = ({ onSuccess, onFailure }) => {
       // 1. 이미지 파일을 서버로 업로드
       const imageData = new FormData();
       imageData.append('image', groupImage);
+      
+      const imageUploadResponse = await axios.post('http://3.39.56.63/api/image', imageData);  // 서버의 IP 주소를 포함한 경로 사용
+      console.log('Image Upload Response:', imageUploadResponse.data);  // 이미지 업로드 응답 확인
   
-      const imageUploadResponse = await axios.post('http://3.39.56.63/api/image', imageData);
-      console.log('Image Upload Response:', imageUploadResponse.data);
       const imageUrl = imageUploadResponse.data.imageUrl;
   
       // 2. 업로드된 이미지의 URL을 그룹 생성 요청에 포함
       const formData = {
         name: groupName,
         groupPassword: groupPassword,
-        imageUrl: imageUrl,
+        imageUrl: imageUrl, // 이미지 URL 필드에 업로드된 이미지 URL 추가
         introduction: groupDescription,
         isPublic: isPublic,
       };
   
-      const response = await axios.post('http://3.39.56.63/api/groups', formData);
-      console.log('Group Creation Response:', response.data);
+      // formData가 제대로 선언된 후 로그를 출력
+      console.log('Form Data Sent:', formData);  
   
-      // 백엔드에서 반환된 groupId가 response.data.groupId로 접근 가능한지 확인
+      const response = await axios.post('http://3.39.56.63/api/groups', formData);  // 서버의 IP 주소를 포함한 경로 사용
+      console.log('Group Creation Response:', response.data); // 그룹 생성 응답 확인
+  
+      // 그룹 생성이 성공적으로 완료되었는지 확인
       if (response.status === 201) {
-        onSuccess(response.data.groupId);  // groupId에 접근해서 전달
+        onSuccess(response.data.groupId); // 생성된 그룹 ID 전달
       } else {
         onFailure("그룹 생성에 실패했습니다. 다시 시도해주세요.");
       }
     } catch (error) {
       onFailure("그룹 생성 중 오류가 발생했습니다. 다시 시도해주세요.");
-      console.error('그룹 생성 중 오류 발생:', error);
+      console.error('그룹 생성 중 오류 발생:', error);  // 오류 발생 시 로그 확인
     }
   };
   

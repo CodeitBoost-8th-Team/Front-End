@@ -1,0 +1,136 @@
+/* * {
+  font-family: ;
+  배치 안 바뀜
+} */
+
+.privateGroupNPGL {
+  width: 375px;
+  height: 156px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #dddddd;
+  border-radius: 12px;
+
+  padding: 20px;
+
+  /* gap: 20px; */
+}
+
+/*그룹 생성 날짜*/
+.createdAtNPGL {
+  width: 42px;
+  height: 17px;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.71px;
+  letter-spacing: -0.03em;
+  text-align: left;
+
+  color: #282828;
+}
+
+/*|*/
+.sinceNpublicNPGL {
+  width: 5px;
+  height: 17px;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.71px;
+  letter-spacing: -0.03em;
+  text-align: left;
+
+  margin-left: 5px;
+  margin-right: 5px;
+
+  color: #b8b8b8;
+}
+
+/*공개비공개*/
+.isPublicNPGL {
+  width: 24px;
+  height: 17px;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.71px;
+  letter-spacing: -0.03em;
+  text-align: left;
+
+  color: #8d8d8d;
+}
+
+/*그룹이름*/
+.nameNPGL {
+  width: 150px;
+  height: 19px;
+
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19.09px;
+  letter-spacing: -0.03em;
+  text-align: left;
+
+  margin-top: 21px;
+  margin-bottom: 21px;
+}
+
+/*추억 공감*/
+.containerNPGL {
+  display: flex;
+  align-items: center;
+}
+
+.postNPGL {
+  width: 24px;
+  height: 37px;
+
+  margin-right: 42px;
+
+  display: inline;
+}
+
+.imgNcountNPGL {
+  display: flex;
+}
+
+.likeNPGL {
+  width: 100px;
+  height: 37.31px;
+}
+
+.likeNPGL img {
+  width: 17.19px;
+  height: 16.48px;
+
+  margin-right: 5px;
+  margin-top: 6px;
+}
+
+.postCountLetterNPGL,
+.likeCountLetterNPGL {
+  width: 51px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.32px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  color: #b8b8b8;
+}
+
+.postCountNPGL,
+.likeCountNPGL {
+  width: 40px;
+  height: 17px;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.71px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  color: #282828;
+
+  margin-top: 6px;
+}

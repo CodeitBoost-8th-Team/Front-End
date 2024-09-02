@@ -86,7 +86,7 @@ form textarea {
 
 /* 비공개 체크박스 스타일 */
 input[type="checkbox"] {
-  /* margin-right: 5px; */
+   margin-right: 5px; 
 }
 
 
