@@ -42,7 +42,7 @@ function PrivateGroupsList({ groupPassword }) {
   }, [groupPassword]);
 
   const handleGroupClick = (groupId) => {
-    navigate(`/groups/:groupId`);
+    navigate(`/groups/${groupId}`);
   };
 
   if (!groups) {
@@ -55,7 +55,7 @@ function PrivateGroupsList({ groupPassword }) {
         <div
           key={group.id}
           className="groupCardNPGL"
-          onClick={() => handleGroupClick(group.id)}
+          onClick={() => handleGroupClick(group.groupId)}
         >
           <span className="createdAtNPGL">
             since {new Date(group.createdAt).toLocaleDateString()}

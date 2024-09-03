@@ -3,18 +3,34 @@
   배치 안 바뀜
 } */
 
-.privateGroupNPGL {
-  width: 375px;
-  height: 156px;
+.publicGroupNPGL {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(
+    4,
+    1fr
+  ); /* 한 줄에 4개의 열을 동일한 비율로 배치 */
+  gap: 15px;
 
+  border-radius: 12px;
   box-sizing: border-box;
 
+  cursor: pointer;
+}
+
+/* 그룹 카드 */
+.groupCardNPGL {
   border: 1px solid #dddddd;
   border-radius: 12px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease-in-out;
+  background-color: #ffffff; /* 카드 배경색 설정 */
 
   padding: 20px;
+}
 
-  /* gap: 20px; */
+.groupCardNPGL:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 호버 시 그림자 효과 */
 }
 
 /*그룹 생성 날짜*/

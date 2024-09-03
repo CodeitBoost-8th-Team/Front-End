@@ -3,12 +3,11 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import GroupEditModal from "../components/GroupEditModal";
 import GroupDeleteModal from "../components/GroupDeleteModal";
-import PublicGroupsList from "./PublicGroupsList";
-import PrivateGroupsList from "./PrivateGroupsList";
+import PublicPostsList from "./PublicPostsList";
+import PrivatePostsList from "./PrivatePostsList";
 import "./GroupDetailPage.css";
 import flower from "../img/flower.png";
 import logo from "../img/logo.jpg";
-import img1 from "../img/Img1.png";
 import searchImg from "../img/searchImg.png";
 
 const GroupDetailPage = () => {
@@ -26,14 +25,21 @@ const GroupDetailPage = () => {
   const [failureMessage, setFailureMessage] = useState("");
   const [likeCount, setLikeCount] = useState(0);
   const [isPublic, setIsPublic] = useState(true);
+  const [search, setSearch] = useState("");
+
+  // 검색 핸들러
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+    setCurrentPage(1); // 검색어가 바뀔 때 페이지를 처음으로 리셋
+  };
 
   const handleIsPublic = (e) => {
-    setIsPublic(e.target.data);
+    const isPublicSelected = e.target.id === "publicLetterGD";
+    setIsPublic(isPublicSelected);
   };
 
   const handleLikeClick = () => {
-    setLikeCount(likeCount + 1);
-    // 추가적인 로직 (예: 서버에 공감 보내기)
+    setLikeCount((prevCount) => prevCount + 1);
   };
 
   useEffect(() => {
@@ -44,6 +50,7 @@ const GroupDetailPage = () => {
         );
         console.log("Group Details Response:", response.data);
         setGroup(response.data);
+        setError(null); // 오류 상태 초기화
       } catch (error) {
         setError("그룹 정보를 가져오는 데 실패했습니다.");
         console.error("그룹 상세 정보 불러오기 실패:", error);
@@ -52,7 +59,9 @@ const GroupDetailPage = () => {
       }
     };
 
-    fetchGroupDetails();
+    if (groupId) {
+      fetchGroupDetails(); // groupId가 존재할 경우 그룹 정보 가져오기
+    }
   }, [groupId]);
 
   if (loading) return <p>로딩 중...</p>;
@@ -122,52 +131,47 @@ const GroupDetailPage = () => {
 
   return (
     <div className="group-detail-page">
+      <div className="headerGD">
+        <div className="headerLogoGD">
+          <img id="logo" src={logo} alt="로고" />
+        </div>
+      </div>
       {group && (
         <>
           <div className="groupDetailGD">
-            <div className="headerGD">
-              <div className="headerLogoGD">
-                <img id="logo" src={logo} alt="로고" />
-              </div>
-            </div>
-
             <div className="groupGD">
               <span className="groupImgGD">
-                {/* <img src={`http://3.39.56.63${group.imageUrl}`} alt={group.name} /> */}
-                <img src={img1} alt="이미지" />
+                <img
+                  src={`http://3.39.56.63/${group.imageUrl}`}
+                  alt={group.name}
+                />
               </span>
 
               <div className="groupCreatedAtGD">
-                {/* since {new Date(group.createdAt).toLocaleDateString()} */}
-                since 2023.12.29
+                since {new Date(group.createdAt).toLocaleDateString()}
               </div>
 
               <div className="sinceNIsGroupPublicGD">|</div>
 
               <div className="isGroupPublicGD">
-                {/* {group.isPublic ? "공개" : "비공개"} */}
-                공개
+                {group.isPublic ? "공개" : "비공개"}
               </div>
 
-              {/* <div className="groupNameGD">{group.name}</div> */}
-              <div className="groupNameGD">달봉이네 가족</div>
+              <div className="groupNameGD">{group.name}</div>
 
               <div className="postGD">
-                {/* 추억 <span classNameName="postCountGD">{group.postCount}</span>  */}
-                추억 <span classNameName="postCountGD">8</span>
+                추억 <span classNameName="postCountGD">{group.postCount}</span>
               </div>
 
               <div className="postCountNLikeCountGD">|</div>
 
               <div className="LikeGD">
-                {/* 그룹 공감 <span classNameName="LikeCountGD">{group.groupLikeCount}</span> */}
-                그룹 공감 <span classNameName="LikeCountGD">1.5K</span>
+                그룹 공감{" "}
+                <span classNameName="LikeCountGD">{group.groupLikeCount}</span>
               </div>
 
-              {/* <div className="groupIntroductionGD">{group.introduction}</div> */}
-              <div className="groupIntroductionGD">
-                모시기모시기한 가족입니다.
-              </div>
+              <div className="groupIntroductionGD">{group.introduction}</div>
+
               <div className="modifyGroupButtonGD" onClick={handleEditClick}>
                 그룹 정보 수정하기
               </div>
@@ -224,12 +228,14 @@ const GroupDetailPage = () => {
                     <span
                       className="publicGD ${isPublic ? 'active' : ''}"
                       id="publicLetterGD"
+                      onClick={handleIsPublic}
                     >
                       공개
                     </span>
                     <span
                       className="privateGD ${!isPublic ? 'active' : ''}"
                       id="privateLetterGD"
+                      onClick={handleIsPublic}
                     >
                       비공개
                     </span>
@@ -240,6 +246,8 @@ const GroupDetailPage = () => {
                     <input
                       className="searchBoxGD"
                       placeholder="그룹명을 검색해주세요"
+                      value={search}
+                      onChange={handleSearch}
                     />
                   </span>
 
@@ -254,12 +262,12 @@ const GroupDetailPage = () => {
               </div>
             </div>
 
-            <div className="GroupPostsGD" onChange={handleIsPublic}>
-              {isPublic ? <PublicGroupsList /> : <PrivateGroupsList />}
+            <div className="GroupPostsGD">
+              {isPublic ? <PublicPostsList /> : <PrivatePostsList />}
             </div>
-            <div className="moreGD">
+            {/* <div className="moreGD">
               <div className="addButtonGD">더보기</div>
-            </div>
+            </div> */}
           </div>
         </>
       )}

@@ -23,10 +23,6 @@ const MainPage = () => {
     navigate("/create-group");
   };
 
-  const handleGroupClick = (groupId) => {
-    navigate(`/groups/${groupId}`);
-  };
-
   // 검색 핸들러
   const handleSearch = (e) => {
     setSearch(e.target.value);
@@ -149,13 +145,13 @@ const MainPage = () => {
           )}
         </div>
 
-        {currentPage < totalPages && (
+        {/* {currentPage < totalPages && (
           <div className="moreGL">
             <div className="addButtonGL" onClick={handleIsExpanded}>
               더보기
             </div>
           </div>
-        )}
+        )} */}
         {/* {isExpanded && (
           <div className="additionalContentGL">
            
@@ -163,11 +159,6 @@ const MainPage = () => {
           </div>
         )} */}
       </div>
-
-      {/* Group Detail Button */}
-      {/* <button className="detailPageButton" onClick={() => handleGroupClick(1)}>
-        그룹 상세페이지
-      </button> */}
     </div>
   );
 };

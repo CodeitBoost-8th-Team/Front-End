@@ -1,0 +1,131 @@
+.privatePostPGL {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(
+    4,
+    1fr
+  ); /* 한 줄에 4개의 열을 동일한 비율로 배치 */
+  gap: 15px;
+
+  box-sizing: border-box;
+
+  cursor: pointer;
+}
+
+.postCardNPGL {
+  border: 1px solid #dddddd;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease-in-out;
+  background-color: #ffffff;
+
+  padding: 20px;
+}
+
+.postCardNPGL:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 호버 시 그림자 효과 */
+}
+
+/*게시글 닉네임*/
+.postNicknameNP {
+  width: 80px;
+  height: 17px;
+
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.71px;
+  letter-spacing: -0.03em;
+  text-align: left;
+}
+
+/*|*/ /*공개비공개*/
+.postNicknameNisPublicNP,
+.postIsPublicNP {
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.71px;
+  letter-spacing: -0.03em;
+  text-align: left;
+
+  color: #b8b8b8;
+}
+
+.postNicknameNisPublicNP {
+  margin-left: 7px;
+  margin-right: 7px;
+}
+
+/*게시글 제목*/
+.postTitleNP {
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19.09px;
+  letter-spacing: -0.03em;
+  text-align: left;
+
+  margin-top: 21px;
+  margin-bottom: 11px;
+}
+
+/*태그*/
+.postTagsNP {
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.71px;
+  letter-spacing: -0.03em;
+  text-align: left;
+
+  color: #b8b8b8;
+
+  margin-bottom: 20px;
+}
+
+/*장소, 시간*/
+.postLocationNP,
+.postMomentNP {
+  font-family: Pretendard;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.32px;
+  letter-spacing: -0.03em;
+  text-align: left;
+}
+
+.postLocationNP {
+  margin-right: 5px;
+}
+
+/*공감, 댓글*/
+.postLikeNCommentNP {
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.71px;
+  letter-spacing: -0.03em;
+  text-align: left;
+
+  color: #8d8d8d;
+
+  margin-left: 80px;
+}
+
+.postLikeNP img {
+  position: relative;
+  top: 3px;
+
+  width: 18px;
+  height: 17.31px;
+}
+
+.postCommentNP img {
+  position: relative;
+  top: 6px;
+
+  width: 24px;
+  height: 24px;
+  padding: 3px 3px 2.46px 2.46px;
+}

@@ -15,9 +15,10 @@ function App() {
         <Route path="/create-group" element={<GroupCreatePage />} />
         {/* 그룹 상세 페이지 라우트 추가 */}
         <Route path="/groups/:groupId" element={<GroupDetailPage />} />
-        {/* 게시글 추가 페이지 라우트 추가 */}
-        {/* <Route path="/groups/{groupId}/posts" element={<PostCreatePage />} /> */}
-        {/* <Route path="/groups/groupId/posts" element={<PostCreatePage />} /> */}
+        {/* 게시글 등록 페이지 라우트 추가 */}
+        {/* <Route path="/groups/:groupId/posts" element={<PostCreatePage />} /> */}
+        {/* 게시글 상세 페이지 라우트 추가 */}
+        {/* <Route path="/posts/:postId"></Route> */}
       </Routes>
     </Router>
   );

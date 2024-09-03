@@ -170,6 +170,7 @@
 }
 
 /*검색*/
+
 #searchImgGL {
   width: 24.31px;
   height: 24px;
@@ -247,12 +248,4 @@
   margin-bottom: 120px;
 
   cursor: pointer;
-}
-
-/********************************/
-/*테스트용 그룹 상세페이지 버튼*/
-.detailPageButton {
-  cursor: pointer;
-  position: absolute;
-  top: 1000px;
 }

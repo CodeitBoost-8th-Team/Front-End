@@ -1,23 +1,14 @@
-/* .groupDetailGD {
-  font-family: "Spoqa Han Sans Neo", sans-serif;
-  border-radius: 6px;
-  box-sizing: border-box;
-
-  position: absolute;
-
-  width: 1920px;
-  height: 2158px;
-} */
-
 /* 페이지 전체 스타일 */
 .groupDetailGD {
-  max-width: 1000px;
-  margin: 60px auto 0;
+  width: 1920px;
+  height: 2158px;
+
   padding: 20px;
   background-color: #ffffff;
-  border-radius: 10px;
+
   font-family: "Pretendard", sans-serif;
 }
+
 /* 기존 모달 배경 제거 */
 .modal-background {
   display: none;
@@ -49,14 +40,12 @@
   display: flex;
   text-align: center;
   align-items: center;
-  /* justify-content: space-between;
-  margin-bottom: 20px; */
 }
 
 .headerLogoGD img {
   width: 137px;
   height: 48px;
-  top: 26px;
+
   margin-left: 910px;
 }
 
@@ -65,19 +54,27 @@
 .groupGD {
   width: 1558px;
   height: 273px;
-  margin: 80px 180px 120px 180px;
+
+  border-radius: 6px;
+
+  margin: 50px 180px 120px 160px;
 }
 
+/*그룹 사진*/
 .groupImgGD,
 .groupImgGD img {
   width: 262px;
   height: 273px;
+
+  border-radius: 6px;
 }
+
+/*since | 공개*/
 
 .groupCreatedAtGD {
   height: 17px;
   position: absolute;
-  top: 195px;
+  top: 180px;
   left: 500px;
 
   font-size: 14px;
@@ -92,7 +89,7 @@
 .sinceNIsGroupPublicGD {
   height: 17px;
   position: absolute;
-  top: 195px;
+  top: 180px;
   left: 620px;
 
   font-size: 14px;
@@ -106,7 +103,7 @@
 .isGroupPublicGD {
   height: 17px;
   position: absolute;
-  top: 195px;
+  top: 180px;
   left: 635px;
 
   font-size: 14px;
@@ -117,10 +114,12 @@
   color: #8d8d8d;
 }
 
+/*그룹 이름*/
+
 .groupNameGD {
   height: 36px;
   position: absolute;
-  top: 233px;
+  top: 218px;
   left: 496px;
 
   font-size: 30px;
@@ -130,11 +129,13 @@
   text-align: left;
 }
 
+/*추억  |  공감*/
+
 .postGD {
   height: 21px;
   position: absolute;
-  top: 239.5px;
-  left: 745px;
+  top: 224.5px;
+  left: 900px;
 
   margin-right: 15px;
 
@@ -148,8 +149,8 @@
 .postCountNLikeCountGD {
   height: 21px;
   position: absolute;
-  top: 239.5px;
-  left: 830px;
+  top: 224.5px;
+  left: 980px;
 
   color: #b8b8b8;
   font-size: 18px;
@@ -162,8 +163,8 @@
 .LikeGD {
   height: 21px;
   position: absolute;
-  top: 239.5px;
-  left: 860px;
+  top: 224.5px;
+  left: 1010px;
 
   font-size: 18px;
   font-weight: 700;
@@ -172,11 +173,13 @@
   text-align: left;
 }
 
+/*그룹 소개*/
+
 .groupIntroductionGD {
   height: 100px;
   width: 800px;
   position: absolute;
-  top: 298px;
+  top: 285px;
   left: 500px;
 
   font-size: 18px;
@@ -187,9 +190,10 @@
 }
 
 /*그룹 정보 수정/삭제하기 */
+
 .modifyGroupButtonGD {
   position: absolute;
-  top: 195px;
+  top: 180px;
   left: 1500px;
   font-size: 14px;
   font-weight: 400;
@@ -202,7 +206,7 @@
 
 .deleteGroupButtonGD {
   position: absolute;
-  top: 195px;
+  top: 180px;
   left: 1650px;
 
   color: #8d8d8d;
@@ -234,7 +238,7 @@
   width: 175px;
   height: 52px;
   position: absolute;
-  top: 397px;
+  top: 384px;
   left: 1550px;
 
   display: flex;
@@ -337,7 +341,7 @@ hr {
   align-items: center;
   justify-content: center;
 
-  margin-left: 180px;
+  margin-left: 160px;
 }
 
 .privateGD {
@@ -407,6 +411,7 @@ hr {
 
 .searchBoxGD::placeholder {
   position: absolute;
+  top: 13px;
 
   opacity: 0.5;
 }
@@ -430,6 +435,7 @@ hr {
   padding-left: 20px;
 }
 
+/*그룹 게시글*/
 .GroupPostsGD {
   position: absolute;
   top: 905px;
@@ -440,7 +446,7 @@ hr {
 }
 
 /*더보기 버튼*/
-
+/* 
 .addButtonGD {
   width: 1560px;
   height: 60px;
@@ -464,4 +470,4 @@ hr {
   justify-content: center;
 
   margin-bottom: 120px;
-}
+} */
