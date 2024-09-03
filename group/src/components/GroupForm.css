@@ -1,3 +1,10 @@
+/* 폼을 감싸는 전체 컨테이너 */
+.group-form-container {
+  margin-top: 2000px; /* 상단에 150px 여백 추가 */
+  display: flex;
+  justify-content: center; /* 폼을 가운데 정렬 */
+}
+
 /* 전역 폰트 설정 */
 body {
   font-family: 'Pretendard', sans-serif; /* Pretendard 폰트를 전역으로 설정 */
@@ -7,11 +14,8 @@ body {
 form {
   width: 100%;
   max-width: 400px;
-  margin: 0 auto;
   padding: 20px;
-  background-color: #f9f9f9;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* 폼 항목 간 간격 */
@@ -69,26 +73,27 @@ form textarea {
   margin-bottom: -25px;
 }
 
-
-/* 공개/비공개 체크박스 레이아웃 */
-.switch-container {
+.group-form-switch-container {
   display: flex;
   align-items: center;
-  gap: 30px; /* 공개와 비공개 버튼 사이 간격 */
- 
+  gap: 30px; 
+  margin-bottom: 40px; 
 }
 
-.switch-container label {
+.group-form-switch-container label {
   font-weight: bold;
   color: #333;
+  margin-bottom: 0px; 
+}
+
+.group-form-switch-container input[type="checkbox"] {
+  margin-right: 5px; 
+}
+
+form input[type="password"] {
+  margin-top: 0px;
   margin-bottom: 20px;
 }
-
-/* 비공개 체크박스 스타일 */
-input[type="checkbox"] {
-  /* margin-right: 5px; */
-}
-
 
 /* 버튼 스타일 */
 form button {

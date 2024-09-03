@@ -5,6 +5,7 @@ import GroupCreatePage from "./pages/GroupCreatePage";
 import GroupDetailPage from "./pages/GroupDetailPage";
 // import PostCreatePage from "../../../Post/src/pages/PostCreatePage";
 // src 폴더 외의 경로는 가져올 수 없다함 (나중에 분야 모두 폴더 정리 필요할 것 같아요)
+// 서버랑 연결하려면 그룹아이디 동적으로 가져와야 해서 일부 수정했어요!
 
 function App() {
   return (
@@ -13,8 +14,7 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/create-group" element={<GroupCreatePage />} />
         {/* 그룹 상세 페이지 라우트 추가 */}
-        {/* <Route path="/groups/:groupId" element={<GroupDetailPage />} /> */}
-        <Route path="/groups/groupId" element={<GroupDetailPage />} />
+        <Route path="/groups/:groupId" element={<GroupDetailPage />} />
         {/* 게시글 추가 페이지 라우트 추가 */}
         {/* <Route path="/groups/{groupId}/posts" element={<PostCreatePage />} /> */}
         {/* <Route path="/groups/groupId/posts" element={<PostCreatePage />} /> */}

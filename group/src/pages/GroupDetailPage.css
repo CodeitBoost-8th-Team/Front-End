@@ -1,4 +1,4 @@
-.groupDetailGD {
+/* .groupDetailGD {
   font-family: "Spoqa Han Sans Neo", sans-serif;
   border-radius: 6px;
   box-sizing: border-box;
@@ -7,6 +7,37 @@
 
   width: 1920px;
   height: 2158px;
+} */
+
+/* 페이지 전체 스타일 */
+.groupDetailGD {
+  max-width: 1000px;
+  margin: 60px auto 0;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  font-family: "Pretendard", sans-serif;
+}
+/* 기존 모달 배경 제거 */
+.modal-background {
+  display: none;
+}
+
+/* 필요할 경우, modal 클래스에서 배경 제거 */
+.modal {
+  background: white; /* 모달 자체의 배경색만 남김 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자만 적용 */
+}
+
+.modal-content h3 {
+  font-size: 22px;
+  margin-top: 3px;
+  margin-bottom: 10px;
+  color: #000000;
+}
+
+.modal-content p {
+  text-align: center;
 }
 
 /*헤더 로고*/
@@ -18,6 +49,8 @@
   display: flex;
   text-align: center;
   align-items: center;
+  /* justify-content: space-between;
+  margin-bottom: 20px; */
 }
 
 .headerLogoGD img {

@@ -1,4 +1,3 @@
-// src/pages/MainPage.js
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -24,13 +23,9 @@ const MainPage = () => {
     navigate("/create-group");
   };
 
-  // 테스트용 (그룹 상세 페이지)
-  const handleGroupClick = () => {
-    navigate(`/groups/groupId`);
+  const handleGroupClick = (groupId) => {
+    navigate(`/groups/${groupId}`);
   };
-  // const handleGroupClick = (groupId) => {
-  //   navigate(`/groups/${groupId}`);
-  // };
 
   // 검색 핸들러
   const handleSearch = (e) => {
@@ -66,7 +61,7 @@ const MainPage = () => {
           "게시글 많은 순": "mostPosted",
           공감순: "MostLike",
         };
-        const response = await axios.get("http://3.39.56.63:3000/api/groups", {
+        const response = await axios.get("http://3.39.56.63/api/groups", {
           params: {
             page: currentPage,
             pageSize: pageSize,
@@ -96,17 +91,6 @@ const MainPage = () => {
           <div className="headerLogoGL">
             <img id="logoGL" src={logo} alt="로고" />
           </div>
-          {/* <div className="makeGroupGL">
-            <label htmlFor="makeGroup" className="makeGroupLabelGL">
-              그룹 만들기
-            </label>
-            <input
-              type="button"
-              id="makeGroupGL"
-              className="makeGroupButtonGL"
-              onClick={handleCreateGroup}
-            />
-          </div> */}
           <div className="makeGroupGL">
             <button
               id="makeGroupGL"
@@ -117,6 +101,7 @@ const MainPage = () => {
             </button>
           </div>
         </div>
+
         <div className="menuGL">
           <span className="isPublicGL">
             <span
@@ -178,9 +163,11 @@ const MainPage = () => {
           </div>
         )} */}
       </div>
-      <button className="detailPageButton" onClick={() => handleGroupClick(1)}>
+
+      {/* Group Detail Button */}
+      {/* <button className="detailPageButton" onClick={() => handleGroupClick(1)}>
         그룹 상세페이지
-      </button>
+      </button> */}
     </div>
   );
 };

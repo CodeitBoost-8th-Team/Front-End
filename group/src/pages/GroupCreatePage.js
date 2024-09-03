@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import GroupForm from '../components/GroupForm';
 import './GroupCreatePage.css';
+import logo from '../img/logo.jpg'; // 로고 이미지 경로 설정
 
 const GroupCreatePage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -9,6 +10,7 @@ const GroupCreatePage = () => {
   const navigate = useNavigate();
 
   const handleGroupCreationSuccess = (createdGroupId) => {
+    console.log('Created Group ID:', createdGroupId); // createdGroupId 확인
     setModalMessage("그룹 만들기 성공!");
     setIsModalOpen(true);
 
@@ -28,6 +30,7 @@ const GroupCreatePage = () => {
 
   return (
     <div className="group-create-page">
+      <img src={logo} alt="Logo" className="logo" /> {/* 로고 이미지 추가 */}
       <h2>그룹 만들기</h2>
       <GroupForm onSuccess={handleGroupCreationSuccess} onFailure={handleGroupCreationFailure} />
       {isModalOpen && (
