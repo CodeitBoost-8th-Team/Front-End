@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import logo from '../img/logo.jpg'; 
 import GroupEditModal from '../components/GroupEditModal';
 import GroupDeleteModal from '../components/GroupDeleteModal';
 import './GroupDetailPage.css';
@@ -91,6 +92,9 @@ const GroupDetailPage = () => {
 
   return (
     <div className="group-detail-page">
+      <div className="logo-container">
+        <img src={logo} alt="Logo" />
+      </div>
       {group && (
         <>
           <div className="group-header">

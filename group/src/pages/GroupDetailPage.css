@@ -1,4 +1,9 @@
-/* src/pages/GroupDetailPage.css */
+/* Add a new container class for the logo */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px; /* Adjust the space between the logo and the content below */
+}
 
 /* 페이지 전체 스타일 */
 .group-detail-page {
@@ -9,6 +14,7 @@
   border-radius: 10px;
   font-family: 'Pretendard', sans-serif;
 }
+
 /* 기존 모달 배경 제거 */
 .modal-background {
   display: none;
