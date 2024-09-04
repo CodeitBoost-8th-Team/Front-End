@@ -9,38 +9,27 @@ function CommentEdit({ showEditModal, closeEditModal, commentData, onSave }) {
 
   if (!showEditModal) return null;
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    // API 요청에 보낼 수정된 댓글 데이터
-    const updatedCommentData = {
+    
+    // 비밀번호가 입력되지 않았을 때 에러 처리
+    if (!commentPassword.trim()) {
+      setErrorMessage('비밀번호를 입력해 주세요.');
+      return;
+    }
+
+    // 수정된 댓글 데이터
+    const updatedComment = {
+      ...commentData,
       nickname,
       content,
-      commentPassword,
     };
 
-    try {
-      const response = await fetch(`https://api.example.com/comments/${commentData.id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(updatedCommentData),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        // 서버에서 수정된 댓글 데이터 응답받음
-        onSave(data); // 부모 컴포넌트에서 상태 업데이트
-        closeEditModal(); // 모달 닫기
-      } else {
-        // 에러 메시지를 상태로 설정하여 사용자에게 표시
-        setErrorMessage(data.message || '댓글 수정에 실패했습니다.');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      setErrorMessage('서버와 통신 중 오류가 발생했습니다.');
-    }
+    // 부모 컴포넌트로 수정된 데이터를 전달
+    onSave(updatedComment);
+    
+    // 모달 닫기
+    closeEditModal();
   };
 
   return (
