@@ -138,7 +138,7 @@ const GroupDetailPage = () => {
 
   // 추억 만들기 버튼 -> 페이지 이동 (import - 폴더 정리/수정 필요)
   // const handleCreatePost = () => {
-  //   navigate("/groups/groupId/posts");
+  //   navigate("/groups/{groupId}/posts");
   // };
 
   return (
@@ -179,19 +179,20 @@ const GroupDetailPage = () => {
                   그룹 삭제하기
                 </span>
 
-                <div className="groupNameGD">{group.name}</div>
+                <div className="aboutGroup">
+                  <span className="groupNameGD">{group.name}</span>
 
-                <div className="postGD">
-                  추억 <span className="postCountGD"> {group.postCount}</span>
+                  <span className="postGD">
+                    추억 <span className="postCountGD"> {group.postCount}</span>
+                  </span>
+
+                  <span className="postCountNLikeCountGD">|</span>
+
+                  <span className="LikeGD">
+                    그룹 공감{" "}
+                    <span className="LikeCountGD">{group.groupLikeCount}</span>
+                  </span>
                 </div>
-
-                <div className="postCountNLikeCountGD">|</div>
-
-                <div className="LikeGD">
-                  그룹 공감{" "}
-                  <span className="LikeCountGD">{group.groupLikeCount}</span>
-                </div>
-
                 <div className="groupIntroductionGD">{group.introduction}</div>
               </span>
 
