@@ -6,10 +6,18 @@
 }
 
 .postDeleteModalD {
-  top: 956px;
-  left: 720px;
+  /* top: 956px;
+  left: 720px;*/
   width: 480px;
   height: 335px;
+  position: fixed; /* 추가 */
+  top: 50%; /* 수직 중앙 정렬 */
+  left: 50%; /* 수평 중앙 정렬 */
+  transform: translate(-50%, -50%); /* 중앙 정렬 보정 */
+  margin-bottom: 40px;
+  background-color: white; /* 모달 배경색 설정 */
+  z-index: 1000; /* 다른 요소들 위에 표시되도록 */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* 모달에 그림자 추가 */
 }
 
 .headerD {
