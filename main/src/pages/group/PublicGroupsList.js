@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./PublicGroupsList.css";
-import imageUrl from "../img/Img1.png";
 
 const BASE_URL = "http://3.39.56.63:3000";
 
