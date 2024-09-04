@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // 프엔 배포 에러 해결
+import MainPage from 'pages/MainPage.js';  // 프엔 배포 에러 해결
 
 import GroupCreatePage from "./pages/group/GroupCreatePage";
 import GroupDetailPage from "./pages/group/GroupDetailPage";
