@@ -1,276 +1,276 @@
 /*닉네임*/
 #nicknameLabelC {
-    width: 41px;
-    height: 19px;
-    top: 268px;
-    left: 480px;
-  }
-  
-  .nicknameC {
-    width: 400px;
-    height: 75px;
-    top: 268px;
-    left: 480px;
-  }
-  
-  /*제목*/
-  .titleC {
-    width: 400px;
-    height: 75px;
-    top: 383px;
-    left: 480px;
-  }
-  
-  .titleC label {
-    width: 28px;
-    height: 19px;
-    top: 383px;
-    left: 480px;
-  }
-  
-  /*파일 선택*/
-  .imageC {
-    width: 400px;
-    height: 75px;
-    top: 498px;
-    left: 480px;
-    border-radius: 6px;
-  }
-  
-  .imageC .inputFileC {
-    width: 285px;
-    height: 45px;
-    top: 528px;
-    left: 480px;
-  }
-  
-  .imageC .fileC {
-    overflow: hidden;
-  }
-  
-  .imageC .fileButtonC {
-    display: none;
-  }
-  
-  .imageC .fileButtonLabelC {
-    width: 90px;
-    height: 47px;
-    top: 528px;
-    left: 780px;
-    border: 1px solid #282828;
-    border-radius: 6px;
-    background: #fafafa;
-  
-    font-family: "Spoqa Han Sans Neo", sans-serif;
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 16.71px;
-    letter-spacing: -0.03em;
-    text-align: left;
-  
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  
-    margin-left: 23px;
-  
-    cursor: pointer;
-  }
-  
-  .imageC .buttonMadeC {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  
-    position: relative;
-    top: 1px;
-  }
-  
-  /*본문 내용*/
-  .contentC {
-    width: 400px;
-    height: 150px;
-    top: 613px;
-    left: 480px;
-  }
-  
-  .contentC label {
-    width: 28px;
-    height: 19px;
-    top: 613px;
-    left: 480px;
-  }
-  
-  .textareaC {
-    width: 400px;
-    height: 120px;
-  
-    line-height: 1.5;
-  
-    border: 1px solid #dddddd;
-    border-radius: 6px;
-  
-    resize: none;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    white-space: pre-wrap;
-  
-    padding: 14px 20px 14px 20px;
-  }
-  
-  .textareaC::placeholder {
-    width: 200px;
-    height: 17px;
-    top: 312px;
-    left: 500px;
-  
-    opacity: 0.5;
-  }
-  
-  /*******************************************************************/
-  
-  /*폼 가운데 줄*/
-  .lineC {
-    width: 0px;
-    height: 495px;
-    top: 268px;
-    left: 960px;
-    border: 1px solid #dddddd;
-    margin: 60px 80px 60px;
-    opacity: 0.5px;
-  
-    box-sizing: content-box;
-  }
-  
-  /*******************************************************************/
-  
-  /*태그*/
-  
-  .tagC {
-    width: 400px;
-    position: relative;
-  }
-  
-  .tagListC {
-    display: flex;
-    height: 50px;
-    flex-wrap: wrap;
-    overflow-y: auto;
-  }
-  
-  .tagItemC {
-    display: flex;
-    align-items: center;
-    margin-right: 15px;
-    margin-top: 10px;
-  
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 16.71px;
-    letter-spacing: -0.03em;
-    text-align: left;
-    color: #8d8d8d;
-  }
-  
-  .removeTagC {
-    margin-left: 6px;
-    color: #b8b8b8;
-  
-    cursor: pointer;
-  }
-  
-  /*장소*/
-  
-  .locationC {
-    width: 400px;
-    height: 75px;
-    top: 434px;
-    left: 1040px;
-  
-    margin-top: 36px;
-  }
-  
-  .locationC label {
-    width: 28px;
-    height: 19px;
-    top: 434px;
-    left: 1040px;
-  }
-  
-  /*날짜시간*/
-  
-  .momentC {
-    width: 400px;
-    height: 75px;
-    top: 549px;
-    left: 1040px;
-  }
-  
-  .momentC label {
-    width: 71px;
-    height: 19px;
-    top: 549px;
-    left: 1040px;
-  }
-  
-  .calenderIconC {
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    top: 589px;
-    left: 1410px;
-    cursor: pointer;
-    opacity: 1;
-  }
-  
-  input[type="datetime-local"]::-webkit-calendar-picker-indicator {
-    display: none;
-  }
-  
-  input[type="datetime-local"] {
-    color: #b8b8b8;
-    position: relative;
-  }
-  
-  /*비밀번호*/
-  .passwordC {
-    width: 400px;
-    height: 75px;
-    top: 768px;
-    left: 1040px;
-  }
-  
-  .passwordC .label {
-    width: 65px;
-    height: 19px;
-    top: 768px;
-    left: 1040px;
-  }
-  
-  .passwordC input {
-    width: 400px;
-    height: 45px;
-    top: 798px;
-    left: 1040px;
-  }
-  
-  /*********************************************************************/
-  
-  /*등록 버튼*/
-  .postButtonC {
-    position: absolute;
-  
-    width: 400px;
-    height: 50px;
-    top: 823px;
-    left: 761px;
-    border-radius: 6px;
-  
-    background: #282828;
-  
-    font-family: "Spoqa Han Sans Neo", sans-serif;
-    box-sizing: border-box;
-    color: #fafafa;
-  
-    cursor: pointer;
-  }
+  width: 41px;
+  height: 19px;
+  top: 268px;
+  left: 480px;
+}
+
+.nicknameC {
+  width: 400px;
+  height: 75px;
+  top: 268px;
+  left: 480px;
+}
+
+/*제목*/
+.titleC {
+  width: 400px;
+  height: 75px;
+  top: 383px;
+  left: 480px;
+}
+
+.titleC label {
+  width: 28px;
+  height: 19px;
+  top: 383px;
+  left: 480px;
+}
+
+/*파일 선택*/
+.imageC {
+  width: 400px;
+  height: 75px;
+  top: 498px;
+  left: 480px;
+  border-radius: 6px;
+}
+
+.imageC .inputFileC {
+  width: 285px;
+  height: 45px;
+  top: 528px;
+  left: 480px;
+}
+
+.imageC .fileC {
+  overflow: hidden;
+}
+
+.imageC .fileButtonC {
+  display: none;
+}
+
+.imageC .fileButtonLabelC {
+  width: 90px;
+  height: 47px;
+  top: 528px;
+  left: 780px;
+  border: 1px solid #282828;
+  border-radius: 6px;
+  background: #fafafa;
+
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 16.71px;
+  letter-spacing: -0.03em;
+  text-align: left;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-left: 23px;
+
+  cursor: pointer;
+}
+
+.imageC .buttonMadeC {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  top: 1px;
+}
+
+/*본문 내용*/
+.contentC {
+  width: 400px;
+  height: 150px;
+  top: 613px;
+  left: 480px;
+}
+
+.contentC label {
+  width: 28px;
+  height: 19px;
+  top: 613px;
+  left: 480px;
+}
+
+.textareaC {
+  width: 400px;
+  height: 120px;
+
+  line-height: 1.5;
+
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+
+  resize: none;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: pre-wrap;
+
+  padding: 14px 20px 14px 20px;
+}
+
+.textareaC::placeholder {
+  width: 200px;
+  height: 17px;
+  top: 312px;
+  left: 500px;
+
+  opacity: 0.5;
+}
+
+/*******************************************************************/
+
+/*폼 가운데 줄*/
+.lineC {
+  width: 0px;
+  height: 495px;
+  top: 268px;
+  left: 960px;
+  border: 1px solid #dddddd;
+  margin: 60px 80px 60px;
+  opacity: 0.5px;
+
+  box-sizing: content-box;
+}
+
+/*******************************************************************/
+
+/*태그*/
+
+.tagC {
+  width: 400px;
+  position: relative;
+}
+
+.tagListC {
+  display: flex;
+  height: 50px;
+  flex-wrap: wrap;
+  overflow-y: auto;
+}
+
+.tagItemC {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+  margin-top: 10px;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.71px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  color: #8d8d8d;
+}
+
+.removeTagC {
+  margin-left: 6px;
+  color: #b8b8b8;
+
+  cursor: pointer;
+}
+
+/*장소*/
+
+.locationC {
+  width: 400px;
+  height: 75px;
+  top: 434px;
+  left: 1040px;
+
+  margin-top: 36px;
+}
+
+.locationC label {
+  width: 28px;
+  height: 19px;
+  top: 434px;
+  left: 1040px;
+}
+
+/*날짜시간*/
+
+.momentC {
+  width: 400px;
+  height: 75px;
+  top: 549px;
+  left: 1040px;
+}
+
+.momentC label {
+  width: 71px;
+  height: 19px;
+  top: 549px;
+  left: 1040px;
+}
+
+.calenderIconC {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 589px;
+  left: 1410px;
+  cursor: pointer;
+  opacity: 1;
+}
+
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+input[type="datetime-local"] {
+  color: #b8b8b8;
+  position: relative;
+}
+
+/*비밀번호*/
+.passwordC {
+  width: 400px;
+  height: 75px;
+  top: 768px;
+  left: 1040px;
+}
+
+.passwordC .label {
+  width: 65px;
+  height: 19px;
+  top: 768px;
+  left: 1040px;
+}
+
+.passwordC input {
+  width: 400px;
+  height: 45px;
+  top: 798px;
+  left: 1040px;
+}
+
+/*********************************************************************/
+
+/*등록 버튼*/
+.postButtonC {
+  position: absolute;
+
+  width: 400px;
+  height: 50px;
+  top: 823px;
+  left: 761px;
+  border-radius: 6px;
+
+  background: #282828;
+
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  box-sizing: border-box;
+  color: #fafafa;
+
+  cursor: pointer;
+}
