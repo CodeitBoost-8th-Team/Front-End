@@ -27,33 +27,6 @@ const GroupDetailPage = () => {
   const [isPublic, setIsPublic] = useState(true);
   const [search, setSearch] = useState("");
 
-  // 검색 핸들러
-  const handleSearch = (e) => {
-    setSearch(e.target.value);
-    setCurrentPage(1); // 검색어가 바뀔 때 페이지를 처음으로 리셋
-  };
-
-  const handleIsPublic = (e) => {
-    const isPublicSelected = e.target.id === "publicLetterGD";
-    setIsPublic(isPublicSelected);
-  };
-
-  const handleLikeClick = async () => {
-    try {
-      const response = await axios.post(
-        `http://3.39.56.63/api/groups/${groupId}/like`
-      );
-      if (response.status === 200) {
-        setGroup((prevGroup) => ({
-          ...prevGroup,
-          groupLikeCount: response.data.updatedLikeCount, // 서버에서 반환된 공감 수로 업데이트
-        }));
-      }
-    } catch (error) {
-      console.error("공감 수 업데이트 실패:", error);
-    }
-  };
-
   useEffect(() => {
     const fetchGroupDetails = async () => {
       try {
@@ -75,6 +48,36 @@ const GroupDetailPage = () => {
       fetchGroupDetails(); // groupId가 존재할 경우 그룹 정보 가져오기
     }
   }, [groupId]);
+
+  // 검색 핸들러
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+    setCurrentPage(1); // 검색어가 바뀔 때 페이지를 처음으로 리셋
+  };
+
+  const handleIsPublic = (e) => {
+    const isPublicSelected = e.target.id === "publicLetterGD";
+    setIsPublic(isPublicSelected);
+  };
+
+  const handleLikeClick = async () => {
+    try {
+      const response = await axios.post(
+        `http://3.39.56.63/api/groups/${groupId}/like`
+      );
+      if (response.status === 200) {
+        setGroup((prevGroup) => {
+          const updatedGroup = {
+            ...prevGroup,
+            groupLikeCount: Number(prevGroup.groupLikeCount) + 1,
+          };
+          return updatedGroup;
+        });
+      }
+    } catch (error) {
+      console.error("공감 수 업데이트 실패:", error);
+    }
+  };
 
   if (loading) return <p>로딩 중...</p>;
   if (error) return <p>{error}</p>;
