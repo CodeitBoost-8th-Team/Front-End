@@ -1,0 +1,120 @@
+/* Add a new container class for the logo */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px; /* Adjust the space between the logo and the content below */
+}
+
+/* 페이지 전체 스타일 */
+.group-detail-page {
+  max-width: 1000px;
+  margin: 60px auto 0;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  font-family: 'Pretendard', sans-serif;
+}
+
+/* 기존 모달 배경 제거 */
+.modal-background {
+  display: none;
+}
+
+/* 필요할 경우, modal 클래스에서 배경 제거 */
+.modal {
+  background: white; /* 모달 자체의 배경색만 남김 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자만 적용 */
+}
+
+.modal-content h3 {
+  font-size: 22px;
+  margin-top: 3px;
+  margin-bottom: 10px;
+  color: #000000;
+}
+
+.modal-content p {
+  text-align: center;
+}
+
+/* 그룹 헤더 스타일 */
+.group-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+/* 그룹 이미지 스타일 */
+.group-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+/* 그룹 정보 텍스트 스타일 */
+.group-info {
+  display: flex;
+}
+
+.group-text {
+  flex: 1;
+}
+
+.group-since {
+  display: flex;
+  align-items: center;
+}
+
+.group-separator {
+  margin: 0 8px;
+}
+
+.group-date, .group-visibility {
+  white-space: nowrap; 
+}
+
+.group-text h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.group-text p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+/* 그룹 액션 버튼 스타일 */
+.group-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.group-actions button {
+  padding: 5px 10px;
+  background-color: transparent;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 12px;
+  font-family: 'Pretendard', sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.group-actions button:hover {
+  color: #000;
+  border-color: #999;
+}
+
+.group-actions button:disabled {
+  color: #aaa;
+  border-color: #ccc;
+}
+
+.group-actions button:not(:disabled) {
+  text-decoration: none;
+}
