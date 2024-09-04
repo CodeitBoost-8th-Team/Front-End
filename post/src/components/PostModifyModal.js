@@ -18,7 +18,7 @@ function PostModifyModal({ onSuccess, onFailure }) {
   const [postTitle, setPostTitle] = useState(initialData?.title || "");
   const [postImage, setPostImage] = useState(null);
   const [postContent, setPostContent] = useState(initialData?.content || "");
-  const [postTag, setPostTag] = useState(initialData?.tags || []);
+  const [tagId, setTagId] = useState(initialData?.tags || []);
   const [tagInput, setTagInput] = useState(""); // 태그 입력을 위한 필드 별도 생성
   const [postLocation, setPostLocation] = useState(initialData?.location || "");
   const [postMoment, setPostMoment] = useState(initialData?.moment || "");
@@ -32,16 +32,16 @@ function PostModifyModal({ onSuccess, onFailure }) {
   };
   const handleTagKeyDown = (e) => {
     if (e.key === "Enter" && tagInput.trim() !== "") {
-      if (postTag.length >= 10) {
+      if (tagId.length >= 10) {
         alert("태그는 최대 10개까지 추가할 수 있습니다.");
         return;
       }
-      setPostTag([...postTag, tagInput.trim()]); // 태그 추가
+      setTagId([...tagId, tagInput.trim()]); // 태그 추가
       setTagInput(""); // 입력 값 초기화
     }
   };
   const removeTag = (indexToRemove) => {
-    setPostTag(postTag.filter((_, index) => index !== indexToRemove)); // 태그 삭제
+    setTagId(tagId.filter((_, index) => index !== indexToRemove)); // 태그 삭제
   };
 
   // moment 핸들러
@@ -61,7 +61,7 @@ function PostModifyModal({ onSuccess, onFailure }) {
 
   // 수정 제출
   const handleSubmit = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
 
     // try {
     // // 1. 이미지 파일을 서버로 업로드 (파일이 선택된 경우)
@@ -81,7 +81,7 @@ function PostModifyModal({ onSuccess, onFailure }) {
     formData.append("title", postTitle);
     formData.append("imageUrl", postImage); // 이미지 URL 필드에 업로드된 이미지 URL 추가
     formData.append("content", postContent);
-    formData.append("tags", JSON.stringify(postTag)); // 태그 배열을 JSON 문자열로 변환하여 추가
+    formData.append("tags", JSON.stringify(tagId)); // 태그 배열을 JSON 문자열로 변환하여 추가
     formData.append("location", postLocation);
     formData.append("moment", postMoment);
     formData.append("postPassword", postPassword);
@@ -95,6 +95,8 @@ function PostModifyModal({ onSuccess, onFailure }) {
 
       if (response.status === 200) {
         onSuccess(response.data);
+        // 수정한 게시글 상세 페이지(임시 = /)로 이동
+        navigate("/"); //  -> 상세 페이지 만들면 /를 등록한 게시글 상세 페이지로 이동하게끔 수정 필요해요!!
       } else if (response.status === 400) {
         onFailure("잘못된 요청입니다.");
       } else if (response.status === 401) {
@@ -221,7 +223,7 @@ function PostModifyModal({ onSuccess, onFailure }) {
               onKeyDown={handleTagKeyDown}
             />
             <div className="tagListM">
-              {postTag.map((tag, index) => (
+              {tagId.map((tag, index) => (
                 <div key={index} className="tagItemM">
                   #{tag}{" "}
                   <span className="removeTagM" onClick={() => removeTag(index)}>

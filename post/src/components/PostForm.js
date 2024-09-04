@@ -12,11 +12,13 @@ function PostForm({ onSuccess, onFailure }) {
   const [postTitle, setPostTitle] = useState("");
   const [postImage, setPostImage] = useState(null);
   const [postContent, setPostContent] = useState("");
-  const [postTag, setPostTag] = useState([]);
+  const [tagId, setTagId] = useState([]);
   const [tagInput, setTagInput] = useState(""); // 태그 입력을 위한 필드 별도 생성
   const [postLocation, setPostLocation] = useState("");
   const [postMoment, setPostMoment] = useState("");
   const [postPassword, setPostPassword] = useState(""); // 글 수정 시 입력해야 하는 password
+  // ex)
+  const groupId = `24bef556-d69d-4857-b27b-27499909793e`; // 실제 그룹 ID를 여기서 설정하세요.
 
   // 태그 핸들러
   const handleTagInput = (e) => {
@@ -26,16 +28,16 @@ function PostForm({ onSuccess, onFailure }) {
   };
   const handleTagKeyDown = (e) => {
     if (e.key === "Enter" && tagInput.trim() !== "") {
-      if (postTag.length >= 10) {
+      if (tagId.length >= 10) {
         alert("태그는 최대 10개까지 추가할 수 있습니다.");
         return;
       }
-      setPostTag([...postTag, tagInput.trim()]); // 태그 추가
+      setTagId([...tagId, tagInput.trim()]); // 태그 추가
       setTagInput(""); // 입력 값 초기화
     }
   };
   const removeTag = (indexToRemove) => {
-    setPostTag(postTag.filter((_, index) => index !== indexToRemove)); // 태그 삭제
+    setTagId(tagId.filter((_, index) => index !== indexToRemove)); // 태그 삭제
   };
 
   // moment 핸들러
@@ -48,7 +50,7 @@ function PostForm({ onSuccess, onFailure }) {
 
   // submit 핸들러
   const handleSubmit = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
 
     try {
       // 1. 이미지 파일을 서버로 업로드
@@ -57,7 +59,8 @@ function PostForm({ onSuccess, onFailure }) {
 
       const imageUploadResponse = await axios.post(
         "http://3.39.56.63/api/image",
-        imageData
+        imageData,
+        { headers: { "Content-Type": "multipart/form-data" } }
       ); // 명세서에 따른 올바른 경로 사용
       const imageUrl = imageUploadResponse.data.imageUrl;
 
@@ -68,16 +71,14 @@ function PostForm({ onSuccess, onFailure }) {
       formData.append("title", postTitle);
       formData.append("imageUrl", imageUrl); // 이미지 URL 필드에 업로드된 이미지 URL 추가
       formData.append("content", postContent);
-      formData.append("tags", JSON.stringify(postTag)); // 태그 배열을 JSON 문자열로 변환하여 추가
+      formData.append("tags", JSON.stringify(tagId)); // 태그 배열을 JSON 문자열로 변환하여 추가
       formData.append("location", postLocation);
       formData.append("moment", postMoment);
       formData.append("postPassword", postPassword);
-      // formData.append("groupPassword", groupPassword);
 
-      // try {
       // 서버에 데이터 전송
       const response = await axios.post(
-        "http://3.39.56.63/api/groups/{groupId}/posts",
+        `http://3.39.56.63/api/groups/${groupId}/posts`,
         formData
       );
 
@@ -204,7 +205,7 @@ function PostForm({ onSuccess, onFailure }) {
             onKeyDown={handleTagKeyDown}
           />
           <div className="tagListC">
-            {postTag.map(
+            {tagId.map(
               (
                 tag,
                 index // 태그 목록 렌더링

@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-// import axios from "axios";
 import PostForm from "../components/PostForm";
 import "./PostCreatePage.css";
 import logo from "../img/logo.jpg";
