@@ -101,13 +101,13 @@ const MainPage = () => {
         <div className="menuGL">
           <span className="isPublicGL">
             <span
-              className={`publicGL ${selectIsPublic ? "active" : ""}`}
+              className={`publicGL ${isPublic ? "active" : ""}`}
               onClick={handleIsPublic}
             >
               <span id="publicLetterGL">공개</span>
             </span>
             <span
-              className={`privateGL ${!selectIsPublic ? "active" : ""}`}
+              className={`privateGL ${!isPublic ? "active" : ""}`}
               onClick={handleIsPublic}
             >
               <span id="privateLetterGL">비공개</span>

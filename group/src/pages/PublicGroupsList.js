@@ -26,7 +26,7 @@ function PublicGroupsList({ groups }) {
           onClick={() => handleGroupClick(group.groupId)}
         >
           <div className="groupImagePGL">
-            <img src={group.imageUrl || imageUrl} alt="Group Image" />
+            <img src={`http://3.39.56.63/${group.imageUrl}`} alt={group.name} />
           </div>
           <div className="groupInfoPGL">
             <span className="createdAtPGL">
