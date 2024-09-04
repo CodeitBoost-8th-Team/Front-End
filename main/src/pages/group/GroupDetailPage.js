@@ -1,39 +1,83 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import logo from '../img/logo.jpg'; 
-import GroupEditModal from '../components/GroupEditModal';
-import GroupDeleteModal from '../components/GroupDeleteModal';
-import './GroupDetailPage.css';
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
+import GroupEditModal from "../components/GroupEditModal";
+import GroupDeleteModal from "../components/GroupDeleteModal";
+import PublicPostsList from "./PublicPostsList";
+import PrivatePostsList from "./PrivatePostsList";
+import "./GroupDetailPage.css";
+import flower from "../img/flower.png";
+import logo from "../img/logo.jpg";
+import searchImg from "../img/searchImg.png";
 
 const GroupDetailPage = () => {
   const { groupId } = useParams();
   const navigate = useNavigate();
   const [group, setGroup] = useState(null);
+  const [groups, setGroups] = useState([]); // 그룹 목록 상태 추가
+  const [currentPage, setCurrentPage] = useState(1); // 페이지네이션 상태 추가
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
   const [isFailureModalOpen, setIsFailureModalOpen] = useState(false);
-  const [failureMessage, setFailureMessage] = useState('');
+  const [failureMessage, setFailureMessage] = useState("");
+  const [grouplikeCount, setGroupLikeCount] = useState(0);
+  const [isPublic, setIsPublic] = useState(true);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const fetchGroupDetails = async () => {
       try {
-        const response = await axios.get(`http://3.39.56.63/api/groups/${groupId}`);
-        console.log('Group Details Response:', response.data);
+        const response = await axios.get(
+          `http://3.39.56.63/api/groups/${groupId}`
+        );
+        console.log("Group Details Response:", response.data);
         setGroup(response.data);
+        setError(null); // 오류 상태 초기화
       } catch (error) {
         setError("그룹 정보를 가져오는 데 실패했습니다.");
-        console.error('그룹 상세 정보 불러오기 실패:', error);
+        console.error("그룹 상세 정보 불러오기 실패:", error);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchGroupDetails();
+    if (groupId) {
+      fetchGroupDetails(); // groupId가 존재할 경우 그룹 정보 가져오기
+    }
   }, [groupId]);
+
+  // 검색 핸들러
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+    setCurrentPage(1); // 검색어가 바뀔 때 페이지를 처음으로 리셋
+  };
+
+  const handleIsPublic = (e) => {
+    const isPublicSelected = e.target.id === "publicLetterGD";
+    setIsPublic(isPublicSelected);
+  };
+
+  const handleLikeClick = async () => {
+    try {
+      const response = await axios.post(
+        `http://3.39.56.63/api/groups/${groupId}/like`
+      );
+      if (response.status === 200) {
+        setGroup((prevGroup) => {
+          const updatedGroup = {
+            ...prevGroup,
+            groupLikeCount: Number(prevGroup.groupLikeCount) + 1,
+          };
+          return updatedGroup;
+        });
+      }
+    } catch (error) {
+      console.error("공감 수 업데이트 실패:", error);
+    }
+  };
 
   if (loading) return <p>로딩 중...</p>;
   if (error) return <p>{error}</p>;
@@ -48,11 +92,14 @@ const GroupDetailPage = () => {
     setIsDeleteModalOpen(true);
   };
 
-  const handleDeleteConfirm = async (password) => { 
+  const handleDeleteConfirm = async (password) => {
     try {
-      const response = await axios.delete(`http://3.39.56.63/api/groups/${groupId}`, {
-        data: { groupPassword: password },
-      });
+      const response = await axios.delete(
+        `http://3.39.56.63/api/groups/${groupId}`,
+        {
+          data: { groupPassword: password },
+        }
+      );
 
       if (response.status === 200) {
         setIsDeleteModalOpen(false);
@@ -61,7 +108,9 @@ const GroupDetailPage = () => {
     } catch (error) {
       console.error("그룹 삭제 중 오류 발생:", error);
 
-      setFailureMessage(error.response?.data?.message || "그룹 삭제에 실패했습니다.");
+      setFailureMessage(
+        error.response?.data?.message || "그룹 삭제에 실패했습니다."
+      );
       setIsDeleteModalOpen(false);
       setIsFailureModalOpen(true);
     }
@@ -73,7 +122,7 @@ const GroupDetailPage = () => {
 
   const handleSuccessModalClose = () => {
     setIsSuccessModalOpen(false);
-    navigate('/'); 
+    navigate("/");
   };
 
   const handleFailureModalClose = () => {
@@ -90,69 +139,156 @@ const GroupDetailPage = () => {
     setIsEditModalOpen(false);
   };
 
+  // 추억 만들기 버튼 -> 페이지 이동 (import - 폴더 정리/수정 필요)
+  // const handleCreatePost = () => {
+  //   navigate("/groups/{groupId}/posts");
+  // };
+
   return (
     <div className="group-detail-page">
-      <div className="logo-container">
-        <img src={logo} alt="Logo" />
+      <div className="headerGD">
+        <div className="headerLogoGD">
+          <img id="logo" src={logo} alt="로고" />
+        </div>
       </div>
       {group && (
         <>
-          <div className="group-header">
-            <div className="group-info">
-              <img src={`http://3.39.56.63${group.imageUrl}`} alt={group.name} className="group-image" />
-              
-              <div className="group-text">
-                <p className="group-since">
-                  <span className="group-date">since {new Date(group.createdAt).toLocaleDateString()}</span>
-                  <span className="group-separator"> | </span>
-                  <span className="group-visibility">{group.isPublic ? '공개' : '비공개'}</span>
-                </p>
-                <h2>{group.name}</h2>
-                <p>{group.introduction}</p>
+          <div className="groupDetailGD">
+            <div className="groupGD">
+              <span className="groupImgGD">
+                <img
+                  src={`http://3.39.56.63/${group.imageUrl}`}
+                  alt={group.name}
+                />
+              </span>
+              <span className="groupDetail">
+                <span className="groupCreatedAtGD">
+                  since {new Date(group.createdAt).toLocaleDateString()}
+                </span>
+
+                <span className="sinceNIsGroupPublicGD">|</span>
+
+                <span className="isGroupPublicGD">
+                  {group.isPublic ? "공개" : "비공개"}
+                </span>
+
+                <span className="modifyGroupButtonGD" onClick={handleEditClick}>
+                  그룹 정보 수정하기
+                </span>
+                <span
+                  className="deleteGroupButtonGD"
+                  onClick={handleDeleteClick}
+                >
+                  그룹 삭제하기
+                </span>
+
+                <div className="aboutGroup">
+                  <span className="groupNameGD">{group.name}</span>
+
+                  <span className="postGD">
+                    추억 <span className="postCountGD"> {group.postCount}</span>
+                  </span>
+
+                  <span className="postCountNLikeCountGD">|</span>
+
+                  <span className="LikeGD">
+                    그룹 공감{" "}
+                    <span className="LikeCountGD">{group.groupLikeCount}</span>
+                  </span>
+                </div>
+                <div className="groupIntroductionGD">{group.introduction}</div>
+              </span>
+
+              {isEditModalOpen && (
+                <GroupEditModal
+                  groupId={groupId}
+                  initialData={group}
+                  onClose={() => setIsEditModalOpen(false)}
+                  onSuccess={handleEditSuccess}
+                  onFailure={handleEditFailure}
+                />
+              )}
+              {isDeleteModalOpen && (
+                <GroupDeleteModal
+                  onDeleteConfirm={handleDeleteConfirm} // 비밀번호를 받아 삭제를 진행
+                  onClose={handleDeleteClose}
+                />
+              )}
+
+              {isFailureModalOpen && (
+                <div className="modal">
+                  <div className="modal-content">
+                    <h3>그룹 삭제 실패</h3>
+                    <p>{failureMessage}</p>
+                    <button onClick={handleFailureModalClose}>확인</button>
+                  </div>
+                </div>
+              )}
+
+              <div className="sendLikeGD" onClick={handleLikeClick}>
+                <img src={flower} alt="공감" />
+                <span id="sendLikeGD">공감 보내기</span>
               </div>
             </div>
-            <div className="group-actions">
-              <button onClick={handleEditClick}>그룹 정보 수정하기</button>
-              <button onClick={handleDeleteClick}>그룹 삭제하기</button>
+
+            <hr />
+
+            <div className="groupPostsListGD">
+              <div className="groupPostListHeaderGD">
+                <div className="titleGD">추억 목록</div>
+
+                <div className="makeGroupGD">
+                  <button id="makeGroupGD" className="makeGroupButtonGD">
+                    <span className="makeGroupLabelGD">추억 올리기</span>
+                  </button>
+                </div>
+
+                <div className="menuGD">
+                  <span className="isPublicGD">
+                    <span
+                      className="publicGD ${isPublic ? 'active' : ''}"
+                      id="publicLetterGD"
+                      onClick={handleIsPublic}
+                    >
+                      공개
+                    </span>
+                    <span
+                      className="privateGD ${!isPublic ? 'active' : ''}"
+                      id="privateLetterGD"
+                      onClick={handleIsPublic}
+                    >
+                      비공개
+                    </span>
+                  </span>
+
+                  <span className="searchGD">
+                    <img id="searchImgGD" src={searchImg} alt="돋보기" />
+                    <input
+                      className="searchBoxGD"
+                      placeholder="그룹명을 검색해주세요"
+                      value={search}
+                      onChange={handleSearch}
+                    />
+                  </span>
+
+                  <div>
+                    <select className="selectButtonGD">
+                      <option>최신순</option>
+                      <option>게시글 많은 순</option>
+                      <option>공감순</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
             </div>
+
+            <div className="GroupPostsGD">
+              {isPublic ? <PublicPostsList /> : <PrivatePostsList />}
+            </div>
+            {/* <div className="moreGD">
+              <div className="addButtonGD">더보기</div>
+            </div> */}
           </div>
-
-          {isEditModalOpen && (
-            <GroupEditModal
-              groupId={groupId}
-              initialData={group}
-              onClose={() => setIsEditModalOpen(false)}
-              onSuccess={handleEditSuccess}
-              onFailure={handleEditFailure}
-            />
-          )}
-
-          {isDeleteModalOpen && (
-            <GroupDeleteModal
-              onDeleteConfirm={handleDeleteConfirm}
-              onClose={handleDeleteClose}
-            />
-          )}
-
-          {isSuccessModalOpen && (
-            <div className="modal">
-              <div className="modal-content">
-                <h3>그룹 삭제 성공!</h3>
-                <p>그룹이 삭제되었습니다.</p>
-                <button onClick={handleSuccessModalClose}>확인</button>
-              </div>
-            </div>
-          )}
-
-          {isFailureModalOpen && (
-            <div className="modal">
-              <div className="modal-content">
-                <h3>그룹 삭제 실패</h3>
-                <p>{failureMessage}</p>
-                <button onClick={handleFailureModalClose}>확인</button>
-              </div>
-            </div>
-          )}
         </>
       )}
     </div>
