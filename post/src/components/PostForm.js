@@ -17,8 +17,10 @@ function PostForm({ onSuccess, onFailure }) {
   const [postLocation, setPostLocation] = useState("");
   const [postMoment, setPostMoment] = useState("");
   const [postPassword, setPostPassword] = useState(""); // 글 수정 시 입력해야 하는 password
+
   // ex)
-  const groupId = `24bef556-d69d-4857-b27b-27499909793e`; // 실제 그룹 ID를 여기서 설정하세요.
+  const groupId = `24bef556-d69d-4857-b27b-27499909793e`;
+  const groupPassword = "test";
 
   // 태그 핸들러
   const handleTagInput = (e) => {
@@ -75,6 +77,7 @@ function PostForm({ onSuccess, onFailure }) {
       formData.append("location", postLocation);
       formData.append("moment", postMoment);
       formData.append("postPassword", postPassword);
+      formData.append("groupPassword", groupPassword);
 
       // 서버에 데이터 전송
       const response = await axios.post(
