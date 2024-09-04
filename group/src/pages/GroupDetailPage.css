@@ -58,6 +58,8 @@
   border-radius: 6px;
 
   margin: 50px 180px 120px 160px;
+
+  display: flex;
 }
 
 /*그룹 사진*/
@@ -67,66 +69,66 @@
   height: 273px;
 
   border-radius: 6px;
+
+  display: inline-block;
+  margin-right: 60px; /* 사진과 텍스트 사이의 간격 */
 }
 
 /*since | 공개*/
 
 .groupCreatedAtGD {
   height: 17px;
-  position: absolute;
-  top: 180px;
-  left: 500px;
 
   font-size: 14px;
   font-weight: 400;
   line-height: 16.71px;
   letter-spacing: -0.03em;
-  text-align: left;
+  /* text-align: left; */
 
-  margin-right: 30px;
+  /* display: inline-block; */
+
+  margin-top: 10px;
+  margin-right: 10px;
 }
 
 .sinceNIsGroupPublicGD {
   height: 17px;
-  position: absolute;
-  top: 180px;
-  left: 620px;
 
   font-size: 14px;
   font-weight: 400;
   line-height: 16.71px;
   letter-spacing: -0.03em;
-  text-align: left;
+  /* text-align: left; */
   color: #8d8d8d;
+
+  margin-top: 9px;
+  margin-right: 10px;
 }
 
 .isGroupPublicGD {
   height: 17px;
-  position: absolute;
-  top: 180px;
-  left: 635px;
 
   font-size: 14px;
   font-weight: 400;
   line-height: 16.71px;
   letter-spacing: -0.03em;
-  text-align: left;
+  /* text-align: left; */
   color: #8d8d8d;
+
+  margin-top: 10px;
 }
 
 /*그룹 이름*/
 
 .groupNameGD {
   height: 36px;
-  position: absolute;
-  top: 218px;
-  left: 496px;
 
   font-size: 30px;
   font-weight: 700;
   line-height: 35.8px;
   letter-spacing: -0.03em;
   text-align: left;
+  margin-top: 20px;
 }
 
 /*추억  |  공감*/
@@ -144,6 +146,10 @@
   line-height: 21.48px;
   letter-spacing: -0.03em;
   text-align: left;
+}
+
+.postCountGD {
+  margin-left: 5px;
 }
 
 .postCountNLikeCountGD {
@@ -173,6 +179,10 @@
   text-align: left;
 }
 
+.LikeCountGD {
+  margin-left: 5px;
+}
+
 /*그룹 소개*/
 
 .groupIntroductionGD {
@@ -192,30 +202,22 @@
 /*그룹 정보 수정/삭제하기 */
 
 .modifyGroupButtonGD {
-  position: absolute;
-  top: 180px;
-  left: 1500px;
+  margin-left: 850px;
   font-size: 14px;
   font-weight: 400;
   line-height: 16.71px;
   letter-spacing: -0.03em;
-  text-align: center;
 
   cursor: pointer;
 }
 
 .deleteGroupButtonGD {
-  position: absolute;
-  top: 180px;
-  left: 1650px;
-
+  margin-left: 50px;
   color: #8d8d8d;
-
   font-size: 14px;
   font-weight: 400;
   line-height: 16.71px;
   letter-spacing: -0.03em;
-  text-align: center;
 
   cursor: pointer;
 }

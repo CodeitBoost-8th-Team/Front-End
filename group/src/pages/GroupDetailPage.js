@@ -23,7 +23,7 @@ const GroupDetailPage = () => {
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
   const [isFailureModalOpen, setIsFailureModalOpen] = useState(false);
   const [failureMessage, setFailureMessage] = useState("");
-  const [likeCount, setLikeCount] = useState(0);
+  const [grouplikeCount, setGroupLikeCount] = useState(0);
   const [isPublic, setIsPublic] = useState(true);
   const [search, setSearch] = useState("");
 
@@ -38,8 +38,20 @@ const GroupDetailPage = () => {
     setIsPublic(isPublicSelected);
   };
 
-  const handleLikeClick = () => {
-    setLikeCount((prevCount) => prevCount + 1);
+  const handleLikeClick = async () => {
+    try {
+      const response = await axios.post(
+        `http://3.39.56.63/api/groups/${groupId}/like`
+      );
+      if (response.status === 200) {
+        setGroup((prevGroup) => ({
+          ...prevGroup,
+          groupLikeCount: response.data.updatedLikeCount, // 서버에서 반환된 공감 수로 업데이트
+        }));
+      }
+    } catch (error) {
+      console.error("공감 수 업데이트 실패:", error);
+    }
   };
 
   useEffect(() => {
@@ -146,38 +158,42 @@ const GroupDetailPage = () => {
                   alt={group.name}
                 />
               </span>
+              <span className="groupDetail">
+                <span className="groupCreatedAtGD">
+                  since {new Date(group.createdAt).toLocaleDateString()}
+                </span>
 
-              <div className="groupCreatedAtGD">
-                since {new Date(group.createdAt).toLocaleDateString()}
-              </div>
+                <span className="sinceNIsGroupPublicGD">|</span>
 
-              <div className="sinceNIsGroupPublicGD">|</div>
+                <span className="isGroupPublicGD">
+                  {group.isPublic ? "공개" : "비공개"}
+                </span>
 
-              <div className="isGroupPublicGD">
-                {group.isPublic ? "공개" : "비공개"}
-              </div>
+                <span className="modifyGroupButtonGD" onClick={handleEditClick}>
+                  그룹 정보 수정하기
+                </span>
+                <span
+                  className="deleteGroupButtonGD"
+                  onClick={handleDeleteClick}
+                >
+                  그룹 삭제하기
+                </span>
 
-              <div className="groupNameGD">{group.name}</div>
+                <div className="groupNameGD">{group.name}</div>
 
-              <div className="postGD">
-                추억 <span classNameName="postCountGD">{group.postCount}</span>
-              </div>
+                <div className="postGD">
+                  추억 <span className="postCountGD"> {group.postCount}</span>
+                </div>
 
-              <div className="postCountNLikeCountGD">|</div>
+                <div className="postCountNLikeCountGD">|</div>
 
-              <div className="LikeGD">
-                그룹 공감{" "}
-                <span classNameName="LikeCountGD">{group.groupLikeCount}</span>
-              </div>
+                <div className="LikeGD">
+                  그룹 공감{" "}
+                  <span className="LikeCountGD">{group.groupLikeCount}</span>
+                </div>
 
-              <div className="groupIntroductionGD">{group.introduction}</div>
-
-              <div className="modifyGroupButtonGD" onClick={handleEditClick}>
-                그룹 정보 수정하기
-              </div>
-              <div className="deleteGroupButtonGD" onClick={handleDeleteClick}>
-                그룹 삭제하기
-              </div>
+                <div className="groupIntroductionGD">{group.introduction}</div>
+              </span>
 
               {isEditModalOpen && (
                 <GroupEditModal
