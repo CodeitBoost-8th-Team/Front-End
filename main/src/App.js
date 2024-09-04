@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import MainPage from "./pages/MainPage";
+import GroupCreatePage from "./pages/GroupCreatePage";
+import GroupDetailPage from "./pages/GroupDetailPage";
+import PostDetailPage from "./pages/PostDetailPage";
+import PostCreatePage from "./pages/PostCreatePage";
+import PostModifyModal from "./components/PostModifyModal";
+import PostDeleteModal from "./components/PostDeleteModal";
+import CommentDelete from "./pages/CommentDelete"; // 예시로 사용한 Comment 관련 컴포넌트
+import CommentEdit from "./pages/CommentEdit";
 
+// 전체 앱의 라우팅 설정을 통합한 App 컴포넌트
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        {/* Main Page */}
+        <Route path="/" element={<MainPage />} />
+
+        {/* Group 관련 라우트 */}
+        <Route path="/create-group" element={<GroupCreatePage />} />
+        <Route path="/groups/:groupId" element={<GroupDetailPage />} />
+
+        {/* Post 관련 라우트 */}
+        <Route path="/post/:postId" element={<PostDetailPage />} />
+        <Route path="/create-post" element={<PostCreatePage />} />
+        <Route path="/modify-post" element={<PostModifyModal />} />
+        <Route path="/delete-post" element={<PostDeleteModal />} />
+
+        {/* Comment 관련 라우트 */}
+        <Route path="/comments/:commentId/edit" element={<CommentEdit />} />
+        <Route path="/comments/:commentId/delete" element={<CommentDelete />} />
+      </Routes>
+    </Router>
   );
 }
 
