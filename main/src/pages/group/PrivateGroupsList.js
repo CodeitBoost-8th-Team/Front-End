@@ -43,7 +43,7 @@ function PrivateGroupsList({ groups }) {
   // }, [groupPassword]);
 
   const handleGroupClick = (groupId) => {
-    navigate(`/groups/${groupId}`);
+    navigate(`/groups/${groupId}/private`);
   };
 
   if (!groups) {
