@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import GroupForm from '../components/GroupForm';
+import GroupForm from '../../components/group/GroupForm'
 import './GroupCreatePage.css';
-import logo from '../img/logo.jpg'; // 로고 이미지 경로 설정
+import logo from '../../img/logo.jpg'; // 로고 이미지 경로 설정
 
 const GroupCreatePage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

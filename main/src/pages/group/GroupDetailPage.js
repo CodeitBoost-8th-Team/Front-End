@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import GroupEditModal from "../components/GroupEditModal";
-import GroupDeleteModal from "../components/GroupDeleteModal";
+import GroupEditModal from "../../components/group/GroupEditModal";
+import GroupDeleteModal from "../../components/group/GroupDeleteModal";
 import PublicPostsList from "./PublicPostsList";
 import PrivatePostsList from "./PrivatePostsList";
 import "./GroupDetailPage.css";
-import flower from "../img/flower.png";
-import logo from "../img/logo.jpg";
-import searchImg from "../img/searchImg.png";
+import flower from "../../img/flower.png";
+import logo from "../../img/logo.jpg";
+import searchImg from "../../img/searchImg.png";
 
 const GroupDetailPage = () => {
   const { groupId } = useParams();
