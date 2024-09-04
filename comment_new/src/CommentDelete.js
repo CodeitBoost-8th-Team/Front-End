@@ -44,5 +44,3 @@ function CommentDelete({ showDeleteModal, closeDeleteModal, confirmDelete, comme
 }
 
 export default CommentDelete;
-
-
