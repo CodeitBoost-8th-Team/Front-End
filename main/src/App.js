@@ -1,14 +1,12 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import MainPage from "./pages/MainPage";
-import GroupCreatePage from "./pages/GroupCreatePage";
-import GroupDetailPage from "./pages/GroupDetailPage";
-import PostDetailPage from "./pages/PostDetailPage";
-import PostCreatePage from "./pages/PostCreatePage";
-import PostModifyModal from "./components/PostModifyModal";
-import PostDeleteModal from "./components/PostDeleteModal";
-import CommentDelete from "./pages/CommentDelete"; // 예시로 사용한 Comment 관련 컴포넌트
-import CommentEdit from "./pages/CommentEdit";
+import GroupCreatePage from "./pages/group/GroupCreatePage";
+import GroupDetailPage from "./pages/group/GroupDetailPage";
+import PostDetailPage from "./pages/post/PostDetailPage";
+import PostCreatePage from "./pages/post/PostCreatePage";
+import PostModifyModal from "./components/post/PostModifyModal";
+import PostDeleteModal from "./components/post/PostDeleteModal";
+import CommentDelete from "./pages/comment/CommentDelete";
+import CommentEdit from "./pages/comment/CommentEdit";
+
 
 // 전체 앱의 라우팅 설정을 통합한 App 컴포넌트
 function App() {

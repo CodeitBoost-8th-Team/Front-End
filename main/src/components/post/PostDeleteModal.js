@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./PostDeleteModal.css";
-import blackX from "../img/X_black.png";
+import blackX from "../../img/X_black.png";  // 경로 수정
+
 
 function PostDeleteModal({ onSuccess, onFailure }) {
   const navigate = useNavigate();

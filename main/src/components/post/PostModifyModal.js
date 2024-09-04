@@ -2,9 +2,9 @@ import React, { useState, useRef } from "react"; // + useEffect
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 import axios from "axios";
 import "./PostModifyModal.css";
-import calender from "../img/calender.png";
-import whiteX from "../img/X_white.png";
-import blackX from "../img/X_black.png";
+import calender from "../../img/calender.png";  // 상위 폴더로 경로 수정
+import whiteX from "../../img/X_white.png";  // 상위 폴더로 경로 수정
+import blackX from "../../img/X_black.png";  // 상위 폴더로 경로 수정
 
 function PostModifyModal({ onSuccess, onFailure }) {
   const { postId } = useParams();

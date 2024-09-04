@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import PrivateGroupsList from "./PrivateGroupsList.js";
-import PublicGroupsList from "./PublicGroupsList.js";
+import PrivateGroupsList from "./group/PrivateGroupsList.js";
+import PublicGroupsList from "./group/PublicGroupsList.js";
 import "./MainPage.css";
 import logo from "../img/logo.jpg";
 import searchImg from "../img/searchImg.png";
