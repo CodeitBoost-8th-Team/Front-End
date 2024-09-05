@@ -2,8 +2,8 @@ import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./PostForm.css";
-import whiteX from "../../img/X_white.png";
-import calender from "../../img/calender.png";
+import whiteX from "../img/X_white.png";
+import calender from "../img/calender.png";
 
 function PostForm({ onSuccess, onFailure }) {
   const navigate = useNavigate();
@@ -17,8 +17,10 @@ function PostForm({ onSuccess, onFailure }) {
   const [postLocation, setPostLocation] = useState("");
   const [postMoment, setPostMoment] = useState("");
   const [postPassword, setPostPassword] = useState(""); // 글 수정 시 입력해야 하는 password
+
   // ex)
-  const groupId = `24bef556-d69d-4857-b27b-27499909793e`; // 실제 그룹 ID를 여기서 설정하세요.
+  const groupId = `24bef556-d69d-4857-b27b-27499909793e`;
+  const groupPassword = "test";
 
   // 태그 핸들러
   const handleTagInput = (e) => {
@@ -65,21 +67,37 @@ function PostForm({ onSuccess, onFailure }) {
       const imageUrl = imageUploadResponse.data.imageUrl;
 
       // 2. 업로드된 이미지의 URL과 나머지 데이터를 서버로 전송
-      const formData = new FormData();
+      // const formData = new FormData();
 
-      formData.append("nickname", postNickname);
-      formData.append("title", postTitle);
-      formData.append("imageUrl", imageUrl); // 이미지 URL 필드에 업로드된 이미지 URL 추가
-      formData.append("content", postContent);
-      formData.append("tags", JSON.stringify(tagId)); // 태그 배열을 JSON 문자열로 변환하여 추가
-      formData.append("location", postLocation);
-      formData.append("moment", postMoment);
-      formData.append("postPassword", postPassword);
+      // 수정 전
+      // formData.append("nickname", postNickname);
+      // formData.append("title", postTitle);
+      // formData.append("imageUrl", imageUrl); // 이미지 URL 필드에 업로드된 이미지 URL 추가
+      // formData.append("content", postContent);
+      // formData.append("tags", JSON.stringify(tagId)); // 태그 배열을 JSON 문자열로 변환하여 추가
+      // formData.append("location", postLocation);
+      // formData.append("moment", postMoment);
+      // formData.append("postPassword", postPassword);
+      // formData.append("groupPassword", groupPassword);
 
+      // 수정 후
+      const postData = {
+        nickname: postNickname,
+        title: postTitle,
+        imageUrl: imageUrl, // 이미지 URL 필드에 업로드된 이미지 URL 추가
+        content: postContent,
+        tags: tagId, // 태그 배열
+        location: postLocation,
+        moment: postMoment,
+        postPassword: postPassword,
+        groupPassword: groupPassword,
+      };
       // 서버에 데이터 전송
       const response = await axios.post(
         `http://3.39.56.63/api/groups/${groupId}/posts`,
-        formData
+        //formData,    // 수정 전
+        postData, // 수정 후
+        { headers: { "Content-Type": "application/json" } } // JSON 데이터 전송 - 수정 후
       );
 
       if (response.status === 200) {
