@@ -47,9 +47,6 @@ function PostCreatePage(groupId, groupPassword) {
           // groupPassword={groupPassword}
         />
       </div>
-      <h1>
-        {groupId} {groupPassword}
-      </h1>
 
       {isModalOpen && (
         <>
