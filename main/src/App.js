@@ -3,7 +3,7 @@ import MainPage from "./pages/MainPage.js"; // 프엔 배포 에러 해결
 
 import GroupCreatePage from "./pages/group/GroupCreatePage";
 import GroupDetailPage from "./pages/group/GroupDetailPage";
-import PostDetailPage from "./pages/post/PostDetailPage";
+import PostDetail from "./pages/post/PostDetail";
 import PostCreatePage from "./pages/post/PostCreatePage";
 import PostModifyModal from "./components/post/PostModifyModal";
 import PostDeleteModal from "./components/post/PostDeleteModal";
@@ -24,7 +24,7 @@ function App() {
 
         {/* Post 관련 라우트 */}
         {/* 공개 그룹 */}
-        <Route path="/post/:postId" element={<PostDetailPage />} />
+        <Route path="/post/:postId" element={<PostDetail />} />
         <Route path="/groups/:groupId/posts" element={<PostCreatePage />} />
         <Route path="/modify-post" element={<PostModifyModal />} />
         <Route path="/delete-post" element={<PostDeleteModal />} />

@@ -1,22 +1,27 @@
 import React, { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import PostForm from "../../components/post/PostForm.js";
 import "./PostCreatePage.css";
 import logo from "../../img/logo.jpg";
 
-function PostCreatePage(groupId, groupPassword) {
+function PostCreatePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // location.state에서 groupId와 groupPassword를 추출합니다.
+  const { groupId, groupPassword } = location.state || {};
 
   const handlePostCreationSuccess = (postId) => {
     console.log("Post ID:", postId); // postId 확인
     setModalMessage("게시글 만들기 성공!");
     setIsModalOpen(true);
 
-    setTimeout(() => {
-      navigate(`/posts/${postId}`); // 게시글 상세 페이지로 이동
-    }, 2000); // 2초 후에 페이지 전환
+    navigate(`/posts/${postId}`);
+    // setTimeout(() => {
+    //   navigate(`/posts/${postId}`); // 게시글 상세 페이지로 이동
+    // }, 2000); // 2초 후에 페이지 전환
   };
 
   const handlePostCreationFailure = (message) => {
@@ -43,8 +48,8 @@ function PostCreatePage(groupId, groupPassword) {
         <PostForm
           onSuccess={handlePostCreationSuccess}
           onFailure={handlePostCreationFailure}
-          // groupId={groupId}
-          // groupPassword={groupPassword}
+          groupId={groupId}
+          groupPassword={groupPassword}
         />
       </div>
 

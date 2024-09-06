@@ -182,7 +182,12 @@ const GroupDetailPage = () => {
 
   // 추억 올리기 버튼
   const handleCreatePost = () => {
-    navigate("/groups/{groupId}/posts");
+    navigate("/groups/{groupId}/posts", {
+      state: {
+        groupId: groupId,
+        groupPassword: groupPassword,
+      },
+    });
   };
 
   return (
