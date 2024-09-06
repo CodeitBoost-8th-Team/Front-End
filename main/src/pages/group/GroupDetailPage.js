@@ -162,10 +162,10 @@ const GroupDetailPage = () => {
     setIsEditModalOpen(false);
   };
 
-  // 추억 만들기 버튼 -> 페이지 이동 (import - 폴더 정리/수정 필요)
-  // const handleCreatePost = () => {
-  //   navigate("/groups/{groupId}/posts");
-  // };
+  // 추억 올리기 버튼
+  const handleCreatePost = () => {
+    navigate("/create-post", { state: { group } });
+  };
 
   return (
     <div className="group-detail-page">
@@ -261,7 +261,11 @@ const GroupDetailPage = () => {
                 <div className="titleGD">추억 목록</div>
 
                 <div className="makeGroupGD">
-                  <button id="makeGroupGD" className="makeGroupButtonGD">
+                  <button
+                    id="makeGroupGD"
+                    className="makeGroupButtonGD"
+                    onClick={handleCreatePost}
+                  >
                     <span className="makeGroupLabelGD">추억 올리기</span>
                   </button>
                 </div>
