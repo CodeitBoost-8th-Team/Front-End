@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import "./PostModifyModal.css";
-import calender from "../img/calender.png";
-import whiteX from "../img/X_white.png";
-import blackX from "../img/X_black.png";
+import calender from "../../img/calender.png";
+import whiteX from "../../img/X_white.png";
+import blackX from "../../img/X_black.png";
 
 function PostModifyModal({
   postId,

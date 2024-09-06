@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./PasswordPage.css";
-import logo from "../img/logo.jpg";
+import logo from "../../img/logo.jpg";
 
 function PasswordPage() {
   const { groupId } = useParams();

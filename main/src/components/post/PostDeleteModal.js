@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./PostDeleteModal.css";
-import blackX from "../img/X_black.png";
+import blackX from "../../img/X_black.png";
 
 function PostDeleteModal({ onDeleteConfirm, onClose }) {
   const navigate = useNavigate();

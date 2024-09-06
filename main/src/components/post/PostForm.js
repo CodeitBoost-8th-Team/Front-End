@@ -2,8 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "./PostForm.css";
-import whiteX from "../img/X_white.png";
-import calender from "../img/calender.png";
+import whiteX from "../../img/X_white.png";
+import calender from "../../img/calender.png";
 
 function PostForm({ onSuccess, onFailure }) {
   const navigate = useNavigate();
