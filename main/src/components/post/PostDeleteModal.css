@@ -1,124 +1,124 @@
 * {
-    color: #282828;
-    font-family: "Spoqa Han Sans Neo", sans-serif;
-    box-sizing: border-box;
-    border-radius: 6px;
-  }
-  
-  .postDeleteModalD {
-    /* top: 956px;
-    left: 720px;*/
-    width: 480px;
-    height: 335px;
-    position: fixed; /* 추가 */
-    top: 50%; /* 수직 중앙 정렬 */
-    left: 50%; /* 수평 중앙 정렬 */
-    transform: translate(-50%, -50%); /* 중앙 정렬 보정 */
-    margin-bottom: 40px;
-    background-color: white; /* 모달 배경색 설정 */
-    z-index: 1000; /* 다른 요소들 위에 표시되도록 */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* 모달에 그림자 추가 */
-  }
-  
-  .headerD {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  
-    text-align: center;
-  }
-  
-  .XD {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    top: 0px;
-    left: 440px;
-  
-    margin-top: 20px;
-    margin-right: 20px;
-  
-    cursor: pointer;
-  }
-  
-  /*추억 삭제*/
-  #contentHeaderD {
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 28.64px;
-    letter-spacing: -0.03em;
-    text-align: center;
-  
-    padding-top: 40px;
-  }
-  
-  /***********************************************************/
-  
-  .deleteContentD {
-    width: 400px;
-    height: 75px;
-    top: 1066px;
-    left: 760px;
-  }
-  
-  .contentHeaderD {
-    position: absolute;
-    width: 100px;
-    height: 19px;
-    top: 110px;
-    left: 40px;
-  
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 19.09px;
-    letter-spacing: -0.03em;
-    text-align: left;
-  }
-  
-  .passwordD {
-    position: absolute;
-    width: 400px;
-    height: 45px;
-    top: 140px;
-    left: 40px;
-  
-    padding-left: 20px;
-  
-    border: 1px solid #dddddd;
-  }
-  
-  .passwordD::placeholder {
-    width: 150px;
-    height: 17px;
-    top: 1110px;
-    left: 780px;
-  
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 16.71px;
-    letter-spacing: -0.03em;
-    text-align: left;
-  
-    opacity: 0.5;
-  }
-  
-  /*삭제하기 버튼*/
-  .deleteButtonD {
-    position: absolute;
-    width: 400px;
-    height: 50px;
-    top: 245px;
-    left: 40px;
-  
-    background: #282828;
-  
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 19.09px;
-    letter-spacing: -0.03em;
-    text-align: center;
-  
-    color: #fafafa;
-  
-    cursor: pointer;
-  }
+  color: #282828;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  box-sizing: border-box;
+  border-radius: 6px;
+}
+
+.postDeleteModalD {
+  /* top: 956px;
+  left: 720px;*/
+  width: 480px;
+  height: 335px;
+  position: fixed; /* 추가 */
+  top: 50%; /* 수직 중앙 정렬 */
+  left: 50%; /* 수평 중앙 정렬 */
+  transform: translate(-50%, -50%); /* 중앙 정렬 보정 */
+  margin-bottom: 40px;
+  background-color: white; /* 모달 배경색 설정 */
+  z-index: 1000; /* 다른 요소들 위에 표시되도록 */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* 모달에 그림자 추가 */
+}
+
+.headerD {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.XD {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 0px;
+  left: 440px;
+
+  margin-top: 20px;
+  margin-right: 20px;
+
+  cursor: pointer;
+}
+
+/*추억 삭제*/
+#contentHeaderD {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28.64px;
+  letter-spacing: -0.03em;
+  text-align: center;
+
+  padding-top: 40px;
+}
+
+/***********************************************************/
+
+.deleteContentD {
+  width: 400px;
+  height: 75px;
+  top: 1066px;
+  left: 760px;
+}
+
+.contentHeaderD {
+  position: absolute;
+  width: 100px;
+  height: 19px;
+  top: 110px;
+  left: 40px;
+
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19.09px;
+  letter-spacing: -0.03em;
+  text-align: left;
+}
+
+.passwordD {
+  position: absolute;
+  width: 400px;
+  height: 45px;
+  top: 140px;
+  left: 40px;
+
+  padding-left: 20px;
+
+  border: 1px solid #dddddd;
+}
+
+.passwordD::placeholder {
+  width: 150px;
+  height: 17px;
+  top: 1110px;
+  left: 780px;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.71px;
+  letter-spacing: -0.03em;
+  text-align: left;
+
+  opacity: 0.5;
+}
+
+/*삭제하기 버튼*/
+.deleteButtonD {
+  position: absolute;
+  width: 400px;
+  height: 50px;
+  top: 245px;
+  left: 40px;
+
+  background: #282828;
+
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19.09px;
+  letter-spacing: -0.03em;
+  text-align: center;
+
+  color: #fafafa;
+
+  cursor: pointer;
+}

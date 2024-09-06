@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import './GroupDeleteModal.css';
+import React, { useState } from "react";
+import "./GroupDeleteModal.css";
 
 const GroupDeleteModal = ({ onDeleteConfirm, onClose }) => {
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState("");
 
   const handleDelete = () => {
     onDeleteConfirm(password); // 삭제 시도, 결과는 부모 컴포넌트에서 처리
@@ -11,7 +11,9 @@ const GroupDeleteModal = ({ onDeleteConfirm, onClose }) => {
   return (
     <div className="modal">
       <div className="modal-content">
-        <span className="close-icon" onClick={onClose}>&times;</span> 
+        <span className="close-icon" onClick={onClose}>
+          &times;
+        </span>
         <h3>그룹 삭제</h3>
         <p>삭제 권한 인증</p>
         <input

@@ -2,24 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./PublicGroupsList.css";
 import imageUrl from "../../img/Img1.png";
+import flower from "../../img/flower.png";
 
-const BASE_URL = "http://3.39.56.63:3000";
+const BASE_URL = "http://3.39.56.63";
 
 function PublicGroupsList({ groups }) {
-  //   const [groups, setGroups] = useState(null);
-
-  //   useEffect(() => {
-  //     // 데이터 가져오기
-  //     fetch(BASE_URL)
-  //       .then((response) => response.json())
-  //       .then((data) => setGroups(data))
-  //       .catch((error) => console.error("Error fetching data:", error));
-  //   }, []);
-
   const navigate = useNavigate();
 
   const handleGroupClick = (groupId) => {
-    navigate(`/groups/:groupId`);
+    navigate(`/groups/${groupId}`);
   };
 
   if (!groups) {
@@ -32,10 +23,10 @@ function PublicGroupsList({ groups }) {
         <div
           key={group.id}
           className="groupCardPGL"
-          onClick={() => handleGroupClick(group.id)}
+          onClick={() => handleGroupClick(group.groupId)}
         >
           <div className="groupImagePGL">
-            <img src={group.imageUrl || imageUrl} alt="Group Image" />
+            <img src={`http://3.39.56.63/${group.imageUrl}`} alt={group.name} />
           </div>
           <div className="groupInfoPGL">
             <span className="createdAtPGL">
@@ -53,7 +44,7 @@ function PublicGroupsList({ groups }) {
               <div className="likePGL">
                 <div className="likeCountLetterPGL">그룹 공감</div>
                 <div className="imgNcountPGL">
-                  <img src="./flower.png" alt="공감이미지" />
+                  <img src={flower} alt="공감이미지" />
                   <div className="likeCountPGL">{group.groupLikeCount}</div>
                 </div>
               </div>

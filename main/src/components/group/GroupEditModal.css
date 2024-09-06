@@ -1,91 +1,91 @@
 .group-edit-modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 450px;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    z-index: 1000;
-    font-family: 'Pretendard', sans-serif;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 450px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  font-family: "Pretendard", sans-serif;
 }
 
 .group-edit-modal h3 {
-    text-align: center;
-    font-size: 22px;
-    margin-bottom: 10px;
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 10px;
 }
 
 .group-edit-modal form {
-    background-color: transparent; 
-    border: none; 
-    box-shadow: none;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
 }
 
 .close-icon {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    color: #666;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #666;
 }
 
 .close-icon:hover {
-    color: #000;
+  color: #000;
 }
 
 .password-input {
-    width: 100%;
-    padding: 8px;
-    margin-top: 10px; 
-    margin-bottom: 20px; 
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    font-size: 14px;
+  width: 100%;
+  padding: 8px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 14px;
 }
 
 /* 그룹공개여부 */
 .group-visibility-label {
-    font-weight: bold;
-    color: #333;
-    margin-bottom: -25px;
-  }
+  font-weight: bold;
+  color: #333;
+  margin-bottom: -25px;
+}
 
 /* 그룹 공개 선택 스위치 스타일 */
 .group-form-switch-container {
-    display: flex;
-    align-items: center;
-    gap: 30px; 
-    margin-bottom: 40px; 
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 40px;
 }
 
 .group-form-switch-container label {
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 0px; 
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0px;
 }
 
 .group-form-switch-container input[type="checkbox"] {
-    margin-right: 5px; 
+  margin-right: 5px;
 }
 
 .group-edit-modal button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    font-family: 'Pretendard', sans-serif;
-    background-color: #000000;
-    color: white;
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: "Pretendard", sans-serif;
+  background-color: #000000;
+  color: white;
 }
 
 .group-edit-modal button:hover {
-    opacity: 0.9;
+  opacity: 0.9;
 }
