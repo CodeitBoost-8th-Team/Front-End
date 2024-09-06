@@ -1,39 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import "./PostDeleteModal.css";
-import blackX from "../../img/X_black.png";  // 경로 수정
+import blackX from "../img/X_black.png";
 
-
-function PostDeleteModal({ onSuccess, onFailure }) {
+function PostDeleteModal({ onDeleteConfirm, onClose }) {
   const navigate = useNavigate();
   const [postPassword, setPostPassword] = useState("");
 
-  const handleDelete = async (e) => {
-    try {
-      // 서버에 데이터 전송
-      const response = await axios.delete(
-        "http://3.39.56.63/posts/{postId}",
-        postPassword
-      );
-      if (response.status === 200) {
-        onSuccess(response.data);
-        navigate("/");
-      } else if (response.status === 400) {
-        onFailure("잘못된 요청입니다.");
-      } else if (response.status === 401) {
-        onFailure("비밀번호가 틀렸습니다.");
-      } else if (response.status === 404) {
-        onFailure("존재하지 않습니다.");
-      }
-    } catch (error) {
-      onFailure("게시글 삭제 중 오류 발생");
-      console.error("게시글 삭제 중 오류 발생: ", error);
-    }
-  };
-
-  const onClose = () => {
-    navigate("/");
+  const handleDelete = (e) => {
+    e.preventDefault(); // 폼 제출 시 페이지 리로드 방지
+    onDeleteConfirm(postPassword);
   };
 
   return (
@@ -43,7 +19,7 @@ function PostDeleteModal({ onSuccess, onFailure }) {
         <div id="contentHeaderD">추억 삭제</div>
       </div>
 
-      <form onSubmit={handleDelete}>
+      <form>
         <div className="deleteContentD">
           <div className="contentHeaderD">삭제 권한 인증</div>
           <input
@@ -52,10 +28,15 @@ function PostDeleteModal({ onSuccess, onFailure }) {
             value={postPassword}
             onChange={(e) => setPostPassword(e.target.value)}
             placeholder="비밀번호를 입력해주세요"
+            required
           />
         </div>
         <div>
-          <button className="deleteButtonD" type="submit">
+          <button
+            className="deleteButtonD"
+            type="submit"
+            onClick={handleDelete}
+          >
             삭제하기
           </button>
         </div>

@@ -1,28 +1,42 @@
-import React, { useState, useRef } from "react"; // + useEffect
-import { useNavigate, useLocation, useParams } from "react-router-dom";
+import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import "./PostModifyModal.css";
-import calender from "../../img/calender.png";  // 상위 폴더로 경로 수정
-import whiteX from "../../img/X_white.png";  // 상위 폴더로 경로 수정
-import blackX from "../../img/X_black.png";  // 상위 폴더로 경로 수정
+import calender from "../img/calender.png";
+import whiteX from "../img/X_white.png";
+import blackX from "../img/X_black.png";
 
-function PostModifyModal({ onSuccess, onFailure }) {
-  const { postId } = useParams();
-  const location = useLocation();
-  const initialData = location.state?.initialData || {};
-
-  const navigate = useNavigate();
-
+function PostModifyModal({
+  postId,
+  initialData,
+  onClose,
+  onSuccess,
+  onFailure,
+}) {
   // 상태 초기화 (initialData로부터 초기값 설정)
-  const [postNickname, setPostNickname] = useState(initialData?.nickname || "");
-  const [postTitle, setPostTitle] = useState(initialData?.title || "");
+  const [postNickname, setPostNickname] = useState(initialData.nickname || "");
+  const [postTitle, setPostTitle] = useState(initialData.title || "");
   const [postImage, setPostImage] = useState(null);
-  const [postContent, setPostContent] = useState(initialData?.content || "");
-  const [tagId, setTagId] = useState(initialData?.tags || []);
+  const [postContent, setPostContent] = useState(initialData.content || "");
+  const [tagId, setTagId] = useState(initialData.tags || []);
   const [tagInput, setTagInput] = useState(""); // 태그 입력을 위한 필드 별도 생성
-  const [postLocation, setPostLocation] = useState(initialData?.location || "");
-  const [postMoment, setPostMoment] = useState(initialData?.moment || "");
+  const [postLocation, setPostLocation] = useState(initialData.location || "");
+  const [postMoment, setPostMoment] = useState(
+    initialData.moment
+      ? new Date(initialData.moment).toISOString().slice(0, 16) // ISO 8601로 변환
+      : ""
+  );
   const [postPassword, setPostPassword] = useState(""); // 수정 시 입력해야 하는 password
+  // 추가: 파일 이름 상태
+  const [imageFileName, setImageFileName] = useState("");
+
+  // 컴포넌트가 로드될 때 파일 이름을 추출하여 설정
+  useEffect(() => {
+    if (initialData.imageUrl) {
+      const fileName = initialData.imageUrl.split("/").pop(); // URL에서 파일 이름 추출
+      setImageFileName(fileName);
+      document.getElementById("imageUrlM").value = fileName; // input 필드에 파일 이름 설정
+    }
+  }, [initialData.imageUrl]);
 
   // 태그 핸들러
   const handleTagInput = (e) => {
@@ -63,56 +77,54 @@ function PostModifyModal({ onSuccess, onFailure }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // try {
-    // // 1. 이미지 파일을 서버로 업로드 (파일이 선택된 경우)
-    // let imageUrl = initialData.imageUrl; // 기본 이미지 URL
-
-    // if (postImage) {
-    //   const imageData = new FormData();
-    //   imageData.append("image", postImage);
-
-    //   const imageUploadResponse = await axios.post("http://3.39.56.63/api/image", imageData);
-    //   imageUrl = imageUploadResponse.data.imageUrl;
-    // }
-
-    // 2. 업로드된 이미지의 URL과 나머지 데이터를 서버로 전송
-    const formData = new FormData();
-    formData.append("nickname", postNickname);
-    formData.append("title", postTitle);
-    formData.append("imageUrl", postImage); // 이미지 URL 필드에 업로드된 이미지 URL 추가
-    formData.append("content", postContent);
-    formData.append("tags", JSON.stringify(tagId)); // 태그 배열을 JSON 문자열로 변환하여 추가
-    formData.append("location", postLocation);
-    formData.append("moment", postMoment);
-    formData.append("postPassword", postPassword);
-
     try {
+      let imageUrl = initialData.imageUrl; // 기본 이미지 URL을 초기화
+      if (postImage) {
+        // 이미지 파일이 있는 경우에만 업로드
+        const imageData = new FormData();
+        imageData.append("image", postImage);
+
+        const imageUploadResponse = await axios.post(
+          "http://3.39.56.63/api/image",
+          imageData,
+          { headers: { "Content-Type": "multipart/form-data" } }
+        );
+        imageUrl = imageUploadResponse.data.imageUrl;
+      }
+
+      // 나머지 데이터
+      const postData = {
+        nickname: postNickname,
+        title: postTitle,
+        imageUrl: imageUrl,
+        content: postContent,
+        tags: tagId,
+        location: postLocation,
+        moment: postMoment,
+        postPassword: postPassword,
+      };
+
       // 서버에 데이터 전송
       const response = await axios.put(
         `http://3.39.56.63/api/posts/${postId}`,
-        formData
+        postData,
+        { headers: { "Content-Type": "application/json" } } // JSON 데이터 전송
       );
 
       if (response.status === 200) {
         onSuccess(response.data);
-        // 수정한 게시글 상세 페이지(임시 = /)로 이동
-        navigate("/"); //  -> 상세 페이지 만들면 /를 등록한 게시글 상세 페이지로 이동하게끔 수정 필요해요!!
+        onClose(); // 모달 닫기
       } else if (response.status === 400) {
         onFailure("잘못된 요청입니다.");
       } else if (response.status === 401) {
         onFailure("비밀번호가 틀렸습니다.");
-      } else {
-        // response.status===404
+      } else if (response.status === 401) {
         onFailure("존재하지 않습니다.");
       }
     } catch (error) {
       onFailure("게시글 수정 중 오류가 발생했습니다. 다시 시도해주세요.");
       console.error("게시글 수정 중 오류 발생:", error);
     }
-  };
-
-  const onClose = () => {
-    navigate("/");
   };
 
   return (
@@ -182,7 +194,6 @@ function PostModifyModal({ onSuccess, onFailure }) {
                     document.getElementById("imageUrlM").value =
                       e.target.files[0].name;
                   }}
-                  required
                 />
               </div>
             </div>

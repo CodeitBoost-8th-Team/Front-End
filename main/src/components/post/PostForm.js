@@ -1,5 +1,5 @@
-import React, { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useRef, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "./PostForm.css";
 import whiteX from "../img/X_white.png";
@@ -7,7 +7,7 @@ import calender from "../img/calender.png";
 
 function PostForm({ onSuccess, onFailure }) {
   const navigate = useNavigate();
-
+  const { groupId } = useParams();
   const [postNickname, setPostNickname] = useState("");
   const [postTitle, setPostTitle] = useState("");
   const [postImage, setPostImage] = useState(null);
@@ -18,9 +18,27 @@ function PostForm({ onSuccess, onFailure }) {
   const [postMoment, setPostMoment] = useState("");
   const [postPassword, setPostPassword] = useState(""); // 글 수정 시 입력해야 하는 password
 
+  const [groupPassword, setGroupPassword] = useState(""); // 그룹 비밀번호 상태 추가
+
+  useEffect(() => {
+    // 그룹 정보를 가져오는 함수
+    const fetchGroupInfo = async () => {
+      try {
+        const response = await axios.get(
+          `http://3.39.56.63/api/groups/${groupId}`
+        );
+        setGroupPassword(response.data.groupPassword);
+      } catch (error) {
+        console.error("그룹 정보 가져오기 실패:", error);
+      }
+    };
+
+    fetchGroupInfo();
+  }, [groupId]);
+
   // ex)
-  const groupId = `24bef556-d69d-4857-b27b-27499909793e`;
-  const groupPassword = "test";
+  // const groupId = `0ec34e22-a715-4567-8e8c-f9c338a90e51`;
+  // const groupPassword = "test";
 
   // 태그 핸들러
   const handleTagInput = (e) => {
@@ -67,7 +85,6 @@ function PostForm({ onSuccess, onFailure }) {
       const imageUrl = imageUploadResponse.data.imageUrl;
 
       // 2. 업로드된 이미지의 URL과 나머지 데이터를 서버로 전송
-      // const formData = new FormData();
 
       // 수정 전
       // formData.append("nickname", postNickname);
@@ -101,7 +118,7 @@ function PostForm({ onSuccess, onFailure }) {
       );
 
       if (response.status === 200) {
-        onSuccess(response.data.id); // 생성된 그룹 ID 전달
+        onSuccess(response.data.id); // 생성된 게시글 ID 전달
         // 등록한 게시글 상세 페이지(임시 = /)로 이동
         navigate("/"); //  -> 상세 페이지 만들면 /를 등록한 게시글 상세 페이지로 이동하게끔 수정 필요해요!!
       } else if (response.status === 400) {
