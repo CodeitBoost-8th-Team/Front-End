@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
-import GroupEditModal from "../components/GroupEditModal";
-import GroupDeleteModal from "../components/GroupDeleteModal";
+import GroupEditModal from "../../components/group/GroupEditModal";
+import GroupDeleteModal from "../../components/group/GroupDeleteModal";
 import PublicPostsList from "./PublicPostsList";
 import PrivatePostsList from "./PrivatePostsList";
 import "./GroupDetailPage.css";
-import flower from "../img/flower.png";
-import logo from "../img/logo.jpg";
-import searchImg from "../img/searchImg.png";
+import flower from "../../img/flower.png";
+import logo from "../../img/logo.jpg";
+import searchImg from "../../img/searchImg.png";
 
 const GroupDetailPage = () => {
   const { groupId } = useParams();
+  const location = useLocation(); // 비공개 그룹에서 넘어온 데이터를 받음
   const navigate = useNavigate();
-  const [group, setGroup] = useState(null);
+  const [group, setGroup] = useState(location.state?.groupDetails || null);
   const [groups, setGroups] = useState([]); // 그룹 목록 상태 추가
   const [currentPage, setCurrentPage] = useState(1); // 페이지네이션 상태 추가
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!group); // group 데이터가 있으면 로딩 생략
   const [error, setError] = useState(null);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -29,31 +30,53 @@ const GroupDetailPage = () => {
 
   useEffect(() => {
     const fetchGroupDetails = async () => {
+      if (!group) {
+        try {
+          const response = await axios.get(
+            `http://3.39.56.63/api/groups/${groupId}`
+          );
+          setGroup(response.data);
+        } catch (error) {
+          if (error.response?.status === 403) {
+            // 비공개 그룹일 경우 비밀번호 입력 페이지로 이동
+            navigate(`/groups/${groupId}/private`);
+          } else {
+            setError("그룹 정보를 가져오는 데 실패했습니다.");
+          }
+        } finally {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchGroupDetails();
+  }, [groupId, group, navigate]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
       try {
         const response = await axios.get(
-          `http://3.39.56.63/api/groups/${groupId}`
+          `http://3.39.56.63/api/groups/${groupId}/posts`
         );
-        console.log("Group Details Response:", response.data);
-        setGroup(response.data);
-        setError(null); // 오류 상태 초기화
+        setGroup((prevGroup) => ({
+          ...prevGroup,
+          posts: response.data.posts,
+        }));
       } catch (error) {
-        setError("그룹 정보를 가져오는 데 실패했습니다.");
-        console.error("그룹 상세 정보 불러오기 실패:", error);
-      } finally {
-        setLoading(false);
+        console.error("게시글 데이터를 가져오는 데 실패했습니다.", error);
       }
     };
 
     if (groupId) {
-      fetchGroupDetails(); // groupId가 존재할 경우 그룹 정보 가져오기
+      fetchPosts();
     }
   }, [groupId]);
 
   // 검색 핸들러
-  const handleSearch = (e) => {
-    setSearch(e.target.value);
-    setCurrentPage(1); // 검색어가 바뀔 때 페이지를 처음으로 리셋
-  };
+  // const handleSearch = (e) => {
+  //   setSearch(e.target.value);
+  //   setCurrentPage(1); // 검색어가 바뀔 때 페이지를 처음으로 리셋
+  // };
 
   const handleIsPublic = (e) => {
     const isPublicSelected = e.target.id === "publicLetterGD";
@@ -246,14 +269,14 @@ const GroupDetailPage = () => {
                 <div className="menuGD">
                   <span className="isPublicGD">
                     <span
-                      className="publicGD ${isPublic ? 'active' : ''}"
+                      className="publicGD ${group.isPublic ? 'active' : ''}"
                       id="publicLetterGD"
                       onClick={handleIsPublic}
                     >
                       공개
                     </span>
                     <span
-                      className="privateGD ${!isPublic ? 'active' : ''}"
+                      className="privateGD ${!group.isPublic ? 'active' : ''}"
                       id="privateLetterGD"
                       onClick={handleIsPublic}
                     >
@@ -267,7 +290,7 @@ const GroupDetailPage = () => {
                       className="searchBoxGD"
                       placeholder="그룹명을 검색해주세요"
                       value={search}
-                      onChange={handleSearch}
+                      // onChange={handleSearch}
                     />
                   </span>
 
@@ -283,7 +306,11 @@ const GroupDetailPage = () => {
             </div>
 
             <div className="GroupPostsGD">
-              {isPublic ? <PublicPostsList /> : <PrivatePostsList />}
+              {isPublic ? (
+                <PublicPostsList posts={group.posts} />
+              ) : (
+                <PrivatePostsList posts={group.posts} />
+              )}
             </div>
             {/* <div className="moreGD">
               <div className="addButtonGD">더보기</div>

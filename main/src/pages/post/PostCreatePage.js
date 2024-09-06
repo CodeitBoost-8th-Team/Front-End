@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import PostForm from "../components/PostForm";
+import PostForm from "../../components/post/PostForm.js";
 import "./PostCreatePage.css";
-import logo from "../img/logo.jpg";
+import logo from "../../img/logo.jpg";
 
 function PostCreatePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);

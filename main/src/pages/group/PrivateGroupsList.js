@@ -1,48 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./PrivateGroupsList.css";
-import flower from "../img/flower.png";
+import flower from "../../img/flower.png";
 
-const BASE_URL = "http://3.39.56.63:3000";
+const BASE_URL = "http://3.39.56.63";
 
-function PrivateGroupsList({ groupPassword }) {
-  const [groups, setGroups] = useState(null);
-  const [error, setError] = useState(null);
+function PrivateGroupsList({ groups }) {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    // API 호출 시 필요한 groupPassword를 사용하여 데이터 가져오기
-    const fetchGroups = async () => {
-      try {
-        const response = await fetch(`${BASE_URL}/api/groups/private`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ groupPassword }),
-        });
-
-        if (response.status === 200) {
-          const data = await response.json();
-          setGroups(data);
-        } else if (response.status === 404) {
-          setError("그룹을 찾을 수 없습니다.");
-        } else if (response.status === 401) {
-          setError("비밀번호가 틀렸습니다.");
-        } else {
-          setError("알 수 없는 오류가 발생했습니다.");
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setError("서버와의 통신에 실패했습니다.");
-      }
-    };
-
-    fetchGroups();
-  }, [groupPassword]);
-
   const handleGroupClick = (groupId) => {
-    navigate(`/groups/:groupId`);
+    navigate(`/groups/${groupId}/private`);
   };
 
   if (!groups) {
@@ -55,7 +22,7 @@ function PrivateGroupsList({ groupPassword }) {
         <div
           key={group.id}
           className="groupCardNPGL"
-          onClick={() => handleGroupClick(group.id)}
+          onClick={() => handleGroupClick(group.groupId)}
         >
           <span className="createdAtNPGL">
             since {new Date(group.createdAt).toLocaleDateString()}

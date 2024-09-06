@@ -1,26 +1,37 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import './GroupEditModal.css';
+import React, { useState } from "react";
+import axios from "axios";
+import "./GroupEditModal.css";
 
-const GroupEditModal = ({ groupId, initialData, onClose, onSuccess, onFailure }) => {
-  const [groupName, setGroupName] = useState(initialData.name || '');
+const GroupEditModal = ({
+  groupId,
+  initialData,
+  onClose,
+  onSuccess,
+  onFailure,
+}) => {
+  const [groupName, setGroupName] = useState(initialData.name || "");
   const [groupImage, setGroupImage] = useState(null);
-  const [groupDescription, setGroupDescription] = useState(initialData.introduction || '');
+  const [groupDescription, setGroupDescription] = useState(
+    initialData.introduction || ""
+  );
   const [isPublic, setIsPublic] = useState(initialData.isPublic || true);
-  const [password, setPassword] = useState('');
-  
+  const [password, setPassword] = useState("");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     const formData = new FormData();
-    formData.append('name', groupName);
-    formData.append('imageUrl', groupImage);
-    formData.append('introduction', groupDescription);
-    formData.append('isPublic', isPublic);
-    formData.append('groupPassword', password);
-  
+    formData.append("name", groupName);
+    formData.append("imageUrl", groupImage);
+    formData.append("introduction", groupDescription);
+    formData.append("isPublic", isPublic);
+    formData.append("groupPassword", password);
+
     try {
-      const response = await axios.put(`http://3.39.56.63/api/groups/${groupId}`, formData);
+      const response = await axios.put(
+        `http://3.39.56.63/api/groups/${groupId}`,
+        formData
+      );
       if (response.status === 200) {
         onSuccess(response.data);
       } else {
@@ -28,21 +39,23 @@ const GroupEditModal = ({ groupId, initialData, onClose, onSuccess, onFailure })
       }
     } catch (error) {
       onFailure("그룹 수정 중 오류가 발생했습니다. 다시 시도해주세요.");
-      console.error('그룹 수정 중 오류 발생:', error);
+      console.error("그룹 수정 중 오류 발생:", error);
     }
   };
-  
+
   const handlePublicChange = () => {
     setIsPublic(true);
   };
-  
+
   const handlePrivateChange = () => {
     setIsPublic(false);
   };
-  
+
   return (
     <div className="group-edit-modal">
-      <span className="close-icon" onClick={onClose}>&times;</span>
+      <span className="close-icon" onClick={onClose}>
+        &times;
+      </span>
       <h3>그룹 정보 수정</h3>
       <form onSubmit={handleSubmit}>
         <div>
@@ -71,28 +84,26 @@ const GroupEditModal = ({ groupId, initialData, onClose, onSuccess, onFailure })
         </div>
 
         <div>
-        <label className="group-visibility-label">그룹 공개 선택</label>
-      </div>
+          <label className="group-visibility-label">그룹 공개 선택</label>
+        </div>
         <div className="group-form-switch-container">
-        <label>
-          <input
-            type="checkbox"
-            checked={isPublic}
-            onChange={() => setIsPublic(true)}
-          />
-          공개
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            checked={!isPublic}
-            onChange={() => setIsPublic(false)}
-          />
-          비공개
-        </label>
-      </div>
-
-
+          <label>
+            <input
+              type="checkbox"
+              checked={isPublic}
+              onChange={() => setIsPublic(true)}
+            />
+            공개
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={!isPublic}
+              onChange={() => setIsPublic(false)}
+            />
+            비공개
+          </label>
+        </div>
 
         <div>
           <label>수정 권한 인증</label>

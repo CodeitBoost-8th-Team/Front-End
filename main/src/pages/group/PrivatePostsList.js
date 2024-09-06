@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./PublicPostsList.css";
-import imageUrl from "../img/flower.png";
+import flower from "../../img/flower.png";
 
 const BASE_URL = "http://3.39.56.63";
 
@@ -13,7 +13,7 @@ function PublicPostsList({ posts }) {
   };
 
   if (!posts) {
-    return <div>Loading...</div>; // 데이터가 로드되지 않았을 때 로딩 표시
+    return <div> 게시글이 없습니다</div>;
   }
 
   return (
