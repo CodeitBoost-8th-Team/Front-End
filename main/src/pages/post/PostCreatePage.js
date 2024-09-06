@@ -1,10 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-<<<<<<< HEAD
-import PostForm from "../../components/post/PostForm";
-=======
-import PostForm from "../../components/PostForm";
->>>>>>> 8c418b8dee64ba61cc6c5ed289055224c5f0ea5a
+import PostForm from "../../components/post/PostForm";  
 import "./PostCreatePage.css";
 import logo from "../../img/logo.jpg";
 
