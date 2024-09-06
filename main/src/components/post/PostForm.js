@@ -119,8 +119,8 @@ function PostForm({ onSuccess, onFailure }) {
 
       if (response.status === 200) {
         onSuccess(response.data.id); // 생성된 게시글 ID 전달
-        // 등록한 게시글 상세 페이지(임시 = /)로 이동
-        navigate("/"); //  -> 상세 페이지 만들면 /를 등록한 게시글 상세 페이지로 이동하게끔 수정 필요해요!!
+        // 등록한 공개 게시글 상세 페이지로 이동
+        navigate("/post/:postId");
       } else if (response.status === 400) {
         onFailure("잘못된 요청입니다.");
       } else if (response.status === 401) {

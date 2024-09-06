@@ -160,11 +160,12 @@ const GroupDetailPage = () => {
 
   const handleEditFailure = (message) => {
     alert(message);
-    setIsEditModalOpen(false); // 수정 모달 닫기
+    setIsEditModalOpen(false);
   };
 
-  if (loading) return <p>로딩 중...</p>;
-  if (error) return <p>{error}</p>;
+  const handleCreatePost = () => {
+    navigate("/groups/{groupId}/posts");
+  };
 
   return (
     <div className="group-detail-page">
@@ -254,7 +255,11 @@ const GroupDetailPage = () => {
                 <div className="titleGD">추억 목록</div>
 
                 <div className="makeGroupGD">
-                  <button id="makeGroupGD" className="makeGroupButtonGD">
+                  <button
+                    id="makeGroupGD"
+                    className="makeGroupButtonGD"
+                    onClick={handleCreatePost}
+                  >
                     <span className="makeGroupLabelGD">추억 올리기</span>
                   </button>
                 </div>

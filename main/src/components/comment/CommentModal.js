@@ -1,4 +1,3 @@
-// CommentModal.js
 import React, { useState } from 'react';
 import './CommentModal.css';
 
