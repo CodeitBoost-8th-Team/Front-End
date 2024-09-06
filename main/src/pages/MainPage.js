@@ -61,7 +61,7 @@ const MainPage = () => {
           "게시글 많은 순": "mostPosted",
           공감순: "MostLike",
         };
-        const response = await axios.get("http://3.39.56.63:3000/api/groups", {
+        const response = await axios.get("http://3.39.56.63/api/groups", {
           params: {
             page: currentPage,
             pageSize: pageSize,
