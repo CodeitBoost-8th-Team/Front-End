@@ -1,0 +1,394 @@
+* {
+    color: #282828;
+    font-family: "Spoqa Han Sans Neo", sans-serif;
+    box-sizing: border-box;
+  
+    border-radius: 6px;
+  }
+  
+  .formM {
+    display: flex;
+  }
+  
+  .leftFormM {
+    margin-left: 80px;
+    width: 400px;
+    height: 75px;
+  }
+  
+  .labelFirstM {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19.09px;
+    letter-spacing: -0.03em;
+    text-align: left;
+    margin-bottom: 11px;
+  }
+  
+  .labelM {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19.09px;
+    letter-spacing: -0.03em;
+    text-align: left;
+    margin-bottom: 11px;
+    margin-top: 40px;
+  }
+  
+  .inputM {
+    border: 1px solid #dddddd;
+    width: 400px;
+    height: 45px;
+    border-radius: 6px;
+    text-indent: 20px;
+  }
+  
+  .inputM::placeholder {
+    width: 200px;
+    height: 17px;
+    top: 312px;
+    left: 500px;
+    opacity: 0.5;
+  }
+  
+  /********************************************************/
+  
+  .containerM {
+    position: fixed; /* 추가 */
+    top: 50%; /* 수직 중앙 정렬 */
+    left: 50%; /* 수평 중앙 정렬 */
+    transform: translate(-50%, -50%); /* 중앙 정렬 보정 */
+    width: 1120px;
+    height: 794px;
+    margin-bottom: 40px;
+    background-color: white; /* 모달 배경색 설정 */
+    z-index: 1000; /* 다른 요소들 위에 표시되도록 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* 모달에 그림자 추가 */
+  }
+  
+  /*추억 수정*/
+  
+  .contentHeaderM {
+    width: 1120px;
+    height: 109px;
+    top: 766px;
+    left: 917px;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    text-align: center;
+  }
+  
+  .blackXM {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 30px;
+    left: 1075px;
+  
+    cursor: pointer;
+  }
+  
+  #contentHeaderM {
+    width: 137px;
+    height: 29px;
+    top: 178px;
+    left: 907px;
+  
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 28.64px;
+    letter-spacing: -0.03em;
+    color: #282828;
+  }
+  
+  /********************************************************/
+  
+  /*닉네임*/
+  
+  #nicknameLabelM {
+    width: 41px;
+    height: 19px;
+    top: 268px;
+    left: 480px;
+  }
+  
+  .nicknameM {
+    width: 400px;
+    height: 75px;
+    top: 268px;
+    left: 480px;
+  }
+  
+  /*제목*/
+  
+  .titleM {
+    width: 400px;
+    height: 75px;
+    top: 383px;
+    left: 480px;
+  }
+  
+  .titleM label {
+    width: 28px;
+    height: 19px;
+    top: 383px;
+    left: 480px;
+  }
+  
+  /*파일 선택*/
+  
+  .imageM {
+    width: 400px;
+    height: 75px;
+    top: 498px;
+    left: 480px;
+    border-radius: 6px;
+  }
+  
+  .imageM label {
+    width: 41px;
+    height: 19px;
+    top: 498px;
+    left: 480px;
+  }
+  
+  .imageM .inputFileM {
+    width: 290px;
+    height: 45px;
+    top: 528px;
+    left: 480px;
+  }
+  
+  .imageM .fileButtonM {
+    display: none;
+  }
+  
+  .imageM .fileButtonLabelM {
+    width: 100px;
+    height: 45px;
+    top: 528px;
+    left: 780px;
+    border: 1px solid #282828;
+    border-radius: 6px;
+    background: #fafafa;
+  
+    margin-left: 10px;
+  
+    font-family: "Spoqa Han Sans Neo", sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 16.71px;
+    letter-spacing: -0.03em;
+    text-align: left;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    padding-top: 2px;
+  
+    cursor: pointer;
+  }
+  
+  .imageM .buttonMadeM {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /*본문 내용*/
+  
+  .contentM {
+    width: 400px;
+    height: 150px;
+    top: 1201px;
+    left: 480px;
+  }
+  
+  .contentM label {
+    width: 28px;
+    height: 19px;
+    top: 613px;
+    left: 480px;
+  }
+  
+  .textareaM {
+    width: 400px;
+    height: 120px;
+  
+    line-height: 1.5;
+  
+    border: 1px solid #dddddd;
+    border-radius: 6px;
+  
+    resize: none;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    white-space: pre-wrap;
+  
+    padding: 14px 20px 14px 20px;
+  }
+  
+  .textareaM::placeholder {
+    width: 200px;
+    height: 17px;
+    top: 1245px;
+    left: 500px;
+  
+    opacity: 0.5;
+  }
+  
+  /**********************************************************/
+  
+  /*가운데 줄*/
+  .lineM {
+    width: 0px;
+    height: 500px; /*572*/
+    top: 268px;
+    left: 676.2px;
+    border: 1px solid #dddddd;
+    margin-left: 80px;
+    margin-right: 80px;
+    opacity: 0.5;
+  
+    box-sizing: content-box;
+  }
+  
+  /**********************************************************/
+  
+  .rightFormM {
+    margin-right: 80px;
+    width: 400px;
+    height: 75px;
+  }
+  
+  /*태그*/
+  
+  .tagM {
+    width: 400px;
+    position: relative;
+  }
+  
+  .tagListM {
+    display: flex;
+    height: 50px;
+    flex-wrap: wrap;
+    overflow-y: auto;
+  }
+  
+  .tagItemM {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    margin-top: 10px;
+  
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.71px;
+    letter-spacing: -0.03em;
+    text-align: left;
+    color: #8d8d8d;
+  }
+  
+  .removeTagM {
+    margin-left: 6px;
+    color: #b8b8b8;
+  
+    cursor: pointer;
+  }
+  
+  /*장소*/
+  
+  .locationM {
+    width: 400px;
+    height: 75px;
+    top: 434px;
+    left: 1040px;
+  }
+  
+  .locationM label {
+    width: 28px;
+    height: 19px;
+    top: 434px;
+    left: 1040px;
+  }
+  
+  /*날짜시간*/
+  
+  .momentM {
+    width: 400px;
+    height: 75px;
+    top: 549px;
+    left: 1040px;
+  }
+  
+  .momentM label {
+    width: 71px;
+    height: 19px;
+    top: 549px;
+    left: 1040px;
+  }
+  
+  .calenderIconM {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 437px;
+    left: 1010px;
+    cursor: pointer;
+    opacity: 1;
+  }
+  
+  input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    display: none;
+  }
+  
+  input[type="datetime-local"] {
+    color: #b8b8b8;
+    position: relative;
+  }
+  
+  /*비밀번호*/
+  
+  .passwordM {
+    width: 400px;
+    height: 75px;
+    top: 768px;
+    left: 1040px;
+  }
+  
+  .passwordM .labelM {
+    width: 120px;
+    height: 19px;
+    top: 768px;
+    left: 1040px;
+  }
+  
+  .passwordM input {
+    width: 400px;
+    height: 45px;
+    top: 798px;
+    left: 1040px;
+  }
+  
+  /**********************************************************/
+  
+  .modifyButtonM {
+    position: absolute;
+    width: 400px;
+    height: 50px;
+    top: 668px;
+    left: 370px;
+    border-radius: 6px;
+  
+    background: #282828;
+  
+    font-family: "Spoqa Han Sans Neo", sans-serif;
+    box-sizing: border-box;
+    color: #fafafa;
+  
+    cursor: pointer;
+  }

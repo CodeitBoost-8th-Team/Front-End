@@ -40,7 +40,7 @@ const GroupForm = ({ onSuccess, onFailure }) => {
       } else {
         onFailure("그룹 생성에 실패했습니다. 다시 시도해주세요.");
       }
-    } catch (error) {
+    } catch (error) { 
       onFailure("그룹 생성 중 오류가 발생했습니다. 다시 시도해주세요.");
       console.error('그룹 생성 중 오류 발생:', error);  // 오류 발생 시 로그 확인
     }
