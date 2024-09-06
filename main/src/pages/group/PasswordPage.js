@@ -7,11 +7,11 @@ import logo from "../../img/logo.jpg";
 function PasswordPage() {
   const { groupId } = useParams();
   const navigate = useNavigate();
-  const [password, setPassword] = useState("");
+  const [groupPassword, setGroupPassword] = useState("");
   const [error, setError] = useState("");
 
   const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
+    setGroupPassword(event.target.value);
   };
 
   const handleSubmit = async (event) => {
@@ -19,10 +19,13 @@ function PasswordPage() {
     try {
       const response = await axios.post(
         `http://3.39.56.63/api/groups/${groupId}/private`,
-        { password }
+        { groupPassword }
       );
       if (response.status === 200) {
-        navigate(`/groups/${groupId}`); // 비밀번호가 맞으면 그룹 상세 페이지로 이동
+        localStorage.setItem(`groupPassword_${groupId}`, groupPassword); // 비밀번호를 저장
+        const groupDetails = response.data;
+        // 그룹 상세 정보 함께 넘김
+        navigate(`/groups/${groupId}`, { state: { groupDetails } });
       } else {
         setError("비밀번호가 틀렸습니다.");
       }
@@ -47,7 +50,7 @@ function PasswordPage() {
             className="passwordPageInput"
             type="password"
             placeholder="비밀번호를 입력해주세요"
-            value={password}
+            value={groupPassword}
             onChange={handlePasswordChange}
           />
         </div>

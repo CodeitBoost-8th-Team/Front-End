@@ -1,10 +1,15 @@
 .publicGroupPGL {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(
-    4,
-    1fr
-  ); /* 한 줄에 4개의 열을 동일한 비율로 배치 */
+  /* 한 줄에 4개의 열을 동일한 비율로 배치 */
+  grid-template-columns: repeat(4, 1fr);
+  /* grid-template-columns: repeat(
+    auto-fill,
+    minmax(250px, 1fr)
+  );  */
+  /* 빈 공간을 채우며 지그재그 형태로 배치 */
+  grid-auto-flow: dense;
+
   gap: 15px;
 
   border-radius: 12px;
@@ -22,6 +27,11 @@
   background-color: #ffffff;
 
   padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  /* justify-content: flex-start; /* 카드 내용에 따라 높이 변하도록 설정 */
+  /* height: auto; 카드의 높이를 내용에 맞춰 자동으로 설정 */
 }
 
 .groupCardPGL:hover {
