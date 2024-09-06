@@ -28,6 +28,24 @@ const GroupDetailPage = () => {
   const [isPublic, setIsPublic] = useState(true);
   const [search, setSearch] = useState("");
 
+  // groupPassword 가져옴
+  const [groupPassword, setGroupPassword] = useState("");
+  useEffect(() => {
+    // 그룹 정보를 가져오는 함수
+    const fetchGroupInfo = async () => {
+      try {
+        const response = await axios.get(
+          `http://3.39.56.63/api/groups/${groupId}`
+        );
+        setGroupPassword(response.data.groupPassword);
+      } catch (error) {
+        console.error("그룹 정보 가져오기 실패:", error);
+      }
+    };
+
+    fetchGroupInfo();
+  }, [groupId]);
+
   useEffect(() => {
     const fetchGroupDetails = async () => {
       if (!group) {
@@ -164,7 +182,7 @@ const GroupDetailPage = () => {
 
   // 추억 올리기 버튼
   const handleCreatePost = () => {
-    navigate("/create-post", { state: { group } });
+    navigate("/groups/{groupId}/posts");
   };
 
   return (
