@@ -315,7 +315,7 @@ const GroupDetailPage = () => {
                     <img id="searchImgGD" src={searchImg} alt="돋보기" />
                     <input
                       className="searchBoxGD"
-                      placeholder="그룹명을 검색해주세요"
+                      placeholder="태그 혹은 제목을 입력해주세요"
                       value={search}
                       // onChange={handleSearch}
                     />

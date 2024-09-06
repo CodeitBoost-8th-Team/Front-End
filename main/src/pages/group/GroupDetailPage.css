@@ -385,7 +385,7 @@ hr {
   width: 24.31px;
   height: 24px;
   position: absolute;
-  top: 827px;
+  top: 831px;
   left: 370px;
   padding: 3px 3.04px 3px 3.04px;
 
@@ -393,7 +393,7 @@ hr {
 }
 
 .searchBoxGD {
-  width: 1140px;
+  width: 1190px;
   height: 45px;
   position: absolute;
   top: 820px;
@@ -411,7 +411,7 @@ hr {
 
 .searchBoxGD::placeholder {
   position: absolute;
-  top: 13px;
+  top: 12px;
 
   opacity: 0.5;
 }
@@ -419,7 +419,7 @@ hr {
 /*정렬 버튼*/
 .selectButtonGD {
   width: 160px;
-  height: 45px;
+  height: 44px;
 
   position: absolute;
   top: 820px;

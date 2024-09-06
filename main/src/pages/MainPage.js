@@ -32,7 +32,7 @@ const MainPage = () => {
   // 정렬 핸들러
   const handleSelectChange = (e) => {
     setSelectedOption(e.target.value);
-    setCurrentPage(1); // 정렬이 바뀔 때 페이지를 처음으로 리셋
+    setCurrentPage(2); // 정렬이 바뀔 때 페이지를 처음으로 리셋
   };
 
   // 더보기 버튼 핸들러

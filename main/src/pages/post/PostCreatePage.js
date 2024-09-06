@@ -18,10 +18,11 @@ function PostCreatePage() {
     setModalMessage("게시글 만들기 성공!");
     setIsModalOpen(true);
 
-    navigate(`/posts/${postId}`);
-    // setTimeout(() => {
-    //   navigate(`/posts/${postId}`); // 게시글 상세 페이지로 이동
-    // }, 2000); // 2초 후에 페이지 전환
+    if (groupId.isPublic) {
+      navigate(`/posts/${postId}`);
+    } else {
+      navigate(`posts/${postId}/private`);
+    }
   };
 
   const handlePostCreationFailure = (message) => {
