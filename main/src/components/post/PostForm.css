@@ -1,6 +1,5 @@
 /*닉네임*/
 #nicknameLabelC {
-  width: 41px;
   height: 19px;
   top: 268px;
   left: 480px;
@@ -22,7 +21,6 @@
 }
 
 .titleC label {
-  width: 28px;
   height: 19px;
   top: 383px;
   left: 480px;
@@ -53,9 +51,9 @@
 }
 
 .imageC .fileButtonLabelC {
-  width: 90px;
-  height: 47px;
-  top: 528px;
+  height: 45px;
+  width: 95px;
+  top: 529px;
   left: 780px;
   border: 1px solid #282828;
   border-radius: 6px;
@@ -73,6 +71,7 @@
   align-items: center;
 
   margin-left: 23px;
+  margin-bottom: 0px;
 
   cursor: pointer;
 }
@@ -95,7 +94,6 @@
 }
 
 .contentC label {
-  width: 28px;
   height: 19px;
   top: 613px;
   left: 480px;
@@ -116,6 +114,16 @@
   white-space: pre-wrap;
 
   padding: 14px 20px 14px 20px;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.71px;
+  letter-spacing: -0.03em;
+  text-align: left;
+
+  line-height: 1.5; /* 줄 간격 설정 */
+
+  font-family: "Spoqa Han Sans Neo";
 }
 
 .textareaC::placeholder {
@@ -123,6 +131,12 @@
   height: 17px;
   top: 312px;
   left: 500px;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.71px;
+  letter-spacing: -0.03em;
+  text-align: left;
 
   opacity: 0.5;
 }
@@ -163,6 +177,7 @@
   align-items: center;
   margin-right: 15px;
   margin-top: 10px;
+  margin-bottom: 0px;
 
   font-size: 14px;
   font-weight: 400;
@@ -191,7 +206,6 @@
 }
 
 .locationC label {
-  width: 28px;
   height: 19px;
   top: 434px;
   left: 1040px;
@@ -207,7 +221,6 @@
 }
 
 .momentC label {
-  width: 71px;
   height: 19px;
   top: 549px;
   left: 1040px;
@@ -217,8 +230,8 @@
   position: absolute;
   width: 24px;
   height: 24px;
-  top: 589px;
-  left: 1410px;
+  top: 601px;
+  left: 1420px;
   cursor: pointer;
   opacity: 1;
 }
@@ -230,6 +243,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 input[type="datetime-local"] {
   color: #b8b8b8;
   position: relative;
+  padding: 0px;
 }
 
 /*비밀번호*/
@@ -252,6 +266,24 @@ input[type="datetime-local"] {
   height: 45px;
   top: 798px;
   left: 1040px;
+
+  box-sizing: border-box; /* padding을 포함한 크기 조정 */
+  text-indent: 10px;
+  padding-top: 5px !important;
+
+  /* color: #b8b8b8; */
+
+  border: 1px solid #dddddd;
+  opacity: 0.8;
+}
+
+.passwordC .inputC::placeholder {
+  font-family: "Spoqa Han Sans Neo", sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 16.71px;
+  letter-spacing: -0.03em;
+  text-align: left;
 }
 
 /*********************************************************************/

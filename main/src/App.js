@@ -1,5 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // 프엔 배포 에러 해결
-import MainPage from './pages/MainPage.js';  // 프엔 배포 에러 해결
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // 프엔 배포 에러 해결
+import MainPage from "./pages/MainPage.js"; // 프엔 배포 에러 해결
 
 import GroupCreatePage from "./pages/group/GroupCreatePage";
 import GroupDetailPage from "./pages/group/GroupDetailPage";
@@ -23,6 +23,7 @@ function App() {
         <Route path="/groups/:groupId" element={<GroupDetailPage />} />
 
         {/* Post 관련 라우트 */}
+        {/* 공개 그룹 */}
         <Route path="/post/:postId" element={<PostDetailPage />} />
         <Route path="/create-post" element={<PostCreatePage />} />
         <Route path="/modify-post" element={<PostModifyModal />} />

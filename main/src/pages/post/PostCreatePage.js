@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import PostForm from "../../components/post/PostForm.js";
 import "./PostCreatePage.css";
 import logo from "../../img/logo.jpg";
@@ -7,6 +7,8 @@ import logo from "../../img/logo.jpg";
 function PostCreatePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
+  const location = useLocation();
+  const group = location.state?.group; // 그룹 정보 가져오기
   const navigate = useNavigate();
 
   const handlePostCreationSuccess = (postId) => {
@@ -43,6 +45,7 @@ function PostCreatePage() {
         <PostForm
           onSuccess={handlePostCreationSuccess}
           onFailure={handlePostCreationFailure}
+          group={group}
         />
       </div>
 
