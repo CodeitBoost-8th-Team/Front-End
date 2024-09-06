@@ -23,15 +23,11 @@ const MainPage = () => {
     navigate("/create-group");
   };
 
-  const handleGroupClick = (groupId) => {
-    navigate(`/groups/${groupId}`);
-  };
-
   // 검색 핸들러
-  const handleSearch = (e) => {
-    setSearch(e.target.value);
-    setCurrentPage(1); // 검색어가 바뀔 때 페이지를 처음으로 리셋
-  };
+  // const handleSearch = (e) => {
+  //   setSearch(e.target.value);
+  //   setCurrentPage(1); // 검색어가 바뀔 때 페이지를 처음으로 리셋
+  // };
 
   // 정렬 핸들러
   const handleSelectChange = (e) => {
@@ -40,11 +36,11 @@ const MainPage = () => {
   };
 
   // 더보기 버튼 핸들러
-  const handleIsExpanded = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
+  // const handleIsExpanded = () => {
+  //   if (currentPage < totalPages) {
+  //     setCurrentPage(currentPage + 1);
+  //   }
+  // };
 
   const handleIsPublic = (e) => {
     setSelectIsPublic(!selectIsPublic);
@@ -61,7 +57,7 @@ const MainPage = () => {
           "게시글 많은 순": "mostPosted",
           공감순: "MostLike",
         };
-        const response = await axios.get("http://3.39.56.63:3000/api/groups", {
+        const response = await axios.get("http://3.39.56.63/api/groups", {
           params: {
             page: currentPage,
             pageSize: pageSize,
@@ -101,16 +97,17 @@ const MainPage = () => {
             </button>
           </div>
         </div>
+
         <div className="menuGL">
           <span className="isPublicGL">
             <span
-              className={`publicGL ${selectIsPublic ? "active" : ""}`}
+              className={`publicGL ${isPublic ? "active" : ""}`}
               onClick={handleIsPublic}
             >
               <span id="publicLetterGL">공개</span>
             </span>
             <span
-              className={`privateGL ${!selectIsPublic ? "active" : ""}`}
+              className={`privateGL ${!isPublic ? "active" : ""}`}
               onClick={handleIsPublic}
             >
               <span id="privateLetterGL">비공개</span>
@@ -123,7 +120,7 @@ const MainPage = () => {
               className="searchBoxGL"
               placeholder="그룹명을 검색해주세요"
               value={search}
-              onChange={handleSearch}
+              // onChange={handleSearch}
             />
           </span>
 
@@ -148,18 +145,20 @@ const MainPage = () => {
           )}
         </div>
 
-        {currentPage < totalPages && (
+        {/* {currentPage < totalPages && (
           <div className="moreGL">
             <div className="addButtonGL" onClick={handleIsExpanded}>
               더보기
             </div>
           </div>
-        )}
+        )} */}
+        {/* {isExpanded && (
+          <div className="additionalContentGL">
+           
+            여기에 추가 콘텐츠가 표시됩니다.
+          </div>
+        )} */}
       </div>
-      {/* Group Detail Button */}
-      <button className="detailPageButton" onClick={() => handleGroupClick(1)}>
-        그룹 상세페이지
-      </button>
     </div>
   );
 };

@@ -8,40 +8,6 @@ const BASE_URL = "http://3.39.56.63";
 function PrivateGroupsList({ groups }) {
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   // API 호출 시 필요한 groupPassword를 사용하여 데이터 가져오기
-  //   const fetchGroups = async () => {
-  //     try {
-  //       const response = await fetch(
-  //         `${BASE_URL}/api/groups/${groupId}/private`,
-  //         {
-  //           method: "POST",
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //           },
-  //           body: JSON.stringify({ groupPassword }),
-  //         }
-  //       );
-
-  //       if (response.status === 200) {
-  //         const data = await response.json();
-  //         setGroups(data);
-  //       } else if (response.status === 404) {
-  //         setError("그룹을 찾을 수 없습니다.");
-  //       } else if (response.status === 401) {
-  //         setError("비밀번호가 틀렸습니다.");
-  //       } else {
-  //         setError("알 수 없는 오류가 발생했습니다.");
-  //       }
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //       setError("서버와의 통신에 실패했습니다.");
-  //     }
-  //   };
-
-  //   fetchGroups();
-  // }, [groupPassword]);
-
   const handleGroupClick = (groupId) => {
     navigate(`/groups/${groupId}/private`);
   };

@@ -37,8 +37,8 @@ function PostForm({ onSuccess, onFailure }) {
   }, [groupId]);
 
   // ex)
-  // const groupId = `0ec34e22-a715-4567-8e8c-f9c338a90e51`;
-  // const groupPassword = "test";
+  // const groupId = `fa307c8f-88b2-4cd9-b754-1445caa2e6fc`;
+  // const groupPassword = "1234";
 
   // 태그 핸들러
   const handleTagInput = (e) => {

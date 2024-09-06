@@ -13,7 +13,7 @@ function PublicPostsList({ posts }) {
   };
 
   if (!posts) {
-    return <div>Loading...</div>; // 데이터가 로드되지 않았을 때 로딩 표시
+    return <div> 게시글이 없습니다</div>;
   }
 
   return (
@@ -40,7 +40,7 @@ function PublicPostsList({ posts }) {
 
               <span className="postLikeNCommentNP">
                 <span className="postLikeNP">
-                  <img src={flower} />
+                  <img src="./flower.png" />
                   <span className="postLikeCountNP">{post.likeCount}</span>
                 </span>
 
