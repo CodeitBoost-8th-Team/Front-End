@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./PostDeleteModal.css";
 import blackX from "../../img/X_black.png";
 
-function PostDeleteModal({ onDeleteConfirm, onClose }) {
+function PostDeleteModal({ postId, onDeleteConfirm, onClose }) {
   const navigate = useNavigate();
   const [postPassword, setPostPassword] = useState("");
 

@@ -18,10 +18,12 @@ function PostCreatePage() {
     setModalMessage("게시글 만들기 성공!");
     setIsModalOpen(true);
 
+    const postDetails = { postId, postPassword: groupPassword }; // test (추가한것)
+
     if (groupId.isPublic) {
-      navigate(`/posts/${postId}`);
+      navigate(`/posts/${postId}`, { state: postDetails });
     } else {
-      navigate(`posts/${postId}/private`);
+      navigate(`posts/${postId}/private`, { state: postDetails });
     }
   };
 

@@ -111,30 +111,30 @@
 //       {/* 테스트용 */}
 //       <button onClick={handleCreatePost}>추억 생성하기</button>
 
-//       {isEditModalOpen && (
-//         <PostModifyModal
-//           postId={postId}
-//           initialData={post}
-//           onClose={() => setIsEditModalOpen(false)}
-//           onSuccess={handleEditSuccess}
-//           onFailure={handleEditFailure}
-//         />
-//       )}
-//       {isDeleteModalOpen && (
-//         <PostDeleteModal
-//           onDeleteConfirm={handleDeleteConfirm} // 비밀번호를 받아 삭제를 진행
-//           onClose={handleDeleteClose}
-//         />
-//       )}
-//       {isFailureModalOpen && (
-//         <div className="modal">
-//           <div className="modal-content">
-//             <h3>게시글 삭제 실패</h3>
-//             <p>{failureMessage}</p>
-//             <button onClick={handleFailureModalClose}>확인</button>
-//           </div>
-//         </div>
-//       )}
+//   {isEditModalOpen && (
+//     <PostModifyModal
+//       postId={postId}
+//       initialData={post}
+//       onClose={() => setIsEditModalOpen(false)}
+//       onSuccess={handleEditSuccess}
+//       onFailure={handleEditFailure}
+//     />
+//   )}
+//   {isDeleteModalOpen && (
+//     <PostDeleteModal
+//       onDeleteConfirm={handleDeleteConfirm} // 비밀번호를 받아 삭제를 진행
+//       onClose={handleDeleteClose}
+//     />
+//   )}
+//   {isFailureModalOpen && (
+//     <div className="modal">
+//       <div className="modal-content">
+//         <h3>게시글 삭제 실패</h3>
+//         <p>{failureMessage}</p>
+//         <button onClick={handleFailureModalClose}>확인</button>
+//       </div>
+//     </div>
+//   )}
 //     </div>
 //   );
 // };
