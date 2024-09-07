@@ -29,7 +29,9 @@ const GroupDetailPage = () => {
   const [search, setSearch] = useState("");
 
   // groupPassword 가져옴
-  const [groupPassword, setGroupPassword] = useState("");
+  const [groupPassword, setGroupPassword] = useState(
+    location.state?.groupPassword || ""
+  );
   useEffect(() => {
     // 그룹 정보를 가져오는 함수
     const fetchGroupInfo = async () => {
