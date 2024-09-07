@@ -24,7 +24,9 @@ const GroupDetailPage = () => {
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
   const [isFailureModalOpen, setIsFailureModalOpen] = useState(false);
   const [failureMessage, setFailureMessage] = useState("");
-  const [grouplikeCount, setGroupLikeCount] = useState(0);
+  const [grouplikeCount, setGroupLikeCount] = useState(
+    location.state?.groupDetails || 0
+  );
   const [isPublic, setIsPublic] = useState(true);
   const [search, setSearch] = useState("");
 

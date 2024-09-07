@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import PrivateGroupsList from "./group/PrivateGroupsList.js";
 import PublicGroupsList from "./group/PublicGroupsList.js";
@@ -9,44 +9,18 @@ import searchImg from "../img/searchImg.png";
 
 const MainPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [groups, setGroups] = useState([]);
   const [isPublic, setIsPublic] = useState(true);
   const [selectIsPublic, setSelectIsPublic] = useState(true);
   const [search, setSearch] = useState("");
   const [selectedOption, setSelectedOption] = useState("최신순");
+  const [sortedPosts, setSortedPosts] = useState([]); // 정렬된 게시글
   const [isExpanded, setIsExpanded] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
   const [totalPages, setTotalPages] = useState(1);
-
-  const handleCreateGroup = () => {
-    navigate("/create-group");
-  };
-
-  // 검색 핸들러
-  // const handleSearch = (e) => {
-  //   setSearch(e.target.value);
-  //   setCurrentPage(1); // 검색어가 바뀔 때 페이지를 처음으로 리셋
-  // };
-
-  // 정렬 핸들러
-  const handleSelectChange = (e) => {
-    setSelectedOption(e.target.value);
-    setCurrentPage(2); // 정렬이 바뀔 때 페이지를 처음으로 리셋
-  };
-
-  // 더보기 버튼 핸들러
-  // const handleIsExpanded = () => {
-  //   if (currentPage < totalPages) {
-  //     setCurrentPage(currentPage + 1);
-  //   }
-  // };
-
-  const handleIsPublic = (e) => {
-    setSelectIsPublic(!selectIsPublic);
-    setIsPublic(!isPublic);
-    setCurrentPage(1); // 공개/비공개 변경 시 페이지를 처음으로 리셋
-  };
+  const [group, setGroup] = useState(location.state?.groupDetails || null);
 
   useEffect(() => {
     // 그룹 목록 가져오기
@@ -79,6 +53,54 @@ const MainPage = () => {
 
     fetchGroups();
   }, [isPublic, search, selectedOption, currentPage, pageSize]);
+
+  // 게시글을 선택된 정렬 기준에 따라 정렬
+  useEffect(() => {
+    if (group?.posts) {
+      let sorted = [...group.posts];
+      if (selectedOption === "최신순") {
+        sorted = sorted.sort(
+          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+        );
+      } else if (selectedOption === "공감순") {
+        sorted = sorted.sort(
+          (a, b) => Number(b.groupLikeCount) - Number(a.groupLikeCount)
+        );
+      } else if (selectedOption === "게시글 많은 순") {
+        sorted = sorted.sort((a, b) => b.commentCount - a.commentCount);
+      }
+      setSortedPosts(sorted);
+    }
+  }, [group?.posts, selectedOption]);
+
+  const handleCreateGroup = () => {
+    navigate("/create-group");
+  };
+
+  // 검색 핸들러
+  // const handleSearch = (e) => {
+  //   setSearch(e.target.value);
+  //   setCurrentPage(1); // 검색어가 바뀔 때 페이지를 처음으로 리셋
+  // };
+
+  // 정렬 핸들러
+  const handleSelectChange = (e) => {
+    setSelectedOption(e.target.value);
+    setCurrentPage(1); // 정렬이 바뀔 때 페이지를 처음으로 리셋
+  };
+
+  // 더보기 버튼 핸들러
+  // const handleIsExpanded = () => {
+  //   if (currentPage < totalPages) {
+  //     setCurrentPage(currentPage + 1);
+  //   }
+  // };
+
+  const handleIsPublic = (e) => {
+    setSelectIsPublic(!selectIsPublic);
+    setIsPublic(!isPublic);
+    setCurrentPage(1); // 공개/비공개 변경 시 페이지를 처음으로 리셋
+  };
 
   return (
     <div>
