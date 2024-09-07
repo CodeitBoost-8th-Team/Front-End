@@ -13,25 +13,40 @@ import searchImg from "../../img/searchImg.png"; // 검색 아이콘
 const GroupDetailPage = () => {
   // URL에서 그룹 ID를 가져옴
   const { groupId } = useParams();
-  const location = useLocation(); // 다른 페이지에서 넘어온 그룹 데이터를 받을 때 사용
-  const navigate = useNavigate(); // 페이지 이동에 사용
+  const location = useLocation(); // 비공개 그룹에서 넘어온 데이터를 받음
+  const navigate = useNavigate();
+  const [group, setGroup] = useState(location.state?.groupDetails || null);
+  const [groups, setGroups] = useState([]); // 그룹 목록 상태 추가
+  const [currentPage, setCurrentPage] = useState(1); // 페이지네이션 상태 추가
+  const [loading, setLoading] = useState(!group); // group 데이터가 있으면 로딩 생략
+  const [error, setError] = useState(null);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+  const [isFailureModalOpen, setIsFailureModalOpen] = useState(false);
+  const [failureMessage, setFailureMessage] = useState("");
+  const [grouplikeCount, setGroupLikeCount] = useState(0);
+  const [isPublic, setIsPublic] = useState(true);
+  const [search, setSearch] = useState("");
 
-  // 상태 관리
-  const [group, setGroup] = useState(location.state?.groupDetails || null); // 그룹 데이터 저장
-  const [groups, setGroups] = useState([]); // 그룹 목록 저장 (추가 기능용)
-  const [currentPage, setCurrentPage] = useState(1); // 페이지네이션 상태 (추가 기능용)
-  const [loading, setLoading] = useState(!group); // 로딩 상태 (데이터가 없으면 true)
-  const [error, setError] = useState(null); // 에러 메시지
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false); // 그룹 수정 모달 상태
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false); // 그룹 삭제 모달 상태
-  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false); // 성공 모달 상태
-  const [isFailureModalOpen, setIsFailureModalOpen] = useState(false); // 실패 모달 상태
-  const [failureMessage, setFailureMessage] = useState(""); // 실패 메시지
-  const [grouplikeCount, setGroupLikeCount] = useState(0); // 그룹 공감 수
-  const [isPublic, setIsPublic] = useState(true); // 공개/비공개 상태
-  const [search, setSearch] = useState(""); // 검색어 상태
+  // groupPassword 가져옴
+  const [groupPassword, setGroupPassword] = useState("");
+  useEffect(() => {
+    // 그룹 정보를 가져오는 함수
+    const fetchGroupInfo = async () => {
+      try {
+        const response = await axios.get(
+          `http://3.39.56.63/api/groups/${groupId}`
+        );
+        setGroupPassword(response.data.groupPassword);
+      } catch (error) {
+        console.error("그룹 정보 가져오기 실패:", error);
+      }
+    };
 
-  // 그룹 상세 정보를 가져오는 함수
+    fetchGroupInfo();
+  }, [groupId]);
+
   useEffect(() => {
     const fetchGroupDetails = async () => {
       if (!group) {

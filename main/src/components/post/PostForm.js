@@ -111,11 +111,11 @@ function PostForm({ onSuccess, onFailure }) {
       };
       // 서버에 데이터 전송
       const response = await axios.post(
-        `http://3.39.56.63/api/groups/${groupId}/posts`,
-        //formData,    // 수정 전
-        postData, // 수정 후
-        { headers: { "Content-Type": "application/json" } } // JSON 데이터 전송 - 수정 후
+        `http://3.39.56.63/api/groups/${groupId}/posts`, // ${groupId}를 문자열로 삽입
+        postData, 
+        { headers: { "Content-Type": "application/json" } }
       );
+      
 
       if (response.status === 200) {
         onSuccess(response.data.id); // 생성된 게시글 ID 전달

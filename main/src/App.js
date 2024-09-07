@@ -25,7 +25,7 @@ function App() {
         {/* Post 관련 라우트 */}
         {/* 공개 그룹 */}
         <Route path="/post/:postId" element={<PostDetailPage />} />
-        <Route path="/create-post" element={<PostCreatePage />} />
+        <Route path="/groups/:groupId/posts" element={<PostCreatePage />} />
         <Route path="/modify-post" element={<PostModifyModal />} />
         <Route path="/delete-post" element={<PostDeleteModal />} />
 
