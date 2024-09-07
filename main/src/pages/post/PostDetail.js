@@ -4,6 +4,7 @@ import { useNavigate, useParams, useLocation } from "react-router-dom";
 import PostModifyModal from "../../components/post/PostModifyModal";
 import PostDeleteModal from "../../components/post/PostDeleteModal";
 import "./PostDetail.css";
+import logo from "../../img/logo.jpg";
 import CommentModal from "../../components/comment/CommentModal"; // 댓글 등록 모달 추가
 import CommentEdit from "../comment/CommentEdit"; // 댓글 수정 모달 추가
 import CommentDelete from "../comment/CommentDelete"; // 댓글 삭제 모달 추가
@@ -53,6 +54,8 @@ function PostDetail() {
   const handleEditClick = () => {
     setIsDeleteModalOpen(false); // 다른 모달을 닫음
     setIsEditModalOpen(true);
+
+    navigate("/groups/{groupId}");
   };
 
   const handleEditSuccess = (updatedPost) => {
@@ -82,6 +85,7 @@ function PostDetail() {
       if (response.status === 200) {
         setIsDeleteModalOpen(false);
         setIsSuccessModalOpen(true);
+        navigate("/");
       }
     } catch (error) {
       console.error("게시글 삭제 중 오류 발생:", error);
@@ -158,7 +162,7 @@ function PostDetail() {
     <div className="post-detail">
       <header className="header">
         <h1>
-          <img src="logo.jpg" alt="Logo" className="logo" />
+          <img src={logo} alt="Logo" className="logo" />
         </h1>
       </header>
 
