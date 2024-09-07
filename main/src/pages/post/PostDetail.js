@@ -163,10 +163,12 @@ function PostDetail() {
       </header>
 
       <article className="post">
-        <h2 className="post-title">인천 앞바다에서 무려 60cm 월척을 낚다!</h2>
+        <h2 className="post-title">{post.title}</h2>
         {/* post-meta와 추억 수정/삭제 버튼을 같은 줄에 배치 */}
         <div className="post-meta-actions">
-          <p className="post-meta">작성자: 인천앞바다 • 24/01/19 18:00</p>
+          <p className="post-meta">
+            작성자: {post.nickname} • {post.moment}
+          </p>
           <div className="post-actions">
             <button className="edit-button" onClick={handleEditClick}>
               추억 수정하기
@@ -201,13 +203,9 @@ function PostDetail() {
             )}
           </div>
         </div>
-        <img src="Rectangle 41.png" alt="Fishing" className="post-image" />
+        <img src={post.imageUrl} alt="게시글이미지" className="post-image" />
         <div className="post-body">
-          <p>
-            인천 앞바다에서 월척을 낚았습니다! 가족들과 기억에 오래도록 남을
-            멋진 하루였어요.
-          </p>
-          {postId}
+          <p>{post.content}</p>
         </div>
       </article>
 
