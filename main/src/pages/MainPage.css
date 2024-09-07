@@ -9,6 +9,9 @@
 .groupsListGL {
   width: 1920px;
   height: 2048px;
+  height: auto;
+
+  margin-bottom: 30px;
 }
 
 .headerGL {
@@ -143,7 +146,7 @@
   width: 24.31px;
   height: 24px;
   position: absolute;
-  top: 149px;
+  top: 151px;
   left: 370px;
   padding: 3px 3.04px 3px 3.04px;
 
@@ -151,7 +154,7 @@
 }
 
 .searchBoxGL {
-  width: 1140px;
+  width: 1190px;
   height: 45px;
   position: absolute;
   top: 140px;
@@ -169,7 +172,7 @@
 
 .searchBoxGL::placeholder {
   position: absolute;
-
+  padding-top: 0px;
   opacity: 0.5;
 }
 

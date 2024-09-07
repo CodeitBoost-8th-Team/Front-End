@@ -25,12 +25,16 @@ const GroupDetailPage = () => {
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
   const [isFailureModalOpen, setIsFailureModalOpen] = useState(false);
   const [failureMessage, setFailureMessage] = useState("");
-  const [grouplikeCount, setGroupLikeCount] = useState(0);
+  const [grouplikeCount, setGroupLikeCount] = useState(
+    location.state?.groupDetails || 0
+  );
   const [isPublic, setIsPublic] = useState(true);
   const [search, setSearch] = useState("");
 
   // groupPassword 가져옴
-  const [groupPassword, setGroupPassword] = useState("");
+  const [groupPassword, setGroupPassword] = useState(
+    location.state?.groupPassword || ""
+  );
   useEffect(() => {
     // 그룹 정보를 가져오는 함수
     const fetchGroupInfo = async () => {
@@ -179,7 +183,12 @@ const GroupDetailPage = () => {
   };
 
   const handleCreatePost = () => {
-    navigate("/groups/{groupId}/posts");
+    navigate("/groups/{groupId}/posts", {
+      state: {
+        groupId: groupId,
+        groupPassword: groupPassword,
+      },
+    });
   };
 
   return (
@@ -301,7 +310,7 @@ const GroupDetailPage = () => {
                     <img id="searchImgGD" src={searchImg} alt="돋보기" />
                     <input
                       className="searchBoxGD"
-                      placeholder="그룹명을 검색해주세요"
+                      placeholder="태그 혹은 제목을 입력해주세요"
                       value={search}
                       // onChange={handleSearch} // 검색 기능 구현 필요시
                     />

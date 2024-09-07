@@ -1,5 +1,6 @@
 * {
-  font-family: "Spoqa Han Sans Neo", sans-serif;
+  /* font-family: "Spoqa Han Sans Neo", sans-serif; */
+  font-family: Pretendard;
   box-sizing: border-box;
 }
 
@@ -9,7 +10,7 @@
 }
 
 .leftFormC {
-  margin-left: 480px;
+  margin-left: 450px;
   width: 400px;
 }
 
@@ -45,7 +46,9 @@
   width: 400px;
   height: 45px;
   border-radius: 6px;
-  text-indent: 20px;
+  text-indent: 10px;
+
+  background-color: #fff;
 }
 .inputC::placeholder {
   width: 200px;

@@ -5,9 +5,9 @@ import "./PostForm.css";
 import whiteX from "../../img/X_white.png";
 import calender from "../../img/calender.png";
 
-function PostForm({ onSuccess, onFailure }) {
+function PostForm({ onSuccess, onFailure, groupId, groupPassword }) {
   const navigate = useNavigate();
-  const { groupId } = useParams();
+  // const { groupId } = useParams();
   const [postNickname, setPostNickname] = useState("");
   const [postTitle, setPostTitle] = useState("");
   const [postImage, setPostImage] = useState(null);
@@ -18,23 +18,23 @@ function PostForm({ onSuccess, onFailure }) {
   const [postMoment, setPostMoment] = useState("");
   const [postPassword, setPostPassword] = useState(""); // 글 수정 시 입력해야 하는 password
 
-  const [groupPassword, setGroupPassword] = useState(""); // 그룹 비밀번호 상태 추가
+  // const [groupPassword, setGroupPassword] = useState(""); // 그룹 비밀번호 상태 추가
 
-  useEffect(() => {
-    // 그룹 정보를 가져오는 함수
-    const fetchGroupInfo = async () => {
-      try {
-        const response = await axios.get(
-          `http://3.39.56.63/api/groups/${groupId}`
-        );
-        setGroupPassword(response.data.groupPassword);
-      } catch (error) {
-        console.error("그룹 정보 가져오기 실패:", error);
-      }
-    };
+  // useEffect(() => {
+  //   // 그룹 정보를 가져오는 함수
+  //   const fetchGroupInfo = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         `http://3.39.56.63/api/groups/${groupId}`
+  //       );
+  //       setGroupPassword(response.data.groupPassword);
+  //     } catch (error) {
+  //       console.error("그룹 정보 가져오기 실패:", error);
+  //     }
+  //   };
 
-    fetchGroupInfo();
-  }, [groupId]);
+  //   fetchGroupInfo();
+  // }, [groupId]);
 
   // ex)
   // const groupId = `fa307c8f-88b2-4cd9-b754-1445caa2e6fc`;
@@ -120,7 +120,7 @@ function PostForm({ onSuccess, onFailure }) {
       if (response.status === 200) {
         onSuccess(response.data.id); // 생성된 게시글 ID 전달
         // 등록한 공개 게시글 상세 페이지로 이동
-        navigate("/post/:postId");
+        navigate("/posts/{postId}");
       } else if (response.status === 400) {
         onFailure("잘못된 요청입니다.");
       } else if (response.status === 401) {

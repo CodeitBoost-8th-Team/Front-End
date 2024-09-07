@@ -25,7 +25,9 @@ function PasswordPage() {
         localStorage.setItem(`groupPassword_${groupId}`, groupPassword); // 비밀번호를 저장
         const groupDetails = response.data;
         // 그룹 상세 정보 함께 넘김
-        navigate(`/groups/${groupId}`, { state: { groupDetails } });
+        navigate(`/groups/${groupId}`, {
+          state: { groupDetails, groupPassword },
+        });
       } else {
         setError("비밀번호가 틀렸습니다.");
       }

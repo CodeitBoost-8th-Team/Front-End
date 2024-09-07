@@ -22,7 +22,7 @@
 .groupCardPGL {
   border: 1px solid #dddddd;
   border-radius: 12px;
-  overflow: hidden;
+  /* overflow: hidden; */
   transition: box-shadow 0.3s ease-in-out;
   background-color: #ffffff;
 

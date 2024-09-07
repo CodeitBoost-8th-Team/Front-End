@@ -27,6 +27,30 @@
   cursor: pointer;
 }
 
+/* 추억 수정/삭제 버튼과 post-meta 한 줄에 배치 */
+.post-meta-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.post-meta {
+  color: #888;
+}
+
+.edit-button,
+.delete-button {
+  padding: 5px 10px;
+  border-radius: 6px;
+  background-color: #282828;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 10px; /* 버튼 간격 조정 */
+}
+
 .comments-section {
   margin-top: 20px;
 }

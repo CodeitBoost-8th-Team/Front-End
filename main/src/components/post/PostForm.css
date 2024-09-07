@@ -53,8 +53,8 @@
 .imageC .fileButtonLabelC {
   height: 45px;
   width: 95px;
-  top: 529px;
-  left: 780px;
+  /* top: 529px;
+  left: 780px; */
   border: 1px solid #282828;
   border-radius: 6px;
   background: #fafafa;
@@ -70,9 +70,9 @@
   justify-content: center;
   align-items: center;
 
-  padding-top: 2px;
+  padding-top: 0px;
   margin-left: 23px;
-  margin-bottom: 0px;
+  margin-bottom: 19px;
 
   cursor: pointer;
 }
@@ -116,7 +116,7 @@
 
   padding: 14px 20px 14px 20px;
 
-  font-size: 14px;
+  font-size: 14px !important;
   font-weight: 400;
   line-height: 16.71px;
   letter-spacing: -0.03em;
@@ -124,7 +124,9 @@
 
   line-height: 1.5; /* 줄 간격 설정 */
 
-  font-family: "Spoqa Han Sans Neo";
+  /* font-family: "Spoqa Han Sans Neo" !important; */
+
+  background-color: #fff;
 }
 
 .textareaC::placeholder {
@@ -164,6 +166,10 @@
 .tagC {
   width: 400px;
   position: relative;
+}
+
+#tagC {
+  margin: 0px;
 }
 
 .tagListC {
@@ -232,7 +238,7 @@
   width: 24px;
   height: 24px;
   top: 601px;
-  left: 1420px;
+  left: 1390px;
   cursor: pointer;
   opacity: 1;
 }
