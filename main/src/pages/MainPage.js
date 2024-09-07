@@ -29,7 +29,7 @@ const MainPage = () => {
         const sortByMapping = {
           최신순: "latest",
           "게시글 많은 순": "mostPosted",
-          공감순: "MostLiked",
+          공감순: "mostLiked",
         };
         const response = await axios.get("http://3.39.56.63/api/groups", {
           params: {
