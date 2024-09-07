@@ -328,12 +328,12 @@ const GroupDetailPage = () => {
             </div>
 
             <div className="GroupPostsGD">
-              {isPublic ? (
-                <PublicPostsList posts={group.posts} />
-              ) : (
-                <PrivatePostsList posts={group.posts} />
-              )}
-            </div>
+                {isPublic ? (
+                  <PublicPostsList posts={group.posts} />
+                ) : (
+                  <PrivatePostsList posts={group.posts} />
+                )}
+              </div>
           </div>
         </>
       )}

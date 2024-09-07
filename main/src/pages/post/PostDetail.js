@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './PostDetail.css';
-import CommentModal from './CommentModal'; // 댓글 등록 모달 추가
-import CommentEdit from './CommentEdit'; // 댓글 수정 모달 추가
-import CommentDelete from './CommentDelete'; // 댓글 삭제 모달 추가
+import CommentModal from '../../components/comment/CommentModal'; // 댓글 등록 모달 추가
+import CommentEdit from '../../pages/comment/CommentEdit'; // 댓글 수정 모달 추가
+import CommentDelete from '../../pages/comment/CommentDelete'; // 댓글 삭제 모달 추가
 
 function PostDetail() {
     console.log("PostDetail 컴포넌트 렌더링");
