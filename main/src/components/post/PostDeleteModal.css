@@ -76,7 +76,7 @@
 
 .passwordD {
   position: absolute;
-  width: 400px;
+  width: 400px !important;
   height: 45px;
   top: 140px;
   left: 40px;

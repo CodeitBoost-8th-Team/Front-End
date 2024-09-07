@@ -29,10 +29,10 @@ function App() {
         {/* 공개 그룹 */}
         <Route path="/posts/:postId" element={<PostDetail />} />
         {/* 비공개 그룹 */}
-        <Route path="/posts/:postId/private" element={<PostDetail />} />
+        {/* <Route path="/posts/:postId/private" element={<PostDetail />} /> */}
         <Route path="/groups/:groupId/posts" element={<PostCreatePage />} />
-        <Route path="/modify-post" element={<PostModifyModal />} />
-        <Route path="/delete-post" element={<PostDeleteModal />} />
+        {/* <Route path="/posts/:postId" element={<PostModifyModal />} />
+        <Route path="/posts/:postId" element={<PostDeleteModal />} /> */}
 
         {/* Comment 관련 라우트 */}
         <Route path="/comments/:commentId/edit" element={<CommentEdit />} />

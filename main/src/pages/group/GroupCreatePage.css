@@ -1,82 +1,81 @@
 .group-create-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px;
-    background-color: #ffffff;
-    min-height: 100vh;
-  }
-  
-  /* 제목과 로고를 중앙에 배치 */
-  .title-container {
-    text-align: center;
-    margin-bottom: 100px; /* 폼과의 간격을 위해 여유를 줌 */
-  }
-  
-  /* 로고 이미지 스타일 */
-  .logo {
-    max-width: 150px; /* 로고 크기 조정 */
-    margin-bottom: 40px; /* 로고와 타이틀 간의 간격 */
-  }
-  
-  .modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;  /* 패딩을 줄여서 모달이 너무 크지 않도록 */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    max-width: 400px;  /* 최대 너비를 줄임 */
-    min-width: 300px;  /* 최소 너비도 줄임 */
-    text-align: center;
-  }
-  
-  .modal-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* background-color: rgba(0, 0, 0, 0.5); */
-    z-index: 999;
-  }
-    
-  /* 제목 스타일 */
-  .modal h3 {
-    font-family: 'Pretendard', sans-serif;
-    font-size: 20px;
-    /* font-weight: bold; */
-    color: #000000;
-    margin-bottom: 15px; 
-  }
-    
-  /* 본문 텍스트 스타일 */
-  .modal p {
-    font-family: 'Pretendard', sans-serif;
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 20px;
-  }
-    
-  /* 모달 버튼 스타일 */
-  .modal button {
-    font-family: 'Pretendard', sans-serif;
-    font-size: 16px;
-    padding: 10px 20px;
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-    display: block;
-    margin-top: 15px; /* 버튼과 텍스트 사이 간격 추가 */
-  }
-    
-  .modal button:hover {
-    background-color: #495565;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  background-color: #ffffff;
+  min-height: 100vh;
+}
+
+/* 제목과 로고를 중앙에 배치 */
+.title-container {
+  text-align: center;
+  margin-bottom: 100px; /* 폼과의 간격을 위해 여유를 줌 */
+}
+
+/* 로고 이미지 스타일 */
+.group-create-page-logo {
+  max-width: 150px; /* 로고 크기 조정 */
+  margin-bottom: 40px; /* 로고와 타이틀 간의 간격 */
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px; /* 패딩을 줄여서 모달이 너무 크지 않도록 */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  max-width: 400px; /* 최대 너비를 줄임 */
+  min-width: 300px; /* 최소 너비도 줄임 */
+  text-align: center;
+}
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  z-index: 999;
+}
+
+/* 제목 스타일 */
+.modal h3 {
+  font-family: "Pretendard", sans-serif;
+  font-size: 20px;
+  /* font-weight: bold; */
+  color: #000000;
+  margin-bottom: 15px;
+}
+
+/* 본문 텍스트 스타일 */
+.modal p {
+  font-family: "Pretendard", sans-serif;
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* 모달 버튼 스타일 */
+.modal button {
+  font-family: "Pretendard", sans-serif;
+  font-size: 16px;
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  display: block;
+  margin-top: 15px; /* 버튼과 텍스트 사이 간격 추가 */
+}
+
+.modal button:hover {
+  background-color: #495565;
+}

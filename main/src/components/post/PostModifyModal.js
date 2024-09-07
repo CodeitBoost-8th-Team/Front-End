@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import "./PostModifyModal.css";
 import calender from "../../img/calender.png";

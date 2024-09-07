@@ -118,9 +118,10 @@ function PostForm({ onSuccess, onFailure, groupId, groupPassword }) {
       
 
       if (response.status === 200) {
-        onSuccess(response.data.id); // 생성된 게시글 ID 전달
+        const postId = response.data.id; // 서버로부터 postId를 추출
+        onSuccess(postId);
         // 등록한 공개 게시글 상세 페이지로 이동
-        navigate("/posts/{postId}");
+        navigate(`/posts/${postId}`, { state: { postId } });
       } else if (response.status === 400) {
         onFailure("잘못된 요청입니다.");
       } else if (response.status === 401) {
